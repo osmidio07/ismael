@@ -85,10 +85,15 @@
             text-align: center;
         }
 
+        /* ==== AJUSTADO: LOGO AGORA TEM DESTAQUE ==== */
         .hero-content .marca-concafras {
-            height: 40px;
+            max-height: 100px; /* Aumentado drasticamente para ter destaque premium */
+            max-width: 250px; /* Impede que logos horizontais estourem */
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Garante que a imagem não distorça */
             display: block;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 30px auto; /* Mais espaçamento embaixo pra dar ar */
         }
 
         .hero-content h1 {
@@ -99,7 +104,7 @@
             color: var(--text-main);
         }
 
-        /* ==== NOVO: CAIXA DE INFORMAÇÕES EM DESTAQUE ==== */
+        /* ==== CAIXA DE INFORMAÇÕES EM DESTAQUE ==== */
         .event-info-highlight {
             display: flex;
             flex-direction: column;
@@ -304,17 +309,19 @@
     <main>
         <section class="hero-glass reveal">
             <img src="https://i.ibb.co/bM4PyV51/C-pia-de-C-pia-de-cracha-reuniao-ismael.jpg" alt="Cartaz Reunião Ismael" class="hero-img">
-           <div class="hero-content">
-                <img src="https://i.ibb.co/Sw1sL1QW/Logo-Oficial-do-Programa-Concafras.png" alt="Marca Concafras" class="marca-concafras">
+            <div class="hero-content">
+                <img src="SEU_LINK_DIRETO_DA_LOGO_AQUI.png" alt="Marca Concafras" class="marca-concafras">
                 <h1>Reunião Ismael</h1>
+                
                 <div class="event-info-highlight">
                     <div class="info-row">
                         <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <div class="info-text">
                             <strong>03 a 05 de Abril de 2026</strong>
-                            <span>3 dias de união e fraternidade</span>
+                            <span>Marque na sua agenda</span>
                         </div>
                     </div>
+                    
                     <div class="info-row">
                         <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         <div class="info-text">
@@ -323,7 +330,8 @@
                         </div>
                     </div>
                 </div>
-              <div class="btn-wrapper">
+                
+                <div class="btn-wrapper">
                     <button class="btn-primary" onclick="event.preventDefault()">GARANTA SUA VAGA</button>
                     <div class="tooltip">As inscrições abrem em breve. Aguarde!</div>
                 </div>
@@ -446,7 +454,7 @@
                     <div class="arrow">▼</div>
                 </div>
                 <div class="hotel-content">
-                    <div class="hotel-details">
+                    <div class="hero-details">
                         <p><strong>Endereço:</strong> Aeroporto</p>
                         <p><strong>Telefone:</strong> <br><a href="tel:62982462734" class="tel-link">📞 (62) 98246-2734</a></p>
                         <p style="margin-top: 10px;"><strong>Valores:</strong> Diárias a partir de R$ 270,00</p>
@@ -573,6 +581,4 @@
         }, 100);
     </script>
 </body>
-
 </html>
-
