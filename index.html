@@ -6,15 +6,15 @@
     <title>Reunião Ismael 2026 | chancela CONCAFRAS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Variáveis de Tema Premium Concafras (Premium Light Mode) */
+        /* Variáveis de Tema Premium Concafras */
         :root {
             --bg-base: #f5f7fa;
             --bg-surface: rgba(255, 255, 255, 0.7);
             --bg-glass: rgba(255, 255, 255, 0.6);
             --border-glass: rgba(0, 0, 0, 0.05);
-            --text-main: #1A3B8A; /* Azul marinho Concafras */
+            --text-main: #1A3B8A;
             --text-muted: #6b7280;
-            --accent: #1E4BB0; /* Azul real Concafras */
+            --accent: #1E4BB0;
         }
 
         * {
@@ -52,7 +52,6 @@
             position: relative;
         }
 
-        /* Animação de Scroll */
         .reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -63,7 +62,6 @@
             transform: translateY(0);
         }
 
-        /* Contêiner do Cartaz e Detalhes */
         .hero-glass {
             background: var(--bg-glass);
             backdrop-filter: blur(16px);
@@ -85,35 +83,70 @@
             text-align: center;
         }
 
-        /* ==== AJUSTADO: LOGO AGORA TEM DESTAQUE ==== */
+        /* ==== ESPAÇAMENTOS REDUZIDOS AQUI ==== */
         .hero-content .marca-concafras {
-            max-height: 100px; /* Aumentado drasticamente para ter destaque premium */
-            max-width: 250px; /* Impede que logos horizontais estourem */
+            max-height: 90px; 
+            max-width: 250px; 
             width: auto;
             height: auto;
-            object-fit: contain; /* Garante que a imagem não distorça */
+            object-fit: contain; 
             display: block;
-            margin: 0 auto 30px auto; /* Mais espaçamento embaixo pra dar ar */
+            margin: 0 auto 12px auto; /* Reduzido de 30px para 12px */
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 900;
             letter-spacing: -0.03em;
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* Reduzido de 25px para 15px */
             color: var(--text-main);
+            line-height: 1.1;
         }
 
-        /* ==== CAIXA DE INFORMAÇÕES EM DESTAQUE ==== */
+        /* ==== NOVO: CONTAGEM REGRESSIVA ==== */
+        .countdown-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--accent), #2b5bc7);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(30,75,176,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .countdown-pill svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .countdown-pill strong {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #fbbf24; /* Amarelo ouro para destacar os dias */
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(30,75,176,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(30,75,176,0); }
+            100% { box-shadow: 0 0 0 0 rgba(30,75,176,0); }
+        }
+
+        /* Caixa de Informações */
         .event-info-highlight {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px; /* Reduzido de 20px para 16px */
             background: rgba(30, 75, 176, 0.04);
             border: 1px solid rgba(30, 75, 176, 0.1);
-            padding: 24px;
+            padding: 20px; /* Reduzido de 24px para 20px */
             border-radius: 20px;
-            margin: 0 auto 35px auto;
+            margin: 0 auto 25px auto; /* Reduzido de 35px para 25px */
             max-width: 500px;
             text-align: left;
             box-shadow: inset 0 2px 10px rgba(255,255,255,0.5);
@@ -122,16 +155,16 @@
         .info-row {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
+            gap: 14px;
         }
 
         .info-icon {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             color: var(--accent);
             flex-shrink: 0;
             background: rgba(30, 75, 176, 0.1);
-            padding: 6px;
+            padding: 7px;
             border-radius: 8px;
         }
 
@@ -142,15 +175,15 @@
 
         .info-text strong {
             color: var(--text-main);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
             line-height: 1.3;
         }
 
         .info-text span {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 4px;
+            font-size: 0.85rem;
+            margin-top: 2px;
             line-height: 1.4;
         }
 
@@ -163,9 +196,9 @@
             justify-content: center;
             background: var(--accent);
             color: white;
-            padding: 18px 40px;
+            padding: 16px 36px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -313,6 +346,13 @@
                 <img src="https://i.ibb.co/Sw1sL1QW/Logo-Oficial-do-Programa-Concafras.png" alt="Marca Concafras" class="marca-concafras">
                 <h1>Reunião Ismael</h1>
                 
+                <div class="countdown-pill" id="countdown-container">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span id="countdown-text">Faltam <strong id="dias-restantes">--</strong> dias</span>
+                </div>
+                
                 <div class="event-info-highlight">
                     <div class="info-row">
                         <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -454,7 +494,7 @@
                     <div class="arrow">▼</div>
                 </div>
                 <div class="hotel-content">
-                    <div class="hero-details">
+                    <div class="hotel-details">
                         <p><strong>Endereço:</strong> Aeroporto</p>
                         <p><strong>Telefone:</strong> <br><a href="tel:62982462734" class="tel-link">📞 (62) 98246-2734</a></p>
                         <p style="margin-top: 10px;"><strong>Valores:</strong> Diárias a partir de R$ 270,00</p>
@@ -540,6 +580,40 @@
     </main>
 
     <script>
+        // === LÓGICA DA CONTAGEM REGRESSIVA AUTOMÁTICA ===
+        function atualizarContagem() {
+            // Data do evento: 03 de Abril de 2026
+            const dataEvento = new Date('2026-04-03T00:00:00');
+            const agora = new Date();
+            
+            // Calcula a diferença em dias
+            const diferencaTempo = dataEvento - agora;
+            const diasRestantes = Math.ceil(diferencaTempo / (1000 * 60 * 60 * 24));
+            
+            const textoContagem = document.getElementById('countdown-text');
+            const numDiasElemento = document.getElementById('dias-restantes');
+            
+            if (diasRestantes > 0) {
+                numDiasElemento.innerText = diasRestantes;
+            } else if (diasRestantes === 0) {
+                textoContagem.innerHTML = "É <strong>hoje!</strong>";
+                document.getElementById('countdown-container').style.animation = "none";
+                document.getElementById('countdown-container').style.background = "#10b981"; // Verde sucesso
+            } else {
+                textoContagem.innerHTML = "Evento <strong>encerrado</strong>";
+                document.getElementById('countdown-container').style.animation = "none";
+                document.getElementById('countdown-container').style.background = "#6b7280"; // Cinza
+            }
+        }
+        
+        // Executa a contagem assim que a página carrega
+        atualizarContagem();
+        
+        // Atualiza a cada hora (caso a pessoa deixe a aba aberta)
+        setInterval(atualizarContagem, 3600000);
+
+
+        // === LÓGICA DA LISTA DE HOTÉIS ===
         document.querySelectorAll('.hotel-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
@@ -555,6 +629,7 @@
             });
         });
 
+        // === ANIMAÇÃO DE SCROLL (REVEAL) ===
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -582,4 +657,3 @@
     </script>
 </body>
 </html>
-
