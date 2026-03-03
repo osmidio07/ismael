@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunião Ismael 2026 | chancela CONCAFRAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis de Tema Premium Concafras (Premium Light Mode) */
+        :root {
+            --bg-base: #f5f7fa;
+            --bg-surface: rgba(255, 255, 255, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.6);
+            --border-glass: rgba(0, 0, 0, 0.05);
+            --text-main: #1A3B8A; /* Azul marinho Concafras */
+            --text-muted: #6b7280;
+            --accent: #1E4BB0; /* Azul real Concafras */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Efeitos de Luz de Fundo Premium */
+        .ambient-light {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(30,75,176,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            position: relative;
+        }
+
+        /* Animação de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contêiner do Cartaz e Detalhes */
+        .hero-glass {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+        }
+
+        .hero-img {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .hero-content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .hero-content .marca-concafras {
+            height: 40px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+
+        /* ==== NOVO: CAIXA DE INFORMAÇÕES EM DESTAQUE ==== */
+        .event-info-highlight {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: rgba(30, 75, 176, 0.04);
+            border: 1px solid rgba(30, 75, 176, 0.1);
+            padding: 24px;
+            border-radius: 20px;
+            margin: 0 auto 35px auto;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: inset 0 2px 10px rgba(255,255,255,0.5);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .info-icon {
+            width: 28px;
+            height: 28px;
+            color: var(--accent);
+            flex-shrink: 0;
+            background: rgba(30, 75, 176, 0.1);
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-text strong {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .info-text span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* Botão Interativo */
+        .btn-wrapper { position: relative; display: inline-block; }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(30,75,176,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(30,75,176,0.35);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--text-main);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-wrapper:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Preços */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .price-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(30, 75, 176, 0.15);
+            background: white;
+        }
+
+        .price-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; opacity: 0.9;}
+        .price-card .value { font-size: 3rem; font-weight: 900; letter-spacing: -0.05em; }
+        .price-card .value span { font-size: 1.2rem; vertical-align: super; opacity: 0.7; }
+
+        /* Lista de Hotéis */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hotel-item {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .hotel-item:hover { background: white; border-color: rgba(30, 75, 176, 0.1); }
+
+        .hotel-header {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hotel-title { font-size: 1.1rem; font-weight: 700; }
+        .hotel-dist { font-size: 0.85rem; opacity: 0.7; margin-top: 4px; display: block;}
+        
+        .arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(30, 75, 176, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .hotel-content { max-height: 0; opacity: 0; transition: all 0.4s ease; }
+        .hotel-item.active .hotel-content { max-height: 400px; opacity: 1; }
+        .hotel-item.active .arrow { transform: rotate(180deg); background: var(--accent); color: white;}
+
+        .hotel-details {
+            padding: 0 24px 24px;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            margin-top: 10px;
+            padding-top: 20px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .tel-link {
+            color: var(--accent);
+            text-decoration: none;
+            background: rgba(30, 75, 176, 0.08);
+            padding: 6px 14px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 6px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+        .tel-link:hover { background: rgba(30, 75, 176, 0.15); }
+
+        footer { text-align: center; opacity: 0.6; font-size: 0.85rem; padding-top: 40px; font-weight: 600;}
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+
+    <main>
+        <section class="hero-glass reveal">
+            <img src="https://i.ibb.co/bM4PyV51/C-pia-de-C-pia-de-cracha-reuniao-ismael.jpg" alt="Cartaz Reunião Ismael" class="hero-img">
+            <div class="hero-content">
+                <img src="logo.png" alt="Marca Concafras" class="marca-concafras">
+                <h1>Reunião Ismael</h1>
+                
+                <div class="event-info-highlight">
+                    <div class="info-row">
+                        <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <div class="info-text">
+                            <strong>03 a 05 de Abril de 2026</strong>
+                            <span>Marque na sua agenda</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <div class="info-text">
+                            <strong>Centro Espírita Irmão Áureo</strong>
+                            <span>Rua da Paz, Jardim Nova Esperança - Goiânia, GO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-wrapper">
+                    <button class="btn-primary" onclick="event.preventDefault()">GARANTA SUA VAGA</button>
+                    <div class="tooltip">As inscrições abrem em breve. Aguarde!</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-grid reveal">
+            <div class="price-card">
+                <h3>Inscrição Adulto</h3>
+                <div class="value"><span>R$</span> 85</div>
+                <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.8; font-weight: 600;">A partir de 12 anos</p>
+            </div>
+            <div class="price-card">
+                <h3>Inscrição Criança</h3>
+                <div class="value"><span>R$</span> 42,50</div>
+                <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.8; font-weight: 600;">0 a 11 anos completos</p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title">Hospedagem Recomendada</h2>
+            
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">01. Hotel Seven</div>
+                        <span class="hotel-dist">📍 1,5 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> S. Santos Dumont</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6239987979" class="tel-link">📞 (62) 3998-7979</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong><br>
+                        • Individual: R$ 200,00<br>
+                        • Casal: R$ 280,00<br>
+                        • Quarto p/ 3 (1 casal + 2 solt.): R$ 470,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">02. JBR Park Hotel</div>
+                        <span class="hotel-dist">📍 2,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Jd. Colorado</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6232515943" class="tel-link">📞 (62) 3251-5943</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong><br>
+                        • Casal: R$ 280,00<br>
+                        • Individual: R$ 150,00 (Banheiro compart.)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">03. Euro Plaza Hotel</div>
+                        <span class="hotel-dist">📍 15,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Jd. São Judas Tadeu</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6235651326" class="tel-link">📞 (62) 3565-1326</a></p>
+                        <p style="margin-top: 10px;"><strong>Detalhes:</strong> Possui 35 quartos. 80% das vagas possuem 1 cama de casal e 1 de solteiro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">04. Hotel Rio Vermelho</div>
+                        <span class="hotel-dist">📍 10,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Centro</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6232272500" class="tel-link">📞 (62) 3227-2500</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong><br>
+                        • Individual: R$ 219,00<br>
+                        • Duplo: R$ 269,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">05. Hotel Pousada Aeroporto</div>
+                        <span class="hotel-dist">📍 13,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Santa Genoveva</p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong> Diárias a partir de R$ 266,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">06. Hotel Santos Dumont</div>
+                        <span class="hotel-dist">📍 13,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Aeroporto</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:62982462734" class="tel-link">📞 (62) 98246-2734</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong> Diárias a partir de R$ 270,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">07. Plaza Inn Breeze</div>
+                        <span class="hotel-dist">📍 12,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Jd. Guanabara</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6240055300" class="tel-link">📞 (62) 4005-5300</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong> Diárias a partir de R$ 414,00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">08. Castelo Inn Hotel</div>
+                        <span class="hotel-dist">📍 10,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Setor Coimbra</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6232264400" class="tel-link">📞 (62) 3226-4400</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong> R$ 319,00 + 2% ou R$ 369,00 + 2%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">09. Plaza Inn Augustus</div>
+                        <span class="hotel-dist">📍 12,0 km do evento</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Centro</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6232166666" class="tel-link">📞 (62) 3216-6666</a></p>
+                        <p><strong>E-mail:</strong> augustus.grupos@plazainn.com.br</p>
+                        <p style="margin-top: 10px;"><strong>Detalhes:</strong> Preço especial para grupos. Opção de quarto conjugado para 5 pessoas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-item">
+                <div class="hotel-header">
+                    <div>
+                        <div class="hotel-title">10. Rota 44 Hotel</div>
+                        <span class="hotel-dist">📍 9,0 km do evento (Perto da Rodoviária)</span>
+                    </div>
+                    <div class="arrow">▼</div>
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-details">
+                        <p><strong>Endereço:</strong> Setor Norte Ferroviário</p>
+                        <p><strong>Telefone:</strong> <br><a href="tel:6232315162" class="tel-link">📞 (62) 3231-5162</a></p>
+                        <p style="margin-top: 10px;"><strong>Valores:</strong><br>
+                        • Duplo: R$ 295,00<br>
+                        • Casal: R$ 295,00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Reunião Ismael. Chancela CONCAFRAS. Desenvolvido com excelência.</p>
+        </footer>
+    </main>
+
+    <script>
+        document.querySelectorAll('.hotel-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.hotel-item').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        setTimeout(() => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>
