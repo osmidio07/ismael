@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda VIP | Reunião Ismael 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           1. CORE VARIABLES (PALETA ULTRA-PREMIUM)
+           ========================================================================== */
+        :root {
+            --bg-base: #f4f6f9;
+            --text-main: #111827;
+            --text-muted: #64748b;
+            --accent-blue: #1A3B8A;
+            --accent-light: #eff6ff;
+            --live-red: #ff3b30; /* Vermelho vibrante Apple */
+            --live-glow: rgba(255, 59, 48, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        
+        body { 
+            background-color: var(--bg-base); 
+            color: var(--text-main); 
+            padding-bottom: 120px; 
+            overflow-x: hidden; 
+        }
+
+        /* ==========================================================================
+           2. DISNEY+ STYLE MESH GRADIENTS (FUNDO VIVO)
+           ========================================================================== */
+        .ambient-light {
+            position: fixed; top: -10%; left: -20%; width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(26, 59, 138, 0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: -1;
+            animation: float 14s infinite alternate ease-in-out;
+        }
+        .ambient-light-2 {
+            position: fixed; bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: -1;
+            animation: float 18s infinite alternate-reverse ease-in-out;
+        }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -50px) scale(1.1); } }
+
+        /* Animações de Entrada Suaves */
+        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ==========================================================================
+           3. APPLE STYLE GLASS HEADER
+           ========================================================================== */
+        .sticky-header {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 24px 20px; text-align: center;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
+        }
+
+        .header-tag { 
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 0.25em; color: var(--accent-blue); display: block; margin-bottom: 6px;
+        }
+        .header-date { 
+            font-size: 1.6rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text-main); line-height: 1; 
+        }
+        .clock-pill { 
+            display: inline-flex; align-items: center; gap: 6px; 
+            background: #ffffff; border: 1px solid rgba(0,0,0,0.05);
+            padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); 
+            margin-top: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* ==========================================================================
+           4. TIMELINE & CARDS (UX 17/10)
+           ========================================================================== */
+        .schedule-container { max-width: 640px; margin: 40px auto 0; padding: 0 20px; }
+        
+        .day-divider { display: flex; align-items: center; gap: 16px; margin: 50px 0 40px; }
+        .day-divider::before, .day-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(203,213,225,0), #cbd5e1, rgba(203,213,225,0)); }
+        .day-tag { 
+            background: white; border: 1px solid rgba(0,0,0,0.06); padding: 8px 22px; 
+            border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 0.15em; color: var(--text-muted); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .timeline-item { position: relative; display: flex; gap: 24px; padding-bottom: 40px; transition: all 0.5s ease; }
+        
+        /* Linha guia com gradiente inferior */
+        .timeline-item::before { 
+            content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; 
+            background: #e2e8f0; z-index: 0; transition: background 0.4s ease;
+        }
+        .timeline-item:last-child::before { display: none; }
+
+        /* Ícone Duotone Premium */
+        .icon-circle {
+            position: relative; z-index: 10; flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px;
+            background: white; border: 1px solid rgba(0,0,0,0.06); 
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        /* Cartão de Conteúdo (Soft UI) */
+        .card-content {
+            flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border); 
+            border-radius: 24px; padding: 24px; position: relative; overflow: hidden; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            /* Inner shadow mágica do iOS */
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 4px 20px -5px rgba(0,0,0,0.04);
+        }
+        .timeline-item:not(.is-past):hover .card-content {
+            transform: translateY(-2px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 10px 30px -5px rgba(0,0,0,0.08);
+        }
+
+        .time-loc { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .time-text { font-size: 0.95rem; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; }
+        .dot { width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1; }
+        .loc-text { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: flex; align-items: center; gap: 4px;}
+
+        .event-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 16px; letter-spacing: -0.02em; }
+
+        /* Badges Minimalistas */
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+        .badge-talk { background: #eff6ff; color: #2563eb; }
+        .badge-workshop { background: #f5f3ff; color: #7c3aed; }
+        .badge-break { background: #f1f5f9; color: #64748b; }
+        .badge-social { background: #fff1f2; color: #e11d48; }
+
+        /* ==========================================================================
+           5. ESTADO MÁGICO: ACONTECENDO AGORA (LIVE)
+           ========================================================================== */
+        
+        /* Passado */
+        .timeline-item.is-past { opacity: 0.5; filter: grayscale(80%); }
+        .timeline-item.is-past .card-content { background: rgba(248, 250, 252, 0.5); box-shadow: none; border-color: rgba(0,0,0,0.03);}
+        
+        /* Presente */
+        .timeline-item.is-current { z-index: 20; }
+        
+        /* Conecta a linha da timeline com o card ativo */
+        .timeline-item.is-current::before { background: linear-gradient(to bottom, var(--live-red), #e2e8f0 80%); }
+
+        .timeline-item.is-current .icon-circle { 
+            border-color: transparent; background: var(--live-red); color: white; 
+            transform: scale(1.15); box-shadow: 0 0 0 6px var(--live-glow), 0 10px 20px rgba(255, 59, 48, 0.3);
+        }
+        
+        /* Borda Gradiente Animada Apple Style */
+        .timeline-item.is-current .card-content {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, var(--live-red), #ff9500) border-box;
+            border: 2px solid transparent;
+            box-shadow: 0 20px 40px -10px var(--live-glow); 
+            transform: scale(1.02);
+        }
+        .timeline-item.is-current .time-text { color: var(--live-red); }
+
+        /* Tag "Acontecendo Agora!" */
+        .live-tag {
+            position: absolute; top: -2px; right: -2px; 
+            background: linear-gradient(135deg, var(--live-red), #ff2d55); color: white;
+            padding: 8px 16px; border-bottom-left-radius: 20px; border-top-right-radius: 22px;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: -4px 4px 15px rgba(255, 59, 48, 0.2);
+        }
+        .live-tag span { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
+        
+        /* Ponto Radar (Pulse) */
+        .ping-dot { position: relative; display: flex; width: 8px; height: 8px; }
+        .ping-dot::before { content: ''; position: absolute; width: 100%; height: 100%; background: white; border-radius: 50%; animation: radar 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.8; }
+        .ping-dot::after { content: ''; position: relative; width: 8px; height: 8px; background: white; border-radius: 50%; }
+
+        @keyframes radar { 75%, 100% { transform: scale(3.5); opacity: 0; } }
+
+        /* ==========================================================================
+           6. FOOTER E BOTÃO DE TESTE
+           ========================================================================== */
+        .footer-info { text-align: center; margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
+        
+        .test-btn { 
+            position: fixed; bottom: 24px; right: 24px; background: var(--text-main); color: white; border: none; 
+            padding: 14px 24px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+            cursor: pointer; z-index: 100; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .test-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .test-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+    <div class="ambient-light-2"></div>
+
+    <header class="sticky-header">
+        <span class="header-tag">Reunião Ismael 2026</span>
+        <div class="header-date" id="header-date">Carregando...</div>
+        <div class="clock-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span id="header-clock">--:--</span>
+        </div>
+    </header>
+
+    <main class="schedule-container" id="schedule-render-area">
+        </main>
+
+    <div class="footer-info">
+        <svg style="display:inline; margin-bottom:-2px; margin-right:4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Horários sujeitos a alterações
+    </div>
+
+    <button class="test-btn" onclick="simularEvento()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Simular Agora</span>
+    </button>
+
+    <script>
+        // ============================================================================
+        // BANCO DE DADOS DA PROGRAMAÇÃO OFICIAL (Atualizado para 07/03 e 08/03)
+        // ============================================================================
+        const eventos = [
+            // === SÁBADO (07 de Março) ===
+            { id: 1,  date: '2026-03-07', start: '08:00', end: '09:00', title: 'Credenciamento e Alegria Cristã', type: 'social', location: 'Recepção' },
+            { id: 2,  date: '2026-03-07', start: '09:00', end: '09:15', title: 'Prece inicial e Abertura Coletiva', type: 'talk', location: 'Auditório' },
+            { id: 3,  date: '2026-03-07', start: '09:15', end: '10:00', title: 'Tratamento Espiritual (Todos)', type: 'spiritual', location: 'Auditório' },
+            { id: 4,  date: '2026-03-07', start: '10:00', end: '10:15', title: 'Abertura Presencial e Avisos', type: 'talk', location: 'Auditório' },
+            { id: 5,  date: '2026-03-07', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 6,  date: '2026-03-07', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos', type: 'workshop', location: 'Salas' },
+            { id: 7,  date: '2026-03-07', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'break', location: 'Refeitório' },
+            { id: 8,  date: '2026-03-07', start: '14:30', end: '16:00', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos / Conselho F. Thiesen', type: 'workshop', location: 'Salas' },
+            { id: 9,  date: '2026-03-07', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Salas' },
+            { id: 10, date: '2026-03-07', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
+            { id: 11, date: '2026-03-07', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos', type: 'workshop', location: 'Salas' },
+            { id: 12, date: '2026-03-07', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'break', location: 'Alojamento e Refeitório' },
+            { id: 13, date: '2026-03-07', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'social', location: 'Auditório' },
+            { id: 14, date: '2026-03-07', start: '21:00', end: '22:30', title: 'Conselho das Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Salas' },
+            { id: 15, date: '2026-03-07', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Salas' },
+
+            // === DOMINGO (08 de Março) ===
+            { id: 16, date: '2026-03-08', start: '08:00', end: '08:30', title: 'Alegria Cristã e Preparação', type: 'social', location: 'Auditório' },
+            { id: 17, date: '2026-03-08', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'talk', location: 'Auditório' },
+            { id: 18, date: '2026-03-08', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
+            { id: 19, date: '2026-03-08', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 20, date: '2026-03-08', start: '11:00', end: '12:00', title: 'Curso EUGD', type: 'workshop', location: 'Salas' },
+            { id: 21, date: '2026-03-08', start: '12:00', end: '13:00', title: 'Deslocamento e Reuniões das Comissões Executivas', type: 'workshop', location: 'Salas' },
+            { id: 22, date: '2026-03-08', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Encerramento', type: 'social', location: 'Refeitório' }
+        ];
+
+        // ============================================================================
+        // ÍCONES PREMIUM (Estilo Apple SF Symbols - Stroke bold, clean lines)
+        // ============================================================================
+        const ICONS = {
+            talk: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>',
+            break: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>',
+            workshop: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>',
+            social: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M10 10h4"></path></svg>' // Ícone Escudo/Coração/Fé
+        };
+
+        const TYPE_NAMES = { talk: 'Plenária', break: 'Pausa', workshop: 'Trabalho', social: 'Integração', spiritual: 'Momento Espiritual' };
+
+        let dataSimulada = null;
+
+        // RENDERIZADOR HTML
+        function renderizarAgenda() {
+            const container = document.getElementById('schedule-render-area');
+            let html = '';
+            let dataAtual = '';
+
+            eventos.forEach((item, index) => {
+                if (item.date !== dataAtual) {
+                    const formatDate = item.date === '2026-03-07' ? 'Sábado, 07 de Março' : 'Domingo, 08 de Março';
+                    html += `
+                        <div class="day-divider fade-in-up" style="animation-delay: ${index * 0.04}s">
+                            <span class="day-tag">${formatDate}</span>
+                        </div>
+                    `;
+                    dataAtual = item.date;
+                }
+
+                html += `
+                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00" data-end="${item.date}T${item.end}:00" style="animation-delay: ${index * 0.04}s">
+                        <div class="icon-circle">${ICONS[item.type]}</div>
+                        <div class="card-content">
+                            <div class="live-tag" style="display: none;">
+                                <div class="ping-dot"></div>
+                                <span>Acontecendo Agora!</span>
+                            </div>
+                            
+                            <div class="time-loc">
+                                <span class="time-text">${item.start} — ${item.end}</span>
+                                <div class="dot"></div>
+                                <span class="loc-text">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    ${item.location}
+                                </span>
+                            </div>
+                            <h3 class="event-title">${item.title}</h3>
+                            <span class="badge badge-${item.type === 'spiritual' ? 'workshop' : item.type}">${TYPE_NAMES[item.type]}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // MOTOR DO TEMPO
+        function atualizarTempoReal() {
+            const agora = dataSimulada ? dataSimulada : new Date(); 
+            
+            const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+            const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            
+            document.getElementById('header-date').innerText = `${diasSemana[agora.getDay()]}, ${String(agora.getDate()).padStart(2, '0')} de ${meses[agora.getMonth()]}`;
+            document.getElementById('header-clock').innerText = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
+
+            let itemAtualEncontrado = false;
+            const items = document.querySelectorAll('.timeline-item');
+
+            items.forEach(el => {
+                const startTime = new Date(el.dataset.start);
+                const endTime = new Date(el.dataset.end);
+                const liveTag = el.querySelector('.live-tag');
+
+                el.classList.remove('is-past', 'is-current');
+                liveTag.style.display = 'none';
+
+                if (agora > endTime) {
+                    el.classList.add('is-past'); 
+                } else if (agora >= startTime && agora <= endTime) {
+                    el.classList.add('is-current'); 
+                    liveTag.style.display = 'flex';
+                    
+                    if (!itemAtualEncontrado && !dataSimulada) { 
+                        setTimeout(() => { 
+                            const headerOffset = 100;
+                            const elementPosition = el.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }, 1000);
+                        itemAtualEncontrado = true;
+                    }
+                }
+            });
+        }
+
+        // BOTÃO MÁGICO DEV
+        function simularEvento() {
+            dataSimulada = new Date('2026-03-07T11:30:00'); // Sábado de Março!
+            atualizarTempoReal();
+            
+            const itemAtual = document.querySelector('.is-current');
+            if(itemAtual) {
+                const headerOffset = 120;
+                const elementPosition = itemAtual.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+            
+            const btn = document.querySelector('.test-btn');
+            btn.querySelector('span').innerText = "Simulando 07/03 às 11:30";
+            btn.style.background = "#2563eb"; // Azul Action
+            
+            setTimeout(() => {
+                dataSimulada = null;
+                atualizarTempoReal();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                btn.querySelector('span').innerText = "Simular Agora";
+                btn.style.background = "#0f172a";
+            }, 10000);
+        }
+
+        renderizarAgenda();
+        atualizarTempoReal();
+        setInterval(atualizarTempoReal, 10000); // Atualiza a cada 10s para ser mais responsivo
+    </script>
+</body>
+</html>
