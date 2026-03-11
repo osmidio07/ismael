@@ -346,6 +346,53 @@
         .tel-link:hover { background: rgba(30, 75, 176, 0.15); }
 
         footer { text-align: center; opacity: 0.6; font-size: 0.85rem; padding-top: 40px; font-weight: 600;}
+
+        /* ======== BOTÃO FLUTUANTE PROGRAMAÇÃO ======== */
+        .fab-programacao {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff3b30, #e11d48);
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+            z-index: 1000;
+            animation: pulse-fab 2s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .fab-programacao:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .fab-programacao svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes pulse-fab {
+            0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 59, 48, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .fab-programacao {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -600,6 +647,13 @@
         </footer>
     </main>
 
+    <a href="https://ismael-eta.vercel.app/cronograma.html" class="fab-programacao" target="_blank" rel="noopener noreferrer">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        Programação
+    </a>
+
     <script>
         // === LÓGICA DA CONTAGEM REGRESSIVA AUTOMÁTICA ===
         function atualizarContagem() {
@@ -674,4 +728,3 @@
     </script>
 </body>
 </html>
-
