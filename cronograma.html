@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programação | Reunião de Produção Doutrinária Mensal</title>
+    <title>Programação | Reunião Ismael</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
@@ -114,7 +114,6 @@
             border-radius: 24px; padding: 24px; position: relative; overflow: hidden; 
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            /* Inner shadow mágica do iOS */
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 4px 20px -5px rgba(0,0,0,0.04);
         }
         .timeline-item:not(.is-past):hover .card-content {
@@ -212,34 +211,48 @@
 
     <script>
         // ============================================================================
-        // BANCO DE DADOS DA PROGRAMAÇÃO OFICIAL (Atualizado para 07/03 e 08/03)
+        // BANCO DE DADOS DA PROGRAMAÇÃO OFICIAL (Reunião Ismael - Abril 2026)
         // ============================================================================
         const eventos = [
-            // === SÁBADO (07 de Março) ===
-            { id: 1,  date: '2026-03-07', start: '08:00', end: '09:00', title: 'Credenciamento e Alegria Cristã', type: 'social', location: 'Recepção' },
-            { id: 2,  date: '2026-03-07', start: '09:00', end: '09:15', title: 'Prece inicial e Abertura Coletiva', type: 'talk', location: 'Auditório' },
-            { id: 3,  date: '2026-03-07', start: '09:15', end: '10:00', title: 'Tratamento Espiritual (Todos)', type: 'spiritual', location: 'Auditório' },
-            { id: 4,  date: '2026-03-07', start: '10:00', end: '10:15', title: 'Abertura Presencial e Avisos', type: 'talk', location: 'Auditório' },
-            { id: 5,  date: '2026-03-07', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 6,  date: '2026-03-07', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos', type: 'workshop', location: 'Salas' },
-            { id: 7,  date: '2026-03-07', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'break', location: 'Refeitório' },
-            { id: 8,  date: '2026-03-07', start: '14:30', end: '16:00', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos / Conselho F. Thiesen', type: 'workshop', location: 'Salas' },
-            { id: 9,  date: '2026-03-07', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Salas' },
-            { id: 10, date: '2026-03-07', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
-            { id: 11, date: '2026-03-07', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando, Assessorias, Inovação e Projetos / Conselho F. Thiesen', type: 'workshop', location: 'Salas' },
-            { id: 12, date: '2026-03-07', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'break', location: 'Alojamento e Refeitório' },
-            { id: 13, date: '2026-03-07', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'social', location: 'Auditório' },
-            { id: 14, date: '2026-03-07', start: '21:00', end: '22:30', title: 'Conselho das Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Salas' },
-            { id: 15, date: '2026-03-07', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Salas' },
+            // === SEXTA-FEIRA (03 de Abril) ===
+            { id: 1,  date: '2026-04-03', start: '08:30', end: '10:00', title: 'Recepção', type: 'social', location: 'Local do Evento' },
+            { id: 2,  date: '2026-04-03', start: '10:00', end: '10:40', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 3,  date: '2026-04-03', start: '10:40', end: '12:00', title: 'Abertura', type: 'talk', location: 'Auditório' },
+            { id: 4,  date: '2026-04-03', start: '12:00', end: '14:00', title: 'Almoço', type: 'break', location: 'Refeitório' },
+            { id: 5,  date: '2026-04-03', start: '14:00', end: '16:00', title: 'Comissões Irmão Áureo, Irmão Armando, Triagem de trabalhadores, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Salas' },
+            { id: 6,  date: '2026-04-03', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 7,  date: '2026-04-03', start: '16:40', end: '17:30', title: 'Comissões Irmão Áureo, Irmão Armando, Triagem de trabalhadores, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Salas' },
+            { id: 8,  date: '2026-04-03', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'social', location: 'Área Comum' },
+            { id: 9,  date: '2026-04-03', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'break', location: 'Alojamento / Refeitório' },
+            { id: 10, date: '2026-04-03', start: '20:30', end: '22:00', title: 'Momento Coletivo: Lançamento do Instituto de Educação Espírita Eurípedes Barsanulfo', type: 'talk', location: 'Auditório' },
+            { id: 11, date: '2026-04-03', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Salas' },
+            { id: 12, date: '2026-04-03', start: '22:45', end: '23:30', title: 'Corujão', type: 'social', location: 'Área Comum' },
 
-            // === DOMINGO (08 de Março) ===
-            { id: 16, date: '2026-03-08', start: '08:00', end: '08:30', title: 'Alegria Cristã e Preparação', type: 'social', location: 'Auditório' },
-            { id: 17, date: '2026-03-08', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'talk', location: 'Auditório' },
-            { id: 18, date: '2026-03-08', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
-            { id: 19, date: '2026-03-08', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 20, date: '2026-03-08', start: '11:00', end: '12:00', title: 'Curso EUGD', type: 'workshop', location: 'Salas' },
-            { id: 21, date: '2026-03-08', start: '12:00', end: '13:00', title: 'Deslocamento e Reuniões das Comissões Executivas', type: 'workshop', location: 'Salas' },
-            { id: 22, date: '2026-03-08', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Encerramento', type: 'social', location: 'Refeitório' }
+            // === SÁBADO (04 de Abril) ===
+            { id: 13, date: '2026-04-04', start: '06:30', end: '07:30', title: 'Sessão Pardal', type: 'workshop', location: 'Auditório' },
+            { id: 14, date: '2026-04-04', start: '07:00', end: '08:15', title: 'Café da manhã', type: 'break', location: 'Refeitório' },
+            { id: 15, date: '2026-04-04', start: '08:30', end: '09:00', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 16, date: '2026-04-04', start: '09:00', end: '10:00', title: 'Momento coletivo', type: 'talk', location: 'Auditório' },
+            { id: 17, date: '2026-04-04', start: '10:00', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 18, date: '2026-04-04', start: '10:45', end: '12:30', title: 'Atividade em salas', type: 'workshop', location: 'Salas' },
+            { id: 19, date: '2026-04-04', start: '12:30', end: '14:30', title: 'Almoço', type: 'break', location: 'Refeitório' },
+            { id: 20, date: '2026-04-04', start: '14:00', end: '16:00', title: 'Projeto Eurípedes Barsanulfo: Dirigentes das escolas espíritas e instituições mantenedoras', type: 'workshop', location: 'Salas' },
+            { id: 21, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Executivas / CONCAFRAS 2027 / Comissões Irmão Áureo', type: 'workshop', location: 'Salas' },
+            { id: 22, date: '2026-04-04', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 23, date: '2026-04-04', start: '16:40', end: '17:30', title: 'Comissões Executivas / Conselho Wantuil de Freitas', type: 'workshop', location: 'Salas' },
+            { id: 24, date: '2026-04-04', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'social', location: 'Área Comum' },
+            { id: 25, date: '2026-04-04', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'break', location: 'Alojamento / Refeitório' },
+            { id: 26, date: '2026-04-04', start: '20:30', end: '22:00', title: 'Momento coletivo', type: 'talk', location: 'Auditório' },
+            { id: 27, date: '2026-04-04', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Salas' },
+            { id: 28, date: '2026-04-04', start: '22:45', end: '23:30', title: 'Corujão – Roda da Alegria', type: 'social', location: 'Área Comum' },
+
+            // === DOMINGO (05 de Abril) ===
+            { id: 29, date: '2026-04-05', start: '07:00', end: '08:15', title: 'Café da Manhã', type: 'break', location: 'Refeitório' },
+            { id: 30, date: '2026-04-05', start: '08:15', end: '08:30', title: 'Preparação para a Orientação Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 31, date: '2026-04-05', start: '08:30', end: '10:30', title: 'Reunião de orientação espiritual', type: 'talk', location: 'Auditório' },
+            { id: 32, date: '2026-04-05', start: '10:30', end: '11:15', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 33, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Encerramento', type: 'talk', location: 'Auditório' },
+            { id: 34, date: '2026-04-05', start: '12:00', end: '13:30', title: 'Almoço', type: 'break', location: 'Refeitório' }
         ];
 
         // ============================================================================
@@ -250,7 +263,7 @@
             break: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>',
             workshop: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>',
             social: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
-            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M10 10h4"></path></svg>' // Ícone Escudo/Coração/Fé
+            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M10 10h4"></path></svg>'
         };
 
         const TYPE_NAMES = { talk: 'Plenária', break: 'Pausa', workshop: 'Trabalho', social: 'Integração', spiritual: 'Momento Espiritual' };
@@ -263,7 +276,11 @@
 
             eventos.forEach((item, index) => {
                 if (item.date !== dataAtual) {
-                    const formatDate = item.date === '2026-03-07' ? 'Sábado, 07 de Março' : 'Domingo, 08 de Março';
+                    let formatDate = '';
+                    if (item.date === '2026-04-03') formatDate = 'Sexta-feira, 03 de Abril';
+                    else if (item.date === '2026-04-04') formatDate = 'Sábado, 04 de Abril';
+                    else if (item.date === '2026-04-05') formatDate = 'Domingo, 05 de Abril';
+
                     html += `
                         <div class="day-divider fade-in-up" style="animation-delay: ${index * 0.04}s">
                             <span class="day-tag">${formatDate}</span>
@@ -328,7 +345,7 @@
                     
                     if (!itemAtualEncontrado) { 
                         setTimeout(() => { 
-                            const headerOffset = 150;
+                            const headerOffset = 130;
                             const elementPosition = el.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
@@ -345,6 +362,3 @@
     </script>
 </body>
 </html>
-
-
-
