@@ -179,6 +179,18 @@
             margin-top: 2px;
             line-height: 1.4;
         }
+        
+        /* Link da localização */
+        .location-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: opacity 0.3s ease;
+        }
+        
+        .location-link:hover {
+            opacity: 0.7;
+        }
 
         /* Botão Interativo */
         .btn-wrapper { position: relative; display: inline-block; }
@@ -382,17 +394,17 @@
         /* ======== BOTÃO FLUTUANTE WHATSAPP ======== */
         .fab-whatsapp {
             position: fixed;
-            bottom: 100px; /* Posicionado acima do botão de programação */
+            bottom: 100px;
             right: 30px;
             background-color: #25D366;
             color: white;
             padding: 10px 14px;
-            border-radius: 16px; /* Borda levemente arredondada (formato card) */
+            border-radius: 16px;
             display: flex;
-            flex-direction: column; /* Coloca o texto abaixo do ícone */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px; /* Espaço entre o ícone e o texto */
+            gap: 4px;
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 1000;
@@ -431,7 +443,7 @@
                 font-size: 0.85rem;
             }
             .fab-whatsapp {
-                bottom: 80px; /* Ajuste para mobile */
+                bottom: 80px;
                 right: 20px;
                 padding: 8px 12px;
             }
@@ -474,8 +486,10 @@
                     <div class="info-row">
                         <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         <div class="info-text">
-                            <strong>Centro Espírita Irmão Áureo</strong>
-                            <span>Rua da Paz, Jardim Nova Esperança - Goiânia-GO</span>
+                            <a href="https://maps.app.goo.gl/wfXDLmHbJBwaDvQq6" target="_blank" rel="noopener noreferrer" class="location-link">
+                                <strong>Centro Espírita Irmão Áureo</strong>
+                                <span>Rua da Paz, Jardim Nova Esperança - Goiânia-GO</span>
+                            </a>
                         </div>
                     </div>
                 </div>
