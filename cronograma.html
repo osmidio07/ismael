@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programação | REUNIÃO ISMAEL</title>
+    <title>Programação | Reunião Ismael</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
@@ -186,9 +186,13 @@
         @keyframes radar { 75%, 100% { transform: scale(3.5); opacity: 0; } }
 
         /* ==========================================================================
-           6. FOOTER E BOTÃO FLUTUANTE
+           6. FOOTER
            ========================================================================== */
         .footer-info { text-align: center; margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
+        
+    </style>
+</head>
+<body>
 
     <div class="ambient-light"></div>
     <div class="ambient-light-2"></div>
@@ -209,13 +213,6 @@
         <svg style="display:inline; margin-bottom:-2px; margin-right:4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         Horários sujeitos a alterações
     </div>
-
-    <a href="https://ismael-eta.vercel.app/cronograma.html" class="fab-programacao" target="_blank" rel="noopener noreferrer">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-        </svg>
-        Programação
-    </a>
 
     <script>
         // ============================================================================
@@ -380,7 +377,7 @@
 
         renderizarAgenda();
         atualizarTempoReal();
-        setInterval(atualizarTempoReal, 10000); // Atualiza a cada 10s para ser mais responsivo
+        setInterval(atualizarTempoReal, 20000); // Atualiza a cada 10s para ser mais responsivo
     </script>
 </body>
 </html>
