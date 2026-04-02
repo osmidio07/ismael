@@ -15,7 +15,7 @@
             --text-muted: #64748b;
             --accent-blue: #1A3B8A;
             --accent-light: #eff6ff;
-            --live-red: #ff3b30; /* Vermelho vibrante Apple */
+            --live-red: #ff3b30;
             --live-glow: rgba(255, 59, 48, 0.25);
             --glass-bg: rgba(255, 255, 255, 0.75);
             --glass-border: rgba(255, 255, 255, 0.8);
@@ -47,7 +47,6 @@
         }
         @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -50px) scale(1.1); } }
 
-        /* Animações de Entrada Suaves */
         .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(30px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -78,7 +77,7 @@
         }
 
         /* ==========================================================================
-           4. TIMELINE & CARDS (UX 17/10)
+           4. TIMELINE & CARDS
            ========================================================================== */
         .schedule-container { max-width: 640px; margin: 40px auto 0; padding: 0 20px; }
         
@@ -92,14 +91,12 @@
 
         .timeline-item { position: relative; display: flex; gap: 24px; padding-bottom: 40px; transition: all 0.5s ease; }
         
-        /* Linha guia com gradiente inferior */
         .timeline-item::before { 
             content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; 
             background: #e2e8f0; z-index: 0; transition: background 0.4s ease;
         }
         .timeline-item:last-child::before { display: none; }
 
-        /* Ícone Duotone Premium */
         .icon-circle {
             position: relative; z-index: 10; flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px;
             background: white; border: 1px solid rgba(0,0,0,0.06); 
@@ -108,7 +105,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* Cartão de Conteúdo (Soft UI) */
         .card-content {
             flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border); 
             border-radius: 24px; padding: 24px; position: relative; overflow: hidden; 
@@ -127,30 +123,25 @@
 
         .event-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 16px; letter-spacing: -0.02em; }
 
-        /* Badges Coloridos - Mapeamento Semântico Apple */
+        /* Badges */
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
-        .badge-talk { background: #eff6ff; color: #2563eb; } /* Azul */
-        .badge-workshop { background: #f5f3ff; color: #7c3aed; } /* Roxo */
-        .badge-break { background: #f1f5f9; color: #64748b; } /* Cinza */
-        .badge-social { background: #fdf4ff; color: #a21caf; } /* Lilás */
-        .badge-spiritual { background: #ecfdf5; color: #0d9488; } /* Verde-água */
-        .badge-extra { background: #fffbeb; color: #d97706; } /* Âmbar */
-        .badge-food { background: #fff7ed; color: #ea580c; } /* Laranja apetitoso */
-        .badge-collective { background: #e0f2fe; color: #0891b2; } /* Ciano/Azul piscina */
-        .badge-walking { background: #ffe4e6; color: #e11d48; } /* Rosa avermelhado */
+        .badge-talk { background: #eff6ff; color: #2563eb; } 
+        .badge-workshop { background: #f5f3ff; color: #7c3aed; } 
+        .badge-break { background: #f1f5f9; color: #64748b; } 
+        .badge-social { background: #fdf4ff; color: #a21caf; } 
+        .badge-spiritual { background: #ecfdf5; color: #0d9488; } 
+        .badge-extra { background: #fffbeb; color: #d97706; } 
+        .badge-food { background: #fff7ed; color: #ea580c; } 
+        .badge-collective { background: #e0f2fe; color: #0891b2; } 
+        .badge-walking { background: #ffe4e6; color: #e11d48; } 
 
         /* ==========================================================================
            5. ESTADO MÁGICO: ACONTECENDO AGORA (LIVE)
            ========================================================================== */
-        
-        /* Passado */
         .timeline-item.is-past { opacity: 0.5; filter: grayscale(80%); }
         .timeline-item.is-past .card-content { background: rgba(248, 250, 252, 0.5); box-shadow: none; border-color: rgba(0,0,0,0.03);}
         
-        /* Presente */
         .timeline-item.is-current { z-index: 20; }
-        
-        /* Conecta a linha da timeline com o card ativo */
         .timeline-item.is-current::before { background: linear-gradient(to bottom, var(--live-red), #e2e8f0 80%); }
 
         .timeline-item.is-current .icon-circle { 
@@ -158,7 +149,6 @@
             transform: scale(1.15); box-shadow: 0 0 0 6px var(--live-glow), 0 10px 20px rgba(255, 59, 48, 0.3);
         }
         
-        /* Borda Gradiente Animada Apple Style */
         .timeline-item.is-current .card-content {
             background: linear-gradient(white, white) padding-box,
                         linear-gradient(135deg, var(--live-red), #ff9500) border-box;
@@ -168,7 +158,6 @@
         }
         .timeline-item.is-current .time-text { color: var(--live-red); }
 
-        /* Tag "Acontecendo Agora!" */
         .live-tag {
             position: absolute; top: -2px; right: -2px; 
             background: linear-gradient(135deg, var(--live-red), #ff2d55); color: white;
@@ -178,7 +167,6 @@
         }
         .live-tag span { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
         
-        /* Ponto Radar (Pulse) */
         .ping-dot { position: relative; display: flex; width: 8px; height: 8px; }
         .ping-dot::before { content: ''; position: absolute; width: 100%; height: 100%; background: white; border-radius: 50%; animation: radar 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.8; }
         .ping-dot::after { content: ''; position: relative; width: 8px; height: 8px; background: white; border-radius: 50%; }
@@ -186,10 +174,61 @@
         @keyframes radar { 75%, 100% { transform: scale(3.5); opacity: 0; } }
 
         /* ==========================================================================
-           6. FOOTER
+           6. ACCORDION E BUSCA INTERNA (UX 15/10)
            ========================================================================== */
-        .footer-info { text-align: center; margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
+        .btn-expand {
+            background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.06); color: var(--accent-blue);
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 10px 18px; border-radius: 50px; cursor: pointer; display: inline-flex;
+            align-items: center; gap: 8px; margin-top: 16px; transition: all 0.3s ease; width: 100%; justify-content: center;
+        }
+        .btn-expand:hover { background: white; border-color: rgba(0,0,0,0.1); box-shadow: 0 2px 8px rgba(0,0,0,0.02);}
+        .btn-expand svg { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .btn-expand.active { background: var(--text-main); color: white; border-color: transparent;}
+        .btn-expand.active svg { transform: rotate(180deg); }
         
+        .sub-events-wrapper {
+            margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.06);
+            display: none; animation: fadeInSub 0.4s ease forwards;
+        }
+        .sub-events-wrapper.open { display: block; }
+        @keyframes fadeInSub { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Barra de Busca Exclusiva */
+        .search-box {
+            position: relative; margin-bottom: 16px;
+        }
+        .search-box svg {
+            position: absolute; left: 12px; top: 12px; color: var(--text-muted);
+        }
+        .search-input {
+            width: 100%; padding: 12px 14px 12px 40px; border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.08); background: rgba(255,255,255,0.9);
+            font-size: 0.85rem; font-weight: 500; color: var(--text-main); transition: all 0.3s;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .search-input:focus { outline: none; border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 3px rgba(26, 59, 138, 0.1);}
+
+        /* Títulos de Grupo (Áureo x Armando) */
+        .sub-group-title {
+            font-size: 0.7rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.1em; margin: 16px 0 8px 4px; display: flex; align-items: center; gap: 6px;
+        }
+        .sub-group-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.05); }
+
+        .sub-event-item {
+            background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 16px; padding: 14px 16px; margin-bottom: 8px;
+            display: flex; flex-direction: column; gap: 8px; transition: opacity 0.2s;
+        }
+        .sub-event-title { font-size: 0.9rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .sub-event-room {
+            align-self: flex-start; font-size: 0.7rem; font-weight: 800; color: var(--accent-blue); 
+            background: var(--accent-light); padding: 4px 10px; border-radius: 8px; 
+            text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;
+        }
+
+        .footer-info { text-align: center; margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
     </style>
 </head>
 <body>
@@ -216,42 +255,104 @@
 
     <script>
         // ============================================================================
-        // BANCO DE DADOS DA PROGRAMAÇÃO OFICIAL (Com categorias semânticas)
+        // DADOS DAS SALAS (COMISSÕES E EXTRA)
         // ============================================================================
+        const salasSexta = [
+            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unid. 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Alegria Cristã', room: 'Centro Conv. Sl 24 - Unid. 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: '04, 12 e Unid. 3 (modelagem)', group: 'Comissão Irmão Áureo' },
+            { title: 'Evangelização Infantil', room: '05, 13', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: '14, 20', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento e Família', room: '15, 16', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: '18', group: 'Comissão Irmão Áureo' },
+            { title: 'Triagem', room: '19, 21 e 24', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: '22', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia', room: '23', group: 'Comissão Irmão Áureo' },
+            { title: 'Divulgação', room: '25', group: 'Comissão Irmão Áureo' },
+            { title: 'Camp. Frat. Auta de Souza', room: '26', group: 'Comissão Irmão Áureo' },
+            { title: 'Mediunidade', room: '29, 30', group: 'Comissão Irmão Áureo' },
+            { title: 'Educação Espírita', room: '33, 34', group: 'Comissão Irmão Áureo' },
+
+            { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'Relações Fraternas', room: 'Pátio Fundo Elevador - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'Harmonia e Transporte', room: '17', group: 'Comissão Irmão Armando' },
+            { title: 'Secretaria', room: '31', group: 'Comissão Irmão Armando' },
+            { title: 'Marketing', room: '35', group: 'Comissão Irmão Armando' },
+            { title: 'Financeiro', room: '36', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: '39', group: 'Comissão Irmão Armando' },
+            { title: 'Qualidade', room: '40', group: 'Comissão Irmão Armando' }
+        ];
+
+        const salasSabado = [
+            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unid. 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Alegria Cristã', room: '24 - Unid. 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: '12', group: 'Comissão Irmão Áureo' },
+            { title: 'Evangelização Infantil', room: '13', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: '14', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento e Família', room: '16', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: '18', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: '22', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia', room: '23', group: 'Comissão Irmão Áureo' },
+            { title: 'Divulgação', room: '25', group: 'Comissão Irmão Áureo' },
+            { title: 'Camp. Frat. Auta de Souza', room: '26', group: 'Comissão Irmão Áureo' },
+            { title: 'Mediunidade', room: '30', group: 'Comissão Irmão Áureo' },
+            { title: 'Educação Espírita', room: '34', group: 'Comissão Irmão Áureo' },
+
+            { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'Relações Fraternas', room: 'Pátio Fundo Elevador - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'Harmonia e Transporte', room: 'Unid. 3 (modelagem)', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: '39', group: 'Comissão Irmão Armando' }
+        ];
+
+        const salasCorujao = [
+            { title: 'O Centro indutor do lar no equilíbrio das influências diárias da convivência doméstica.', room: 'Sala 04' },
+            { title: 'As revelações da obra Universo e Vida, psicografada pelo médium Hernani T. Sant’Anna, do Espírito Áureo.', room: 'Sala 05' },
+            { title: 'Geração Z e suas emoções.', room: 'Sala 12' },
+            { title: 'Compreendendo a criança com TEA e outros transtornos à luz do espiritismo.', room: 'Sala 13' },
+            { title: 'Astronomia: Descortinando o céu', room: 'Campo de Futebol' }
+        ];
+
+        const salasPardal = [
+            { title: 'Maria de Nazaré: Estrela das grandes almas.', room: 'Sala 04' },
+            { title: 'Ecologia espiritual: a Terra como escola e lar.', room: 'Sala 05' },
+            { title: 'Luiz Sérgio: A trajetória de um ser imortal.', room: 'Sala 12' },
+            { title: 'Alcoolismo no lar.', room: 'Sala 13' }
+        ];
+
         const eventos = [
-            // === SEXTA-FEIRA (03 de Abril) ===
-            { id: 1,  date: '2026-04-03', start: '08:30', end: '10:00', title: 'Recepção', type: 'social', location: 'Sala 13 -  1º Andar' },
+            // SEXTA
+            { id: 1,  date: '2026-04-03', start: '08:30', end: '10:00', title: 'Recepção', type: 'social', location: 'Sala 13 - 1º Andar' },
             { id: 2,  date: '2026-04-03', start: '10:00', end: '10:40', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
             { id: 3,  date: '2026-04-03', start: '10:40', end: '12:00', title: 'Abertura', type: 'talk', location: 'Auditório' },
             { id: 4,  date: '2026-04-03', start: '12:00', end: '14:00', title: 'Almoço', type: 'food', location: 'Hall da Unidade I' },
-            { id: 5,  date: '2026-04-03', start: '14:00', end: '16:00', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem de trabalhadores, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Salas' },
+            { id: 5,  date: '2026-04-03', start: '14:00', end: '16:00', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSexta },
             { id: 6,  date: '2026-04-03', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 7,  date: '2026-04-03', start: '16:40', end: '17:30', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem de trabalhadores, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Salas' },
+            { id: 7,  date: '2026-04-03', start: '16:40', end: '17:30', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSexta },
             { id: 8,  date: '2026-04-03', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'walking', location: 'Unidade 3' },
             { id: 9,  date: '2026-04-03', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
-            { id: 10, date: '2026-04-03', start: '20:30', end: '22:00', title: 'Momento Coletivo: Lançamento do Instituto de Educação Espírita Eurípedes Barsanulfo', type: 'collective', location: 'Auditório' },
+            { id: 10, date: '2026-04-03', start: '20:30', end: '22:00', title: 'Lançamento do Instituto de Educação Espírita Eurípedes Barsanulfo', type: 'collective', location: 'Auditório' },
             { id: 11, date: '2026-04-03', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 12, date: '2026-04-03', start: '22:45', end: '23:30', title: 'Corujão', type: 'extra', location: 'Salas' },
+            { id: 12, date: '2026-04-03', start: '22:45', end: '23:30', title: 'Corujão', type: 'extra', location: 'Múltiplas Salas', subLabel: 'Ver Temas e Salas', subEvents: salasCorujao },
 
-            // === SÁBADO (04 de Abril) ===
-            { id: 13, date: '2026-04-04', start: '06:30', end: '07:30', title: 'Sessão Pardal', type: 'extra', location: 'Salas' },
+            // SÁBADO
+            { id: 13, date: '2026-04-04', start: '06:30', end: '07:30', title: 'Sessão Pardal', type: 'extra', location: 'Múltiplas Salas', subLabel: 'Ver Temas e Salas', subEvents: salasPardal },
             { id: 14, date: '2026-04-04', start: '07:00', end: '08:15', title: 'Café da manhã', type: 'food', location: 'Hall da Unidade I' },
             { id: 15, date: '2026-04-04', start: '08:30', end: '09:00', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
             { id: 16, date: '2026-04-04', start: '09:00', end: '10:00', title: 'Momento coletivo', type: 'collective', location: 'Auditório' },
             { id: 17, date: '2026-04-04', start: '10:00', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
             { id: 18, date: '2026-04-04', start: '10:45', end: '12:30', title: 'Momento Coletivo - Grupos Fraternos', type: 'collective', location: 'Auditório' },
             { id: 19, date: '2026-04-04', start: '12:30', end: '14:30', title: 'Almoço', type: 'food', location: 'Hall da Unidade I' },
-            { id: 20, date: '2026-04-04', start: '14:00', end: '16:00', title: 'Projeto Eurípedes Barsanulfo: Dirigentes das escolas espíritas e instituições mantenedoras', type: 'workshop', location: 'Salas' },
-            { id: 21, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Executivas / Comissões da Concafras 2027 e 2028/ Comissões Irmão Áureo', type: 'workshop', location: 'Salas' },
+            { id: 20, date: '2026-04-04', start: '14:00', end: '16:00', title: 'Projeto Eurípedes Barsanulfo: Dirigentes das escolas e mantenedoras', type: 'workshop', location: 'Salas' },
+            { id: 21, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Executivas / CONCAFRAS 2027 e 2028 / Comissões Irmão Áureo', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabado },
             { id: 22, date: '2026-04-04', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 23, date: '2026-04-04', start: '16:40', end: '17:30', title: 'Comissões Executivas / Conselho Wantuil de Freitas / Comissões Irmão Armando', type: 'workshop', location: 'Salas' },
+            { id: 23, date: '2026-04-04', start: '16:40', end: '17:30', title: 'Comissões Executivas / Conselho Wantuil de Freitas / Comissões Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabado },
             { id: 24, date: '2026-04-04', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'walking', location: 'Unidade 3' },
             { id: 25, date: '2026-04-04', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
             { id: 26, date: '2026-04-04', start: '20:30', end: '22:00', title: 'Momento coletivo', type: 'collective', location: 'Auditório' },
             { id: 27, date: '2026-04-04', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 28, date: '2026-04-04', start: '22:45', end: '23:30', title: 'Corujão – Roda da Alegria', type: 'extra', location: 'Confirmar Local' },
+            { id: 28, date: '2026-04-04', start: '22:45', end: '23:30', title: 'Roda da Alegria', type: 'extra', location: 'Confirmar Local' },
 
-            // === DOMINGO (05 de Abril) ===
+            // DOMINGO
             { id: 29, date: '2026-04-05', start: '07:00', end: '08:15', title: 'Café da Manhã', type: 'food', location: 'Hall da Unidade I' },
             { id: 30, date: '2026-04-05', start: '08:15', end: '08:30', title: 'Preparação para a Orientação Espiritual', type: 'spiritual', location: 'Auditório' },
             { id: 31, date: '2026-04-05', start: '08:30', end: '10:30', title: 'Reunião de Orientação Espiritual', type: 'collective', location: 'Auditório' },
@@ -261,31 +362,55 @@
         ];
 
         // ============================================================================
-        // ÍCONES PREMIUM (Estilo Apple SF Symbols - Stroke bold, clean lines)
+        // ÍCONES PREMIUM 
         // ============================================================================
         const ICONS = {
             talk: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>',
             break: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>',
             workshop: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>',
-            social: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>', // Ícone Boas-vindas/Recepção
-            collective: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>', // Multidão/Auditório
-            walking: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="5" r="2.5"></circle><path d="M14 8v6"></path><path d="M10 12l4-4 3 3"></path><path d="M14 14l-3 7"></path><path d="M14 14l4 6"></path></svg>', // Pessoas Andando/Convivência
-            food: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>', // Garfo e Faca
-            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>', // Coração/Acolhimento
-            extra: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>' // Livro/Aprendizado
+            social: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+            collective: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+            walking: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="5" r="2.5"></circle><path d="M14 8v6"></path><path d="M10 12l4-4 3 3"></path><path d="M14 14l-3 7"></path><path d="M14 14l4 6"></path></svg>',
+            food: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>',
+            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>',
+            extra: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>'
         };
 
         const TYPE_NAMES = { 
-            talk: 'Plenária', 
-            break: 'Pausa', 
-            workshop: 'Trabalho', 
-            social: 'Integração', 
-            spiritual: 'Momento Espiritual', 
-            extra: 'Aprendizado Extra',
-            food: 'Refeição',
-            collective: 'Momento Coletivo',
-            walking: 'Convivência'
+            talk: 'Plenária', break: 'Pausa', workshop: 'Trabalho', social: 'Integração', 
+            spiritual: 'Momento Espiritual', extra: 'Aprendizado Extra', food: 'Refeição',
+            collective: 'Momento Coletivo', walking: 'Convivência'
         };
+
+        // FUNÇÃO DE TOGGLE COM BUSCA
+        function toggleSubEvents(id, btn) {
+            const wrapper = document.getElementById('sub-' + id);
+            if (wrapper.classList.contains('open')) {
+                wrapper.classList.remove('open');
+                btn.classList.remove('active');
+                btn.querySelector('span').innerText = btn.dataset.label;
+            } else {
+                wrapper.classList.add('open');
+                btn.classList.add('active');
+                btn.querySelector('span').innerText = 'Ocultar Opções';
+            }
+        }
+
+        // BUSCA INSTANTÂNEA
+        function filterComissoes(input, listId) {
+            const filter = input.value.toLowerCase();
+            const list = document.getElementById(listId);
+            const items = list.querySelectorAll('.sub-event-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.sub-event-title').innerText.toLowerCase();
+                if (title.indexOf(filter) > -1) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
 
         // RENDERIZADOR HTML
         function renderizarAgenda() {
@@ -308,6 +433,54 @@
                     dataAtual = item.date;
                 }
 
+                let extraHtml = '';
+                if (item.subEvents && item.subEvents.length > 0) {
+                    
+                    // Renderiza itens (com ou sem grupo)
+                    let itemsHtml = '';
+                    let currentGroup = '';
+
+                    item.subEvents.forEach(sub => {
+                        if(sub.group && sub.group !== currentGroup) {
+                            itemsHtml += `<div class="sub-group-title">${sub.group}</div>`;
+                            currentGroup = sub.group;
+                        }
+                        itemsHtml += `
+                            <div class="sub-event-item">
+                                <div class="sub-event-title">${sub.title}</div>
+                                <div class="sub-event-room">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    ${sub.room}
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    // Verifica se a lista é longa para colocar barra de pesquisa (ex: Comissões)
+                    let searchBarHtml = '';
+                    if(item.subEvents.length > 5) {
+                        searchBarHtml = `
+                            <div class="search-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" class="search-input" placeholder="Buscar sala ou comissão..." onkeyup="filterComissoes(this, 'list-${item.id}')">
+                            </div>
+                        `;
+                    }
+
+                    extraHtml = `
+                        <button class="btn-expand" data-label="${item.subLabel}" onclick="toggleSubEvents(${item.id}, this)">
+                            <span>${item.subLabel}</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="sub-events-wrapper" id="sub-${item.id}">
+                            ${searchBarHtml}
+                            <div id="list-${item.id}">
+                                ${itemsHtml}
+                            </div>
+                        </div>
+                    `;
+                }
+
                 html += `
                     <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00" data-end="${item.date}T${item.end}:00" style="animation-delay: ${index * 0.04}s">
                         <div class="icon-circle">${ICONS[item.type]}</div>
@@ -326,7 +499,8 @@
                                 </span>
                             </div>
                             <h3 class="event-title">${item.title}</h3>
-                            <span class="badge badge-${item.type}">${TYPE_NAMES[item.type]}</span>
+                            <span class="badge badge-${item.type === 'spiritual' ? 'workshop' : item.type}">${TYPE_NAMES[item.type]}</span>
+                            ${extraHtml}
                         </div>
                     </div>
                 `;
@@ -336,6 +510,8 @@
         }
 
         // MOTOR DO TEMPO
+        let autoScrolled = false; // Garante que só puxe a tela 1 vez!
+
         function atualizarTempoReal() {
             const agora = new Date(); 
             
@@ -345,7 +521,6 @@
             document.getElementById('header-date').innerText = `${diasSemana[agora.getDay()]}, ${String(agora.getDate()).padStart(2, '0')} de ${meses[agora.getMonth()]}`;
             document.getElementById('header-clock').innerText = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
 
-            let itemAtualEncontrado = false;
             const items = document.querySelectorAll('.timeline-item');
 
             items.forEach(el => {
@@ -362,22 +537,24 @@
                     el.classList.add('is-current'); 
                     liveTag.style.display = 'flex';
                     
-                    if (!itemAtualEncontrado) { 
+                    if (!autoScrolled) { 
                         setTimeout(() => { 
                             const headerOffset = 130;
                             const elementPosition = el.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }, 1000);
-                        itemAtualEncontrado = true;
+                        autoScrolled = true;
                     }
                 }
             });
         }
 
+        // INICIA
         renderizarAgenda();
         atualizarTempoReal();
-        setInterval(atualizarTempoReal, 20000); // Atualiza a cada 10s para ser mais responsivo
+        // Roda as validações a cada 10s SEM QUEBRAR a DOM ou fechar botões
+        setInterval(atualizarTempoReal, 10000); 
     </script>
 </body>
 </html>
