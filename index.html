@@ -7,18 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           1. CORE VARIABLES (PALETA ULTRA-PREMIUM)
+           1. CORE VARIABLES (PALETA DISNEY/APPLE PREMIUM)
            ========================================================================== */
         :root {
-            --bg-base: #f4f6f9;
-            --text-main: #111827;
-            --text-muted: #64748b;
-            --accent-blue: #1A3B8A;
+            --bg-base: #f8fafc; /* Mais claro e limpo */
+            --text-main: #0f172a; /* Preto mais profundo para leitura fácil */
+            --text-muted: #475569; /* Cinza com mais contraste */
+            --accent-blue: #2563eb;
             --accent-light: #eff6ff;
             --live-red: #ff3b30;
             --live-glow: rgba(255, 59, 48, 0.25);
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.9);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -31,69 +31,80 @@
         }
 
         /* ==========================================================================
-           2. DISNEY+ STYLE MESH GRADIENTS (FUNDO VIVO)
+           2. MESH GRADIENTS (MAGIA DISNEY - LUZES FLUTUANTES)
            ========================================================================== */
         .ambient-light {
             position: fixed; top: -10%; left: -20%; width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(26, 59, 138, 0.08) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(255,255,255,0) 60%);
             border-radius: 50%; pointer-events: none; z-index: -1;
             animation: float 14s infinite alternate ease-in-out;
         }
         .ambient-light-2 {
-            position: fixed; bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, rgba(255,255,255,0) 70%);
+            position: fixed; bottom: -10%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(255,255,255,0) 60%);
             border-radius: 50%; pointer-events: none; z-index: -1;
             animation: float 18s infinite alternate-reverse ease-in-out;
         }
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -50px) scale(1.1); } }
+        .ambient-light-3 {
+            position: fixed; top: 30%; left: 30%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, rgba(255,255,255,0) 60%);
+            border-radius: 50%; pointer-events: none; z-index: -1;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, -40px) scale(1.1); } }
 
-        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
         /* ==========================================================================
-           3. APPLE STYLE GLASS HEADER
+           3. APPLE STYLE GLASS HEADER (AJUSTADO: MENOR E ELEGANTE)
            ========================================================================== */
         .sticky-header {
             position: sticky; top: 0; z-index: 50;
             background: var(--glass-bg);
             backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            padding: 24px 20px; text-align: center;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
+            padding: 16px 20px; /* Reduzido */
+            text-align: center;
+            box-shadow: 0 4px 30px -10px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .header-tag { 
-            font-size: 0.65rem; font-weight: 800; text-transform: uppercase; 
-            letter-spacing: 0.25em; color: var(--accent-blue); display: block; margin-bottom: 6px;
+            font-size: 0.6rem; font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 0.25em; color: var(--accent-blue); display: block; margin-bottom: 4px;
         }
         .header-date { 
-            font-size: 1.6rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text-main); line-height: 1; 
+            font-size: 1.25rem; /* Reduzido de 1.6rem */
+            font-weight: 900; letter-spacing: -0.02em; color: var(--text-main); line-height: 1; 
         }
         .clock-pill { 
-            display: inline-flex; align-items: center; gap: 6px; 
+            display: inline-flex; align-items: center; gap: 4px; 
             background: #ffffff; border: 1px solid rgba(0,0,0,0.05);
-            padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); 
-            margin-top: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            padding: 4px 12px; /* Reduzido */
+            border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); 
+            margin-top: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         /* ==========================================================================
            4. TIMELINE & CARDS
            ========================================================================== */
-        .schedule-container { max-width: 640px; margin: 40px auto 0; padding: 0 20px; }
+        .schedule-container { max-width: 640px; margin: 30px auto 0; padding: 0 20px; }
         
-        .day-divider { display: flex; align-items: center; gap: 16px; margin: 50px 0 40px; }
-        .day-divider::before, .day-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(203,213,225,0), #cbd5e1, rgba(203,213,225,0)); }
+        .day-divider { display: flex; align-items: center; gap: 16px; margin: 40px 0 30px; }
+        .day-divider::before, .day-divider::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(203,213,225,0), #e2e8f0, rgba(203,213,225,0)); }
         .day-tag { 
-            background: white; border: 1px solid rgba(0,0,0,0.06); padding: 8px 22px; 
+            background: white; border: 1px solid rgba(0,0,0,0.04); padding: 8px 24px; 
             border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; 
-            letter-spacing: 0.15em; color: var(--text-muted); box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            letter-spacing: 0.15em; color: var(--text-main); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .timeline-item { position: relative; display: flex; gap: 24px; padding-bottom: 40px; transition: all 0.5s ease; }
+        .timeline-item { position: relative; display: flex; gap: 20px; padding-bottom: 30px; transition: all 0.5s ease; }
         
+        /* Linha guia com gradiente vivo */
         .timeline-item::before { 
             content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; 
-            background: #e2e8f0; z-index: 0; transition: background 0.4s ease;
+            background: linear-gradient(to bottom, #e2e8f0, #f1f5f9); z-index: 0; transition: background 0.4s ease;
         }
         .timeline-item:last-child::before { display: none; }
 
@@ -101,45 +112,46 @@
             position: relative; z-index: 10; flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px;
             background: white; border: 1px solid rgba(0,0,0,0.06); 
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
+            color: var(--accent-blue); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
+        /* Cartão de Conteúdo - Mais destaque e contraste */
         .card-content {
             flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border); 
-            border-radius: 24px; padding: 24px; position: relative; overflow: hidden; 
+            border-radius: 20px; padding: 20px; position: relative; overflow: hidden; 
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 4px 20px -5px rgba(0,0,0,0.04);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 10px 30px -5px rgba(30, 58, 138, 0.05);
         }
         .timeline-item:not(.is-past):hover .card-content {
-            transform: translateY(-2px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 10px 30px -5px rgba(0,0,0,0.08);
+            transform: translateY(-2px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 1), 0 15px 35px -5px rgba(30, 58, 138, 0.08);
         }
 
-        .time-loc { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-        .time-text { font-size: 0.95rem; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; }
+        .time-loc { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+        .time-text { font-size: 0.9rem; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; }
         .dot { width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1; }
-        .loc-text { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: flex; align-items: center; gap: 4px;}
+        .loc-text { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: flex; align-items: center; gap: 4px;}
 
-        .event-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .event-title { font-size: 1.1rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 14px; letter-spacing: -0.01em; }
 
-        /* Badges */
-        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+        /* Badges Vivos */
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
         .badge-talk { background: #eff6ff; color: #2563eb; } 
         .badge-workshop { background: #f5f3ff; color: #7c3aed; } 
         .badge-break { background: #f1f5f9; color: #64748b; } 
-        .badge-social { background: #fdf4ff; color: #a21caf; } 
-        .badge-spiritual { background: #ecfdf5; color: #0d9488; } 
+        .badge-social { background: #fdf4ff; color: #db2777; } 
+        .badge-spiritual { background: #ecfdf5; color: #059669; } 
         .badge-extra { background: #fffbeb; color: #d97706; } 
         .badge-food { background: #fff7ed; color: #ea580c; } 
-        .badge-collective { background: #e0f2fe; color: #0891b2; } 
+        .badge-collective { background: #e0f2fe; color: #0284c7; } 
         .badge-walking { background: #ffe4e6; color: #e11d48; } 
 
         /* ==========================================================================
            5. ESTADO MÁGICO: ACONTECENDO AGORA (LIVE)
            ========================================================================== */
-        .timeline-item.is-past { opacity: 0.5; filter: grayscale(80%); }
-        .timeline-item.is-past .card-content { background: rgba(248, 250, 252, 0.5); box-shadow: none; border-color: rgba(0,0,0,0.03);}
+        .timeline-item.is-past { opacity: 0.6; filter: grayscale(50%); } /* Menos opaco para não sumir tanto */
+        .timeline-item.is-past .card-content { background: rgba(241, 245, 249, 0.6); box-shadow: none; border-color: rgba(0,0,0,0.02);}
         
         .timeline-item.is-current { z-index: 20; }
         .timeline-item.is-current::before { background: linear-gradient(to bottom, var(--live-red), #e2e8f0 80%); }
@@ -151,7 +163,7 @@
         
         .timeline-item.is-current .card-content {
             background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, var(--live-red), #ff9500) border-box;
+                        linear-gradient(135deg, var(--live-red), #f43f5e) border-box;
             border: 2px solid transparent;
             box-shadow: 0 20px 40px -10px var(--live-glow); 
             transform: scale(1.02);
@@ -161,86 +173,83 @@
         .live-tag {
             position: absolute; top: -2px; right: -2px; 
             background: linear-gradient(135deg, var(--live-red), #ff2d55); color: white;
-            padding: 8px 16px; border-bottom-left-radius: 20px; border-top-right-radius: 22px;
+            padding: 6px 14px; border-bottom-left-radius: 16px; border-top-right-radius: 18px;
             display: flex; align-items: center; gap: 8px;
             box-shadow: -4px 4px 15px rgba(255, 59, 48, 0.2);
         }
-        .live-tag span { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
+        .live-tag span { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
         
-        .ping-dot { position: relative; display: flex; width: 8px; height: 8px; }
+        .ping-dot { position: relative; display: flex; width: 6px; height: 6px; }
         .ping-dot::before { content: ''; position: absolute; width: 100%; height: 100%; background: white; border-radius: 50%; animation: radar 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.8; }
-        .ping-dot::after { content: ''; position: relative; width: 8px; height: 8px; background: white; border-radius: 50%; }
+        .ping-dot::after { content: ''; position: relative; width: 6px; height: 6px; background: white; border-radius: 50%; }
 
         @keyframes radar { 75%, 100% { transform: scale(3.5); opacity: 0; } }
 
         /* ==========================================================================
-           6. ACCORDION E BUSCA INTERNA (UX 15/10)
+           6. ACCORDION E BUSCA INTERNA
            ========================================================================== */
         .btn-expand {
-            background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.06); color: var(--accent-blue);
-            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-            padding: 10px 18px; border-radius: 50px; cursor: pointer; display: inline-flex;
-            align-items: center; gap: 8px; margin-top: 16px; transition: all 0.3s ease; width: 100%; justify-content: center;
+            background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.05); color: var(--accent-blue);
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 10px 16px; border-radius: 12px; cursor: pointer; display: inline-flex;
+            align-items: center; gap: 8px; margin-top: 14px; transition: all 0.3s ease; width: 100%; justify-content: center;
         }
-        .btn-expand:hover { background: white; border-color: rgba(0,0,0,0.1); box-shadow: 0 2px 8px rgba(0,0,0,0.02);}
+        .btn-expand:hover { background: white; border-color: rgba(0,0,0,0.1); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);}
         .btn-expand svg { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .btn-expand.active { background: var(--text-main); color: white; border-color: transparent;}
         .btn-expand.active svg { transform: rotate(180deg); }
         
         .sub-events-wrapper {
-            margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.06);
+            margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);
             display: none; animation: fadeInSub 0.4s ease forwards;
         }
         .sub-events-wrapper.open { display: block; }
         @keyframes fadeInSub { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Barra de Busca Exclusiva */
-        .search-box {
-            position: relative; margin-bottom: 16px;
-        }
-        .search-box svg {
-            position: absolute; left: 12px; top: 12px; color: var(--text-muted);
-        }
+        .search-box { position: relative; margin-bottom: 16px; }
+        .search-box svg { position: absolute; left: 12px; top: 10px; color: var(--text-muted); }
         .search-input {
-            width: 100%; padding: 12px 14px 12px 40px; border-radius: 12px;
+            width: 100%; padding: 10px 14px 10px 36px; border-radius: 10px;
             border: 1px solid rgba(0,0,0,0.08); background: rgba(255,255,255,0.9);
-            font-size: 0.85rem; font-weight: 500; color: var(--text-main); transition: all 0.3s;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: all 0.3s;
         }
-        .search-input:focus { outline: none; border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 3px rgba(26, 59, 138, 0.1);}
+        .search-input:focus { outline: none; border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);}
 
-        /* Títulos de Grupo (Áureo x Armando) */
         .sub-group-title {
-            font-size: 0.7rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase;
+            font-size: 0.65rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase;
             letter-spacing: 0.1em; margin: 16px 0 8px 4px; display: flex; align-items: center; gap: 6px;
         }
         .sub-group-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.05); }
 
         .sub-event-item {
-            background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0,0,0,0.04);
-            border-radius: 16px; padding: 14px 16px; margin-bottom: 8px;
+            background: white; border: 1px solid rgba(0,0,0,0.03);
+            border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
             display: flex; flex-direction: column; gap: 8px; transition: opacity 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
         }
-        .sub-event-title { font-size: 0.9rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .highlight-item { background: rgba(239, 246, 255, 0.8); border: 1px solid rgba(37, 99, 235, 0.2); }
+        
+        .sub-event-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
         .sub-event-room {
-            align-self: flex-start; font-size: 0.7rem; font-weight: 800; color: var(--accent-blue); 
-            background: var(--accent-light); padding: 4px 10px; border-radius: 8px; 
+            align-self: flex-start; font-size: 0.65rem; font-weight: 800; color: var(--accent-blue); 
+            background: var(--accent-light); padding: 4px 8px; border-radius: 6px; 
             text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;
         }
 
-        .footer-info { text-align: center; margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
+        .footer-info { text-align: center; margin-top: 50px; font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
     </style>
 </head>
 <body>
 
     <div class="ambient-light"></div>
     <div class="ambient-light-2"></div>
+    <div class="ambient-light-3"></div>
 
     <header class="sticky-header">
         <span class="header-tag">Reunião Ismael</span>
         <div class="header-date" id="header-date">Carregando...</div>
         <div class="clock-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span id="header-clock">--:--</span>
         </div>
     </header>
@@ -249,74 +258,80 @@
     </main>
 
     <div class="footer-info">
-        <svg style="display:inline; margin-bottom:-2px; margin-right:4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <svg style="display:inline; margin-bottom:-2px; margin-right:4px;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         Horários sujeitos a alterações
     </div>
 
     <script>
         // ============================================================================
-        // DADOS DAS SALAS (COMISSÕES E EXTRA)
+        // DADOS DAS SALAS (COMISSÕES E EXTRA) - ALFABÉTICA E COM DESTAQUE
         // ============================================================================
         const salasSexta = [
-            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unid. 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Alegria Cristã', room: 'Centro Conv. Sl 24 - Unid. 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Caridade', room: '04, 12 e Unid. 3 (modelagem)', group: 'Comissão Irmão Áureo' },
-            { title: 'Evangelização Infantil', room: '05, 13', group: 'Comissão Irmão Áureo' },
-            { title: 'Mocidade', room: '14, 20', group: 'Comissão Irmão Áureo' },
-            { title: 'Esclarecimento e Família', room: '15, 16', group: 'Comissão Irmão Áureo' },
-            { title: 'Tradução', room: '18', group: 'Comissão Irmão Áureo' },
-            { title: 'Triagem', room: '19, 21 e 24', group: 'Comissão Irmão Áureo' },
-            { title: 'CECX', room: '22', group: 'Comissão Irmão Áureo' },
-            { title: 'Ecologia', room: '23', group: 'Comissão Irmão Áureo' },
-            { title: 'Divulgação', room: '25', group: 'Comissão Irmão Áureo' },
-            { title: 'Camp. Frat. Auta de Souza', room: '26', group: 'Comissão Irmão Áureo' },
-            { title: 'Mediunidade', room: '29, 30', group: 'Comissão Irmão Áureo' },
-            { title: 'Educação Espírita', room: '33, 34', group: 'Comissão Irmão Áureo' },
+            // DESTAQUE SIMULTÂNEO NO TOPO
+            { title: 'Triagem de Trabalhadores', room: 'Salas 19, 21 e 24 (1º Andar)', group: '📌 Atividade Simultânea' },
 
+            // COMISSÃO IRMÃO ARMANDO (Ordem Alfabética)
             { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'Relações Fraternas', room: 'Pátio Fundo Elevador - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'Harmonia e Transporte', room: '17', group: 'Comissão Irmão Armando' },
-            { title: 'Secretaria', room: '31', group: 'Comissão Irmão Armando' },
-            { title: 'Marketing', room: '35', group: 'Comissão Irmão Armando' },
-            { title: 'Financeiro', room: '36', group: 'Comissão Irmão Armando' },
-            { title: 'TI', room: '39', group: 'Comissão Irmão Armando' },
-            { title: 'Qualidade', room: '40', group: 'Comissão Irmão Armando' }
+            { title: 'Financeiro', room: 'Sala 36 (2º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Harmonia e Transporte', room: 'Sala 17 (1º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Marketing', room: 'Sala 35 (2º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Qualidade', room: 'Sala 40 (2º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Relações Fraternas', room: 'Pátio fundo do elevador - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'Secretaria', room: 'Sala 31 (2º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: 'Sala 39 (2º Andar)', group: 'Comissão Irmão Armando' },
+
+            // COMISSÃO IRMÃO ÁUREO (Ordem Alfabética)
+            { title: 'Alegria Cristã', room: 'Centro de conv. Sl 24 - Unidade 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Camp. Frat. Auta de Souza', room: 'Sala 26 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: 'Salas 04 e 12 (Térreo) e Unid. 3 (modelagem)', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: 'Sala 22 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unidade 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Divulgação', room: 'Sala 25 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia', room: 'Sala 23 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Educação Espírita', room: 'Salas 33 e 34 (2º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento e Família', room: 'Salas 15 e 16 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Evangelização Infantil', room: 'Sala 05 (Térreo) e Sala 13 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Mediunidade', room: 'Salas 29 e 30 (2º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: 'Salas 14 e 20 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: 'Sala 18 (1º Andar)', group: 'Comissão Irmão Áureo' }
         ];
 
         const salasSabado = [
-            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unid. 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Alegria Cristã', room: '24 - Unid. 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Caridade', room: '12', group: 'Comissão Irmão Áureo' },
-            { title: 'Evangelização Infantil', room: '13', group: 'Comissão Irmão Áureo' },
-            { title: 'Mocidade', room: '14', group: 'Comissão Irmão Áureo' },
-            { title: 'Esclarecimento e Família', room: '16', group: 'Comissão Irmão Áureo' },
-            { title: 'Tradução', room: '18', group: 'Comissão Irmão Áureo' },
-            { title: 'CECX', room: '22', group: 'Comissão Irmão Áureo' },
-            { title: 'Ecologia', room: '23', group: 'Comissão Irmão Áureo' },
-            { title: 'Divulgação', room: '25', group: 'Comissão Irmão Áureo' },
-            { title: 'Camp. Frat. Auta de Souza', room: '26', group: 'Comissão Irmão Áureo' },
-            { title: 'Mediunidade', room: '30', group: 'Comissão Irmão Áureo' },
-            { title: 'Educação Espírita', room: '34', group: 'Comissão Irmão Áureo' },
-
+            // COMISSÃO IRMÃO ARMANDO (Ordem Alfabética)
             { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'Relações Fraternas', room: 'Pátio Fundo Elevador - Unid. 1', group: 'Comissão Irmão Armando' },
             { title: 'Harmonia e Transporte', room: 'Unid. 3 (modelagem)', group: 'Comissão Irmão Armando' },
-            { title: 'TI', room: '39', group: 'Comissão Irmão Armando' }
+            { title: 'Relações Fraternas', room: 'Pátio fundo do elevador - Unid. 1', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: 'Sala 39 (2º Andar)', group: 'Comissão Irmão Armando' },
+
+            // COMISSÃO IRMÃO ÁUREO (Ordem Alfabética)
+            { title: 'Alegria Cristã', room: 'Sala 24 - Unidade 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Camp. Frat. Auta de Souza', room: 'Sala 26 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: 'Sala 12 (Térreo)', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: 'Sala 22 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unidade 3', group: 'Comissão Irmão Áureo' },
+            { title: 'Divulgação', room: 'Sala 25 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia', room: 'Sala 23 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Educação Espírita', room: 'Sala 34 (2º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento e Família', room: 'Sala 16 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Evangelização Infantil', room: 'Sala 13 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Mediunidade', room: 'Sala 30 (2º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: 'Sala 14 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: 'Sala 18 (1º Andar)', group: 'Comissão Irmão Áureo' }
         ];
 
         const salasCorujao = [
-            { title: 'O Centro indutor do lar no equilíbrio das influências diárias da convivência doméstica.', room: 'Sala 04' },
-            { title: 'As revelações da obra Universo e Vida, psicografada pelo médium Hernani T. Sant’Anna, do Espírito Áureo.', room: 'Sala 05' },
-            { title: 'Geração Z e suas emoções.', room: 'Sala 12' },
-            { title: 'Compreendendo a criança com TEA e outros transtornos à luz do espiritismo.', room: 'Sala 13' },
-            { title: 'Astronomia: Descortinando o céu', room: 'Campo de Futebol' }
+            { title: 'As revelações da obra Universo e Vida, psicografada pelo médium Hernani T. Sant’Anna, do Espírito Áureo.', room: 'Sala 05 (Térreo)' },
+            { title: 'Astronomia: Descortinando o céu', room: 'Campo de Futebol' },
+            { title: 'Compreendendo a criança com TEA e outros transtornos à luz do espiritismo.', room: 'Sala 13 (1º Andar)' },
+            { title: 'Geração Z e suas emoções.', room: 'Sala 12 (Térreo)' },
+            { title: 'O Centro indutor do lar no equilíbrio das influências diárias da convivência doméstica.', room: 'Sala 04 (Térreo)' }
         ];
 
         const salasPardal = [
-            { title: 'Maria de Nazaré: Estrela das grandes almas.', room: 'Sala 04' },
-            { title: 'Ecologia espiritual: a Terra como escola e lar.', room: 'Sala 05' },
-            { title: 'Luiz Sérgio: A trajetória de um ser imortal.', room: 'Sala 12' },
-            { title: 'Alcoolismo no lar.', room: 'Sala 13' }
+            { title: 'Alcoolismo no lar.', room: 'Sala 13 (1º Andar)' },
+            { title: 'Ecologia espiritual: a Terra como escola e lar.', room: 'Sala 05 (Térreo)' },
+            { title: 'Luiz Sérgio: A trajetória de um ser imortal.', room: 'Sala 12 (Térreo)' },
+            { title: 'Maria de Nazaré: Estrela das grandes almas.', room: 'Sala 04 (Térreo)' }
         ];
 
         const eventos = [
@@ -362,7 +377,7 @@
         ];
 
         // ============================================================================
-        // ÍCONES PREMIUM 
+        // ÍCONES PREMIUM
         // ============================================================================
         const ICONS = {
             talk: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>',
@@ -436,7 +451,6 @@
                 let extraHtml = '';
                 if (item.subEvents && item.subEvents.length > 0) {
                     
-                    // Renderiza itens (com ou sem grupo)
                     let itemsHtml = '';
                     let currentGroup = '';
 
@@ -445,8 +459,11 @@
                             itemsHtml += `<div class="sub-group-title">${sub.group}</div>`;
                             currentGroup = sub.group;
                         }
+                        
+                        const highlightClass = sub.group && sub.group.includes('Simultânea') ? 'highlight-item' : '';
+
                         itemsHtml += `
-                            <div class="sub-event-item">
+                            <div class="sub-event-item ${highlightClass}">
                                 <div class="sub-event-title">${sub.title}</div>
                                 <div class="sub-event-room">
                                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -456,7 +473,6 @@
                         `;
                     });
 
-                    // Verifica se a lista é longa para colocar barra de pesquisa (ex: Comissões)
                     let searchBarHtml = '';
                     if(item.subEvents.length > 5) {
                         searchBarHtml = `
@@ -510,7 +526,7 @@
         }
 
         // MOTOR DO TEMPO
-        let autoScrolled = false; // Garante que só puxe a tela 1 vez!
+        let autoScrolled = false; 
 
         function atualizarTempoReal() {
             const agora = new Date(); 
@@ -553,7 +569,6 @@
         // INICIA
         renderizarAgenda();
         atualizarTempoReal();
-        // Roda as validações a cada 10s SEM QUEBRAR a DOM ou fechar botões
         setInterval(atualizarTempoReal, 10000); 
     </script>
 </body>
