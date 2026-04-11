@@ -15,10 +15,10 @@
             --text-muted: #475569;
             --accent-blue: #2563eb;
             --accent-light: #eff6ff;
-            --live-red: #ff3b30; /* Vermelho vibrante Apple */
+            --live-red: #ff3b30; 
             --live-glow: rgba(255, 59, 48, 0.25);
             --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(0, 0, 0, 0.12); /* Novo contorno para profundidade */
+            --glass-border: rgba(0, 0, 0, 0.12); 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -57,7 +57,7 @@
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
         /* ==========================================================================
-           3. APPLE STYLE GLASS HEADER (AJUSTADO: COMPACTO E ELEGANTE)
+           3. APPLE STYLE GLASS HEADER
            ========================================================================== */
         .sticky-header {
             position: sticky; top: 0; z-index: 50;
@@ -71,13 +71,13 @@
         }
 
         .header-tag { 
-            font-size: 1.2rem; /* Aumentado */
+            font-size: 1.2rem; 
             font-weight: 900; 
             letter-spacing: -0.02em; 
             color: var(--text-main); 
         }
         .header-date { 
-            font-size: 0.75rem; /* Diminuído */
+            font-size: 0.75rem; 
             font-weight: 700; 
             letter-spacing: 0.1em; 
             text-transform: uppercase;
@@ -85,7 +85,7 @@
         }
 
         /* ==========================================================================
-           4. TIMELINE & CARDS (COM NOVO CONTORNO)
+           4. TIMELINE & CARDS 
            ========================================================================== */
         .schedule-container { max-width: 640px; margin: 30px auto 0; padding: 0 20px; }
         
@@ -113,7 +113,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
-        /* Cartão de Conteúdo - NOVO CONTORNO E PROFUNDIDADE */
         .card-content {
             flex: 1; 
             background: var(--glass-bg); 
@@ -128,7 +127,7 @@
         }
         .timeline-item:not(.is-past):hover .card-content {
             transform: translateY(-2px); 
-            border-color: rgba(37, 99, 235, 0.3); /* Contorno azulado sutil no hover */
+            border-color: rgba(37, 99, 235, 0.3); 
             box-shadow: 0 12px 25px -5px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
@@ -139,7 +138,6 @@
 
         .event-title { font-size: 1.1rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 14px; letter-spacing: -0.01em; }
 
-        /* Badges Vivos */
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
         .badge-talk { background: #eff6ff; color: #2563eb; } 
         .badge-workshop { background: #f5f3ff; color: #7c3aed; } 
@@ -154,7 +152,7 @@
         /* ==========================================================================
            5. ESTADO MÁGICO: ACONTECENDO AGORA (LIVE)
            ========================================================================== */
-        .timeline-item.is-past { opacity: 0.6; filter: grayscale(50%); }
+        .timeline-item.is-past { opacity: 0.6; filter: grayscale(50%); } 
         .timeline-item.is-past .card-content { background: rgba(241, 245, 249, 0.6); box-shadow: none; border-color: rgba(0,0,0,0.04);}
         
         .timeline-item.is-current { z-index: 20; }
@@ -231,13 +229,43 @@
             display: flex; flex-direction: column; gap: 8px; transition: opacity 0.2s;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .highlight-item { background: rgba(239, 246, 255, 0.8); border: 1px solid rgba(37, 99, 235, 0.3); }
         
         .sub-event-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
         .sub-event-room {
             align-self: flex-start; font-size: 0.65rem; font-weight: 800; color: var(--accent-blue); 
             background: var(--accent-light); padding: 4px 8px; border-radius: 6px; 
             text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;
+        }
+
+        /* ==========================================================================
+           7. BOTÃO FLUTUANTE - PRODUÇÃO HÍBRIDA
+           ========================================================================== */
+        .fab-hibrida {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fab-hibrida:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+        }
+        @media (max-width: 768px) {
+            .fab-hibrida { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 0.75rem; }
         }
 
         .footer-info { text-align: center; margin-top: 50px; font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
@@ -262,129 +290,109 @@
         Horários sujeitos a alterações
     </div>
 
+    <a href="https://concafras.me/salasproducaohibrida" class="fab-hibrida" target="_blank" rel="noopener noreferrer">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14v-4z"></path>
+            <rect x="3" y="6" width="12" height="12" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></rect>
+        </svg>
+        Salas Híbridas
+    </a>
+
     <script>
         // ============================================================================
-        // DADOS DAS SALAS (COMISSÕES E EXTRA) - ALFABÉTICA E COM DESTAQUE
+        // DADOS DAS SALAS - MAPEADAS COM A PLANTA AUTA DE SOUZA (BLOCOS E ANDARES)
         // ============================================================================
-        const salasSexta = [
-            // DESTAQUE SIMULTÂNEO NO TOPO
-            { title: 'Triagem de Trabalhadores', room: 'Salas 19, 21 e 24 (1º Andar)', group: '📌 Atividade Simultânea' },
-
-            // COMISSÃO IRMÃO ARMANDO (Ordem Alfabética)
-            { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'Financeiro', room: 'Sala 36 (2º Andar)', group: 'Comissão Irmão Armando' },
-            { title: 'Harmonia e Transporte', room: 'Sala 17 (1º Andar)', group: 'Comissão Irmão Armando' },
-            { title: 'Marketing', room: 'Sala 35 (2º Andar)', group: 'Comissão Irmão Armando' },
-            { title: 'Qualidade', room: 'Sala 40 (2º Andar)', group: 'Comissão Irmão Armando' },
-            { title: 'Relações Fraternas', room: 'Pátio fundo do elevador - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'Secretaria', room: 'Sala 31 (2º Andar)', group: 'Comissão Irmão Armando' },
-            { title: 'TI', room: 'Sala 39 (2º Andar)', group: 'Comissão Irmão Armando' },
-
-            // COMISSÃO IRMÃO ÁUREO (Ordem Alfabética)
-            { title: 'Alegria Cristã', room: 'Centro de conv. Sl 24 - Unidade 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Camp. Frat. Auta de Souza', room: 'Sala 26 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Caridade', room: 'Salas 04 e 12 (Térreo) e Unid. 3 (modelagem)', group: 'Comissão Irmão Áureo' },
-            { title: 'CECX', room: 'Sala 22 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unidade 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Divulgação', room: 'Sala 25 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Ecologia', room: 'Sala 23 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Escola Espírita', room: 'Salas 33 e 34 (2º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Esclarecimento e Família', room: 'Salas 15 e 16 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Evangelização Infantil', room: 'Sala 05 (Térreo) e Sala 13 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Mediunidade', room: 'Salas 29 e 30 (2º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Mocidade', room: 'Salas 14 e 20 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Tradução', room: 'Sala 18 (1º Andar)', group: 'Comissão Irmão Áureo' }
-        ];
-
-        const salasSabado = [
-            // COMISSÃO IRMÃO ARMANDO (Ordem Alfabética)
-            { title: 'Comunicação Interna', room: 'Recepção - Unid. 1', group: 'Comissão Irmão Armando' },
+        
+        // 1. Apenas Comissões Irmão Áureo e Irmão Armando
+        const salasComissoesGerais = [
+            // COMISSÃO IRMÃO ARMANDO
+            { title: 'Comunicação Interna', room: 'Recepção (Térreo - Bloco 01)', group: 'Comissão Irmão Armando' },
+            { title: 'Financeiro', room: 'Sala 36 (Térreo - Bloco 01)', group: 'Comissão Irmão Armando' },
             { title: 'Harmonia e Transporte', room: 'Unid. 3 (modelagem)', group: 'Comissão Irmão Armando' },
+            { title: 'Marketing', room: 'Sala 35 (1º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Qualidade', room: 'Sala 40 (Térreo - Bloco 02)', group: 'Comissão Irmão Armando' },
             { title: 'Relações Fraternas', room: 'Pátio fundo do elevador - Unid. 1', group: 'Comissão Irmão Armando' },
-            { title: 'TI', room: 'Sala 39 (2º Andar)', group: 'Comissão Irmão Armando' },
+            { title: 'Secretaria', room: 'Sala 31 (Térreo - Bloco 01)', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: 'Sala 39 (Térreo - Bloco 02)', group: 'Comissão Irmão Armando' },
 
-            // COMISSÃO IRMÃO ÁUREO (Ordem Alfabética)
-            { title: 'Alegria Cristã', room: 'Sala 24 - Unidade 3', group: 'Comissão Irmão Áureo' },
-            { title: 'Camp. Frat. Auta de Souza', room: 'Sala 26 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Caridade', room: 'Sala 12 (Térreo)', group: 'Comissão Irmão Áureo' },
-            { title: 'CECX', room: 'Sala 22 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unidade 3', group: 'Comissão Irmão Áureo' },
+            // COMISSÃO IRMÃO ÁUREO
+            { title: 'Alegria Cristã', room: 'Sala 24 - Unidade 3 (Subsolo)', group: 'Comissão Irmão Áureo' },
+            { title: 'Camp. Frat. Auta de Souza', room: 'Sala 26 (2º Andar - Bloco 01)', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: 'Sala 12 (Térreo - Bloco 01)', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: 'Sala 22 (2º Andar - Bloco 01)', group: 'Comissão Irmão Áureo' },
+            { title: 'Comunicação Social', room: 'Estúdio 1 e 2 - Unidade 3 (2º Andar)', group: 'Comissão Irmão Áureo' },
             { title: 'Divulgação', room: 'Sala 25 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Ecologia', room: 'Sala 23 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Escola Espírita', room: 'Sala 34 (2º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Esclarecimento e Família', room: 'Sala 16 (1º Andar)', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia e Sustentabilidade', room: 'Sala 23 (2º Andar - Bloco 02)', group: 'Comissão Irmão Áureo' },
+            { title: 'Educação Espírita', room: 'Sala 34 (Térreo - Bloco 03)', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento e Família', room: 'Sala 16 (Térreo - Bloco 02)', group: 'Comissão Irmão Áureo' },
             { title: 'Evangelização Infantil', room: 'Sala 13 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Mediunidade', room: 'Sala 30 (2º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Mocidade', room: 'Sala 14 (1º Andar)', group: 'Comissão Irmão Áureo' },
-            { title: 'Tradução', room: 'Sala 18 (1º Andar)', group: 'Comissão Irmão Áureo' },
-
-            // COMISSÕES EXECUTIVAS (Ordem Alfabética)
-            { title: 'AME - Administrativo financeiro', room: 'Sala 29 (2º Andar)', group: 'Comissões Executivas' },
-            { title: 'AME - Filantrópico e humanitário', room: 'Sala 24 (1º Andar)', group: 'Comissões Executivas' },
-            { title: 'AME – Centro Espírita online', room: 'Sala 05 (Térreo)', group: 'Comissões Executivas' },
-            { title: 'Concafras Global', room: 'Sala 21 (1º Andar)', group: 'Comissões Executivas' },
-            { title: 'Concafras Nacional', room: 'Centro de Convivência - Unid. 3', group: 'Comissões Executivas' },
-            { title: 'IEE Euripedes Barsanulfo', room: 'Sala 34 (2º Andar)', group: 'Comissões Executivas' },
-            { title: 'Em defesa da vida – contra o aborto', room: 'Sala 15 (1º Andar)', group: 'Comissões Executivas' },
-            { title: 'Grupo Fraterno', room: 'Salas 19 e 20 (1º Andar)', group: 'Comissões Executivas' },
-            { title: 'Livro Espírita', room: 'Sala 17 (1º Andar)', group: 'Comissões Executivas' }
+            { title: 'Mediunidade', room: 'Sala 30 (Térreo - Bloco 02)', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: 'Sala 14 (2º Andar - Bloco 01)', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: 'Sala 18 (1º Andar - Bloco 02)', group: 'Comissão Irmão Áureo' }
         ];
 
-        const salasCorujao = [
-            { title: 'As revelações da obra Universo e Vida, psicografada pelo médium Hernani T. Sant’Anna, do Espírito Áureo.', room: 'Sala 05 (Térreo)' },
-            { title: 'Astronomia: Descortinando o céu', room: 'Campo de Futebol' },
-            { title: 'Compreendendo a criança com TEA e outros transtornos à luz do espiritismo.', room: 'Sala 13 (1º Andar)' },
-            { title: 'Geração Z e suas emoções.', room: 'Sala 12 (Térreo)' },
-            { title: 'O Centro indutor do lar no equilíbrio das influências diárias da convivência doméstica.', room: 'Sala 04 (Térreo)' }
+        // 2. Áureo + Armando + Executivas (Sábado à tarde)
+        const salasComissoesSabadoTarde = [
+            ...salasComissoesGerais,
+            // COMISSÕES EXECUTIVAS
+            { title: 'AME Administrativo financeiro', room: 'Sala 29 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'AME Centro Espírita online', room: 'Sala 05 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'AME Filantrópico e humanitário', room: 'Sala 24 (1º Andar)', group: 'Comissões Executivas' },
+            { title: 'Concafras Global', room: 'Sala 21 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'Concafras Nacional', room: 'Centro de Convivência (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Educação Espírita', room: 'Sala 34 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Em defesa da vida – contra o aborto', room: 'Sala 15 (1º Andar - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'Grupo Fraterno', room: 'Salas 19 e 20 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Livro Espírita', room: 'Sala 17 (Subsolo - Bloco 01)', group: 'Comissões Executivas' }
+        ].sort((a, b) => a.title.localeCompare(b.title)); // Ordem alfabética para a lista mista
+
+        // 3. Apenas Comissões Executivas (Domingo de manhã)
+        const salasComissoesDomingo = [
+            { title: 'AME Administrativo financeiro', room: 'Sala 29 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'AME Centro Espírita online', room: 'Sala 05 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'AME Filantrópico e humanitário', room: 'Sala 24 (1º Andar)', group: 'Comissões Executivas' },
+            { title: 'Concafras Global', room: 'Sala 21 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'Concafras Nacional', room: 'Centro de Convivência (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Educação Espírita', room: 'Sala 34 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Em defesa da vida – contra o aborto', room: 'Sala 15 (1º Andar - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'Grupo Fraterno', room: 'Salas 19 e 20 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'Livro Espírita', room: 'Sala 17 (Subsolo - Bloco 01)', group: 'Comissões Executivas' }
         ];
 
-        const salasPardal = [
-            { title: 'Alcoolismo no lar.', room: 'Sala 13 (1º Andar)' },
-            { title: 'Ecologia espiritual: a Terra como escola e lar.', room: 'Sala 05 (Térreo)' },
-            { title: 'Luiz Sérgio: A trajetória de um ser imortal.', room: 'Sala 12 (Térreo)' },
-            { title: 'Maria de Nazaré: Estrela das grandes almas.', room: 'Sala 04 (Térreo)' }
-        ];
-
+        // ============================================================================
+        // PROGRAMAÇÃO OFICIAL (APENAS SÁBADO E DOMINGO CONFORME PDF)
+        // ============================================================================
         const eventos = [
-            // SEXTA
-            { id: 1,  date: '2026-04-03', start: '08:30', end: '10:00', title: 'Recepção', type: 'social', location: 'Sala 13 - 1º Andar' },
-            { id: 2,  date: '2026-04-03', start: '10:00', end: '10:40', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 3,  date: '2026-04-03', start: '10:40', end: '12:00', title: 'Abertura', type: 'talk', location: 'Auditório' },
-            { id: 4,  date: '2026-04-03', start: '12:00', end: '14:00', title: 'Almoço', type: 'food', location: 'Hall da Unidade I' },
-            { id: 5,  date: '2026-04-03', start: '14:00', end: '16:00', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSexta },
-            { id: 6,  date: '2026-04-03', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 7,  date: '2026-04-03', start: '16:40', end: '17:30', title: 'Comissões Irmão Áureo e Irmão Armando, Triagem, Conselho Wantuil de Freitas e Dirigentes', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSexta },
-            { id: 8,  date: '2026-04-03', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'walking', location: 'Unidade 3' },
-            { id: 9,  date: '2026-04-03', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
-            { id: 10, date: '2026-04-03', start: '20:30', end: '22:00', title: 'Lançamento do Instituto de Educação Espírita Eurípedes Barsanulfo', type: 'collective', location: 'Auditório' },
-            { id: 11, date: '2026-04-03', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 12, date: '2026-04-03', start: '22:45', end: '23:30', title: 'Corujão', type: 'extra', location: 'Múltiplas Salas', subLabel: 'Ver Temas e Salas', subEvents: salasCorujao },
-
             // SÁBADO
-            { id: 13, date: '2026-04-04', start: '06:30', end: '07:30', title: 'Sessão Pardal', type: 'extra', location: 'Múltiplas Salas', subLabel: 'Ver Temas e Salas', subEvents: salasPardal },
-            { id: 14, date: '2026-04-04', start: '07:00', end: '08:15', title: 'Café da manhã', type: 'food', location: 'Hall da Unidade I' },
-            { id: 15, date: '2026-04-04', start: '08:30', end: '09:00', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 16, date: '2026-04-04', start: '09:00', end: '10:00', title: 'Momento coletivo', type: 'collective', location: 'Auditório' },
-            { id: 17, date: '2026-04-04', start: '10:00', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 18, date: '2026-04-04', start: '10:45', end: '12:30', title: 'Momento Coletivo - Grupos Fraternos', type: 'collective', location: 'Auditório' },
-            { id: 19, date: '2026-04-04', start: '12:30', end: '14:30', title: 'Almoço', type: 'food', location: 'Hall da Unidade I' },
-            { id: 20, date: '2026-04-04', start: '14:00', end: '16:00', title: 'Projeto Eurípedes Barsanulfo: Dirigentes das escolas e mantenedoras', type: 'workshop', location: 'Salas' },
-            { id: 21, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Executivas / CONCAFRAS 2027 e 2028 / Comissões Irmão Áureo', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabado },
-            { id: 22, date: '2026-04-04', start: '16:00', end: '16:40', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 23, date: '2026-04-04', start: '16:40', end: '17:30', title: 'Comissões Executivas / Conselho Wantuil de Freitas / Comissões Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabado },
-            { id: 24, date: '2026-04-04', start: '17:30', end: '18:30', title: 'Convivência cristã', type: 'walking', location: 'Unidade 3' },
-            { id: 25, date: '2026-04-04', start: '18:30', end: '20:30', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
-            { id: 26, date: '2026-04-04', start: '20:30', end: '22:00', title: 'Momento coletivo', type: 'collective', location: 'Auditório' },
-            { id: 27, date: '2026-04-04', start: '22:00', end: '22:30', title: 'Tratamento espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 28, date: '2026-04-04', start: '22:45', end: '23:30', title: 'Roda da Alegria', type: 'extra', location: 'Confirmar Local' },
+            { id: 1, date: '2026-04-04', start: '08:00', end: '09:00', title: 'Credenciamento e Alegria Cristã', type: 'social', location: 'Recepção / Auditório' },
+            { id: 2, date: '2026-04-04', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Auditório' },
+            { id: 3, date: '2026-04-04', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 4, date: '2026-04-04', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Auditório' },
+            { id: 5, date: '2026-04-04', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 6, date: '2026-04-04', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasComissoesGerais },
+            { id: 7, date: '2026-04-04', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Hall da Unidade I' },
+            { id: 8, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasComissoesSabadoTarde },
+            { id: 9, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: '1º Andar - Bloco 02' },
+            { id: 10, date: '2026-04-04', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Auditório' },
+            { id: 11, date: '2026-04-04', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
+            { id: 12, date: '2026-04-04', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: '1º Andar - Bloco 02' },
+            { id: 13, date: '2026-04-04', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasComissoesGerais },
+            { id: 14, date: '2026-04-04', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
+            { id: 15, date: '2026-04-04', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Auditório' },
+            { id: 16, date: '2026-04-04', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Sala de Reunião (Térreo)' },
+            { id: 17, date: '2026-04-04', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasComissoesGerais },
+            { id: 18, date: '2026-04-04', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
 
             // DOMINGO
-            { id: 29, date: '2026-04-05', start: '07:00', end: '08:15', title: 'Café da Manhã', type: 'food', location: 'Hall da Unidade I' },
-            { id: 30, date: '2026-04-05', start: '08:15', end: '08:30', title: 'Preparação para a Orientação Espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 31, date: '2026-04-05', start: '08:30', end: '10:30', title: 'Reunião de Orientação Espiritual', type: 'collective', location: 'Auditório' },
-            { id: 32, date: '2026-04-05', start: '10:30', end: '11:15', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 33, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Encerramento', type: 'collective', location: 'Auditório' },
-            { id: 34, date: '2026-04-05', start: '12:00', end: '13:30', title: 'Almoço', type: 'food', location: 'Hall da Unidade I' }
+            { id: 19, date: '2026-04-05', start: '08:00', end: '08:30', title: 'Alegria Cristã e Preparação', type: 'social', location: 'Auditório' },
+            { id: 20, date: '2026-04-05', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 21, date: '2026-04-05', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
+            { id: 22, date: '2026-04-05', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 23, date: '2026-04-05', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Auditório' },
+            { id: 24, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Auditório' },
+            { id: 25, date: '2026-04-05', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões', subEvents: salasComissoesDomingo },
+            { id: 26, date: '2026-04-05', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Salas Designadas' },
+            { id: 27, date: '2026-04-05', start: '13:00', end: '14:30', title: 'Almoço Fraterno', type: 'food', location: 'Hall da Unidade I' }
         ];
 
         // ============================================================================
@@ -408,7 +416,6 @@
             collective: 'Momento Coletivo', walking: 'Convivência'
         };
 
-        // FUNÇÃO DE TOGGLE COM BUSCA
         function toggleSubEvents(id, btn) {
             const wrapper = document.getElementById('sub-' + id);
             if (wrapper.classList.contains('open')) {
@@ -422,7 +429,6 @@
             }
         }
 
-        // BUSCA INSTANTÂNEA
         function filterComissoes(input, listId) {
             const filter = input.value.toLowerCase();
             const list = document.getElementById(listId);
@@ -438,7 +444,6 @@
             });
         }
 
-        // RENDERIZADOR HTML
         function renderizarAgenda() {
             const container = document.getElementById('schedule-render-area');
             let html = '';
@@ -461,7 +466,6 @@
 
                 let extraHtml = '';
                 if (item.subEvents && item.subEvents.length > 0) {
-                    
                     let itemsHtml = '';
                     let currentGroup = '';
 
@@ -536,7 +540,6 @@
             container.innerHTML = html;
         }
 
-        // MOTOR DO TEMPO
         let autoScrolled = false; 
 
         function atualizarTempoReal() {
@@ -576,10 +579,9 @@
             });
         }
 
-        // INICIA
         renderizarAgenda();
         atualizarTempoReal();
-        setInterval(atualizarTempoReal, 30000); 
+        setInterval(atualizarTempoReal, 10000); 
     </script>
 </body>
 </html>
