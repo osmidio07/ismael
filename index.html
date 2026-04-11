@@ -71,7 +71,7 @@
         }
 
         .header-tag { 
-            font-size: 1.2rem; 
+            font-size: 1.15rem; 
             font-weight: 900; 
             letter-spacing: -0.02em; 
             color: var(--text-main); 
@@ -300,10 +300,10 @@
 
     <script>
         // ============================================================================
-        // DADOS DAS SALAS - ORGANIZADAS E ATUALIZADAS (APENAS AS VÁLIDAS)
+        // DADOS DAS SALAS - ORGANIZADAS E ATUALIZADAS (SEM EXECUTIVAS NO SÁBADO)
         // ============================================================================
         
-        // --- GRUPO GERAL: ÁUREO E ARMANDO (Sábado e Domingo) ---
+        // 1. Apenas Comissões Irmão Áureo e Irmão Armando (Sábado)
         const salasGerais = [
             // Assessorias e Direção
             { title: 'Direção', room: 'Tesouraria (Térreo - Bloco 02)', group: 'Assessorias e Direção' },
@@ -335,65 +335,52 @@
             { title: 'Espaços Luizinho', room: 'Sala 03 (Bl.03), Salas 04, 05 e 06 (Bl.02) - Subsolo', group: 'Espaços de Estudo' }
         ].sort((a,b) => a.title.localeCompare(b.title));
 
-        // --- GRUPO: COMISSÕES EXECUTIVAS ---
+        // 2. Apenas Comissões Executivas (Domingo de manhã)
         const salasExecutivas = [
-            { title: 'AME', room: 'Sala 03 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva AME', room: 'Sala da Presidência (2º Andar - Bloco 01)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Em Defesa da Vida', room: 'Sala 02 (1º Andar - Bloco 02)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Evento Concafras Nacional', room: 'Sala 02 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Grupo Fraterno', room: 'Sala 01 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva IEE Euripedes Barsanulfo', room: 'Sala 03 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Livro Espírita', room: 'Editora Auta de Souza (Subsolo 2 - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'CEX AME', room: 'Sala 03 (Térreo - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'CEX AME (Direção)', room: 'Sala da Presidência (2º Andar - Bloco 01)', group: 'Comissões Executivas' },
+            { title: 'CEX Em Defesa da Vida', room: 'Sala 02 (1º Andar - Bloco 02)', group: 'Comissões Executivas' },
+            { title: 'CEX Evento Concafras Nacional', room: 'Sala 02 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'CEX Grupo Fraterno', room: 'Sala 01 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'CEX IEE Euripedes Barsanulfo', room: 'Sala 03 (Térreo - Bloco 03)', group: 'Comissões Executivas' },
+            { title: 'CEX Livro Espírita', room: 'Editora Auta de Souza (Subsolo 2 - Bloco 03)', group: 'Comissões Executivas' },
             { title: 'Evento Concafras Global', room: 'Sala 05 (Térreo - Bloco 02)', group: 'Comissões Executivas' }
         ].sort((a,b) => a.title.localeCompare(b.title));
 
-        // Junção Sábado a Tarde
-        const salasSabadoTarde = [...salasGerais, ...salasExecutivas].sort((a,b) => a.title.localeCompare(b.title));
-
-        // Sessão Pardal
-        const salasPardal = [
-            { title: 'Alcoolismo no lar.', room: 'Sala 13 (1º Andar)' },
-            { title: 'Ecologia espiritual: a Terra como escola e lar.', room: 'Sala 05 (Térreo)' },
-            { title: 'Luiz Sérgio: A trajetória de um ser imortal.', room: 'Sala 12 (Térreo)' },
-            { title: 'Maria de Nazaré: Estrela das grandes almas.', room: 'Sala 04 (Térreo)' }
-        ].sort((a,b) => a.title.localeCompare(b.title));
-
-
         // ============================================================================
-        // PROGRAMAÇÃO OFICIAL (APENAS SÁBADO E DOMINGO CONFORME PDF)
+        // PROGRAMAÇÃO OFICIAL (APENAS SÁBADO E DOMINGO)
         // ============================================================================
         const eventos = [
             // SÁBADO
-            { id: 1, date: '2026-04-04', start: '06:30', end: '07:30', title: 'Sessão Pardal', type: 'extra', location: 'Múltiplas Salas', subLabel: 'Ver Temas e Salas', subEvents: salasPardal },
-            { id: 2, date: '2026-04-04', start: '08:00', end: '09:00', title: 'Credenciamento e Alegria Cristã', type: 'social', location: 'Recepção / Auditório' },
-            { id: 3, date: '2026-04-04', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Auditório' },
-            { id: 4, date: '2026-04-04', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 5, date: '2026-04-04', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Auditório' },
-            { id: 6, date: '2026-04-04', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 7, date: '2026-04-04', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
-            { id: 8, date: '2026-04-04', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Hall da Unidade I' },
-            { id: 9, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabadoTarde },
-            { id: 10, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 (1º Andar - Bloco 02)' },
-            { id: 11, date: '2026-04-04', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Auditório' },
-            { id: 12, date: '2026-04-04', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
-            { id: 13, date: '2026-04-04', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 (1º Andar - Bloco 02)' },
-            { id: 14, date: '2026-04-04', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
-            { id: 15, date: '2026-04-04', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
-            { id: 16, date: '2026-04-04', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Auditório' },
-            { id: 17, date: '2026-04-04', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Sala de Reunião' },
-            { id: 18, date: '2026-04-04', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
-            { id: 19, date: '2026-04-04', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 1, date: '2026-04-04', start: '08:00', end: '09:00', title: 'Credenciamento e Alegria Cristã', type: 'social', location: 'Recepção / Auditório' },
+            { id: 2, date: '2026-04-04', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Auditório' },
+            { id: 3, date: '2026-04-04', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 4, date: '2026-04-04', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Auditório' },
+            { id: 5, date: '2026-04-04', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 6, date: '2026-04-04', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 7, date: '2026-04-04', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Hall da Unidade I' },
+            { id: 8, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Assessorias', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 9, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 (1º Andar - Bloco 02)' },
+            { id: 10, date: '2026-04-04', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Auditório' },
+            { id: 11, date: '2026-04-04', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
+            { id: 12, date: '2026-04-04', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 (1º Andar - Bloco 02)' },
+            { id: 13, date: '2026-04-04', start: '17:00', end: '18:30', title: 'Comissões Áureo, Armando e Assessorias', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 14, date: '2026-04-04', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Hall da Unidade I' },
+            { id: 15, date: '2026-04-04', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Auditório' },
+            { id: 16, date: '2026-04-04', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Sala de Reunião (Térreo)' },
+            { id: 17, date: '2026-04-04', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 18, date: '2026-04-04', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
 
             // DOMINGO
-            { id: 20, date: '2026-04-05', start: '08:00', end: '08:30', title: 'Alegria Cristã e Preparação', type: 'social', location: 'Auditório' },
-            { id: 21, date: '2026-04-05', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Auditório' },
-            { id: 22, date: '2026-04-05', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
-            { id: 23, date: '2026-04-05', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
-            { id: 24, date: '2026-04-05', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Auditório' },
-            { id: 25, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Auditório' },
-            { id: 26, date: '2026-04-05', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões', subEvents: salasExecutivas },
-            { id: 27, date: '2026-04-05', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Salas Designadas' },
-            { id: 28, date: '2026-04-05', start: '13:00', end: '14:30', title: 'Almoço Fraterno', type: 'food', location: 'Hall da Unidade I' }
+            { id: 19, date: '2026-04-05', start: '08:00', end: '08:30', title: 'Alegria Cristã e Preparação', type: 'social', location: 'Auditório' },
+            { id: 20, date: '2026-04-05', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 21, date: '2026-04-05', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
+            { id: 22, date: '2026-04-05', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 23, date: '2026-04-05', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Auditório' },
+            { id: 24, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Auditório' },
+            { id: 25, date: '2026-04-05', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões', subEvents: salasExecutivas },
+            { id: 26, date: '2026-04-05', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Salas Designadas' },
+            { id: 27, date: '2026-04-05', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Organização', type: 'food', location: 'Hall da Unidade I' }
         ];
 
         // ============================================================================
