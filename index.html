@@ -389,38 +389,45 @@
         // ============================================================================
         // DADOS DAS SALAS - ORGANIZADAS RIGOROSAMENTE POR GRUPOS ALFABÉTICOS
         // ============================================================================
-        const salasGerais = [
-            { title: 'Direção', room: 'Tesouraria (Ao lado do bebedouro) - Térreo - Bloco 02', group: 'Assessorias e Direção' },
-            { title: 'Inovação e Projetos', room: 'Sala 04 - 2º Andar - Bloco 02', group: 'Assessorias e Direção' },
-            { title: 'Demais Comissões Irmão Armando', room: 'Sala 01 - 2º Andar - Bloco 02', group: 'Comissão Irmão Armando' },
-            { title: 'Financeiro', room: 'Atrás da Livraria - Térreo - Bloco 01', group: 'Comissão Irmão Armando' },
-            { title: 'Qualidade', room: 'Sala 1 - Térreo - Bloco 02', group: 'Comissão Irmão Armando' },
-            { title: 'TI', room: 'Sala 02 - Térreo - Bloco 02', group: 'Comissão Irmão Armando' },
-            { title: 'Alegria Cristã', room: 'Sala 03 - Subsolo - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Divulgação', room: 'Sala 03 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Campanha de Fraternidade Auta de Souza', room: 'CFAS - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-            { title: 'Caridade', room: 'Sala André Luiz (Ao lado do Bazar) - Térreo - Bloco 01', group: 'Comissão Irmão Áureo' },
-            { title: 'CECX', room: 'Ao lado da sala Presidência - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-            { title: 'Comunicação Social', room: 'Estúdio - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-            { title: 'Ecologia e Sustentabilidade', room: 'Sala 02 - 2º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Esclarecimento', room: 'Sala 04 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Evangelização Infantil', room: 'Sala 01 - Subsolo - Bloco 03', group: 'Comissão Irmão Áureo' },
-            { title: 'Mediunidade', room: 'Sala 07 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Mocidade', room: 'Sala Leopoldo Machado - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-            { title: 'Comunicação Social (Rádio)', room: 'Sala 04 - 1º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Tradução', room: 'Sala 03 - 1º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-            { title: 'Luiz Sérgio', room: '2º Andar - Bloco 01', group: 'Outras' },
-            { title: 'Luizinho', room: 'Sala 03 (Bl.03), Salas 04, 05 e 06 (Bl.02) - Subsolo', group: 'Outras' }
+                const salasGerais = [
+            // Assessorias e Direção
+            { title: 'Direção', room: 'Sala E 12 - 1º Andar', group: 'Assessorias e Direção' },
+            { title: 'Inovação e Projetos', room: 'A verificar', group: 'Assessorias e Direção' },
+
+            // Comissão Irmão Armando
+            { title: 'Financeiro', room: 'Sala B 07 - Térreo', group: 'Comissão Irmão Armando' }, 
+            { title: 'Qualidade', room: 'Sala E 11 - 1º Andar', group: 'Comissão Irmão Armando' },
+            { title: 'TI', room: 'Sala E 11 - 1º Andar', group: 'Comissão Irmão Armando' },
+
+            // Comissão Irmão Áureo
+            { title: 'Alegria Cristã', room: 'Sala E 21 - 2º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Campanha de Fraternidade Auta de Souza', room: 'Biblioteca - Térreo', group: 'Comissão Irmão Áureo' },
+            { title: 'Caridade', room: 'Sala E 01 - Térreo', group: 'Comissão Irmão Áureo' },
+            { title: 'CECX', room: 'A verificar', group: 'Comissão Irmão Áureo' },
+            { title: 'Comunicação Social', room: 'Sala E 03 - Térreo', group: 'Comissão Irmão Áureo' },
+            { title: 'Divulgação', room: 'Sala E 02 - Térreo', group: 'Comissão Irmão Áureo' },
+            { title: 'Ecologia e Sustentabilidade', room: 'A verificar', group: 'Comissão Irmão Áureo' },
+            { title: 'Escola Espírita', room: 'Sala E 13 - 1º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Esclarecimento', room: 'Sala E 14 - 1º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Evangelização Infantil', room: 'Sala E 16 - 1º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Mediunidade', room: 'Sala E 15 - 1º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Mocidade', room: 'Sala E 22 - 2º Andar', group: 'Comissão Irmão Áureo' },
+            { title: 'Tradução', room: 'Sala E 08 - Térreo', group: 'Comissão Irmão Áureo' },
+
+            // Outras
+            { title: 'Luiz Sérgio', room: 'Sala E 32 - 3º Andar', group: 'Outras' },
+            { title: 'Luizinho', room: 'Salas B 01, B 02 e B 03 - Térreo', group: 'Outras' }
         ];
 
-        const salasExecutivas = [
-            { title: 'Comissão Executiva AME', room: 'Sala da Presidência - 2º Andar - Bloco 01', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Em Defesa da Vida', room: 'Sala 02 - 1º Andar - Bloco 02', group: 'Comissões Executivas' },
-            { title: 'Evento Concafras Global', room: 'Sala 05 - Térreo - Bloco 02', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Evento Concafras Nacional', room: 'Sala 02 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Grupo Fraterno', room: 'Sala 01 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva IEE Euripedes Barsanulfo', room: 'Sala 03 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-            { title: 'Comissão Executiva Livro Espírita', room: 'Editora Auta de Souza - Subsolo 2 - Bloco 03', group: 'Comissões Executivas' }
+
+                const salasExecutivas = [
+            { title: 'Comissão Executiva AME', room: 'Salão - Térreo', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva Concafras Global', room: 'Sala E 11 - 1º Andar', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva Em Defesa da Vida', room: 'Sala E 02 - Térreo', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva Evento Concafras Nacional', room: 'Sala B 06 - Térreo', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva Grupo Fraterno', room: 'Sala E 14 - 1º Andar', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva IEE Eurípedes Barsanulfo', room: 'Sala E 13 - 1º Andar', group: 'Comissões Executivas' },
+            { title: 'Comissão Executiva Livro Espírita', room: 'Biblioteca - Térreo', group: 'Comissões Executivas' }
         ];
 
         const salasSabadoTarde = [...salasGerais, ...salasExecutivas];
