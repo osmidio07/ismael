@@ -6,9 +6,12 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,a initial-scale=1.0, viewport-fit=cover">
 
     <title>Programação | Reunião de Produção Doutrinária</title>
+    <meta name="description" content="Programação oficial da Reunião de Produção Doutrinária, nos dias 1º e 2 de agosto de 2026. Consulte horários, salas, comissões e cardápios.">
+    <meta name="color-scheme" content="light">
+    <meta name="format-detection" content="telephone=no">
 
 
 
@@ -22,22 +25,17 @@
 
     <script>
 
-        if ('serviceWorker' in navigator) {
-
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
             window.addEventListener('load', () => {
-
                 navigator.serviceWorker.register('sw.js')
-
-                    .then(reg => console.log('Service Worker registrado!', reg))
-
-                    .catch(err => console.log('Erro no Service Worker', err));
-
-            });
-
+                    .catch(err => console.warn('Service Worker indisponível:', err));
+            }, { once: true });
         }
 
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
@@ -74,7 +72,9 @@
 
 
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 150px; }
 
         
 
@@ -88,6 +88,27 @@
 
             overflow-x: hidden; 
 
+        
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        button, input { font: inherit; }
+        button { min-height: 44px; }
+        a, button, input { -webkit-tap-highlight-color: transparent; }
+        :focus-visible { outline: 3px solid rgba(37, 99, 235, 0.35); outline-offset: 3px; }
+
+        .skip-link {
+            position: fixed; top: 10px; left: 10px; z-index: 2000;
+            background: var(--text-main); color: white; padding: 10px 14px;
+            border-radius: 10px; text-decoration: none; font-weight: 800;
+            transform: translateY(-160%); transition: transform 0.2s ease;
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
         }
 
 
@@ -185,18 +206,33 @@
         }
 
         .header-date { 
-
             font-size: 0.75rem; 
-
-            font-weight: 700; 
-
-            letter-spacing: 0.1em; 
-
+            font-weight: 800; 
+            letter-spacing: 0.08em; 
             text-transform: uppercase;
-
             color: var(--accent-blue); 
-
         }
+
+        .header-status {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .day-nav {
+            display: flex; gap: 8px; margin-top: 8px; width: min(100%, 520px);
+            justify-content: center; overflow-x: auto; scrollbar-width: none;
+        }
+        .day-nav::-webkit-scrollbar { display: none; }
+        .day-chip {
+            min-height: 40px; display: inline-flex; align-items: center; justify-content: center;
+            padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.82); color: var(--text-main); text-decoration: none;
+            white-space: nowrap; font-size: 0.72rem; font-weight: 800; cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .day-chip:hover { transform: translateY(-1px); border-color: rgba(37,99,235,0.28); background: white; }
+        .day-chip-now { background: var(--text-main); color: white; border-color: transparent; }
 
 
 
@@ -206,7 +242,38 @@
 
            ========================================================================== */
 
-        .schedule-container { max-width: 640px; margin: 30px auto 0; padding: 0 20px; }
+        .event-overview {
+            max-width: 640px; margin: 28px auto 0; padding: 0 20px;
+        }
+        .overview-card {
+            position: relative; overflow: hidden;
+            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(37,99,235,0.94));
+            color: white; border-radius: 28px; padding: 26px;
+            box-shadow: 0 24px 50px -24px rgba(37,99,235,0.65);
+        }
+        .overview-card::after {
+            content: ''; position: absolute; width: 220px; height: 220px; right: -80px; top: -90px;
+            border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 65%);
+            pointer-events: none;
+        }
+        .overview-kicker {
+            font-size: 0.68rem; font-weight: 900; letter-spacing: 0.16em;
+            text-transform: uppercase; opacity: 0.78; margin-bottom: 8px;
+        }
+        .overview-title { font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.035em; max-width: 500px; }
+        .overview-text { font-size: 0.86rem; line-height: 1.55; margin-top: 10px; opacity: 0.84; max-width: 500px; }
+        .status-panel {
+            margin-top: 20px; padding: 14px 16px; border-radius: 18px;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        }
+        .status-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .status-label { font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.76; }
+        .status-value { font-size: 0.82rem; font-weight: 800; text-align: right; }
+        .progress-track { height: 6px; border-radius: 999px; background: rgba(255,255,255,0.18); margin-top: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0; border-radius: inherit; background: white; transition: width 0.6s ease; }
+
+        .schedule-container { max-width: 640px; margin: 18px auto 0; padding: 0 20px; }
 
         
 
@@ -226,7 +293,11 @@
 
 
 
-        .timeline-item { position: relative; display: flex; gap: 20px; padding-bottom: 30px; transition: all 0.5s ease; }
+        .timeline-item {
+            position: relative; display: flex; gap: 20px; padding-bottom: 30px;
+            transition: opacity 0.35s ease, filter 0.35s ease;
+            content-visibility: auto; contain-intrinsic-size: 180px;
+        }
 
         
 
@@ -374,6 +445,23 @@
 
         .timeline-item.is-current .time-text { color: var(--live-red); }
 
+        .timeline-item.is-next .icon-circle {
+            border-color: rgba(37,99,235,0.35); background: var(--accent-blue); color: white;
+            box-shadow: 0 0 0 5px rgba(37,99,235,0.10);
+        }
+        .timeline-item.is-next .card-content {
+            border-color: rgba(37,99,235,0.26);
+            box-shadow: 0 16px 34px -18px rgba(37,99,235,0.42);
+        }
+        .next-tag {
+            position: absolute; top: 12px; right: 12px;
+            display: none; align-items: center; gap: 6px;
+            padding: 5px 9px; border-radius: 999px;
+            background: var(--accent-light); color: var(--accent-blue);
+            font-size: 0.58rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .timeline-item.is-next .next-tag { display: inline-flex; }
+
 
 
         .live-tag {
@@ -502,6 +590,11 @@
 
             text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;
 
+        }
+        .search-empty {
+            display: none; padding: 14px; text-align: center; color: var(--text-muted);
+            font-size: 0.78rem; font-weight: 700; border: 1px dashed rgba(0,0,0,0.12);
+            border-radius: 12px; background: rgba(255,255,255,0.6);
         }
 
 
@@ -684,13 +777,38 @@
 
         .footer-info { text-align: center; margin-top: 50px; font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
 
+        @media (max-width: 520px) {
+            .sticky-header { padding: 11px 12px 10px; }
+            .header-tag { font-size: 1rem; }
+            .header-status { max-width: 92vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .schedule-container, .event-overview { padding-left: 14px; padding-right: 14px; }
+            .overview-card { border-radius: 22px; padding: 22px 18px; }
+            .timeline-item { gap: 12px; }
+            .card-content { padding: 17px; border-radius: 18px; }
+            .icon-circle { width: 40px; height: 40px; border-radius: 12px; }
+            .timeline-item::before { left: 19px; top: 40px; }
+            .live-tag { position: static; width: fit-content; border-radius: 999px; margin-bottom: 10px; padding: 5px 10px; }
+            .next-tag { position: static; width: fit-content; margin-bottom: 8px; }
+            .fab-hibrida { bottom: max(16px, env(safe-area-inset-bottom)); right: 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .ambient-light, .ambient-light-2, .ambient-light-3 { animation: none; }
+        }
+
     </style>
 
 </head>
 
 <body>
 
-
+    <a class="skip-link" href="#schedule-render-area">Ir direto para a programação</a>
 
     <div class="ambient-light"></div>
 
@@ -704,13 +822,35 @@
 
         <h1 class="header-tag">Reunião de Produção Doutrinária</h1>
 
-        <div class="header-date" id="header-date">Carregando...</div>
+        <div class="header-date" id="header-date">1º e 2 de agosto de 2026</div>
+        <div class="header-status" id="header-status" aria-live="polite">Carregando status da programação...</div>
+
+        <nav class="day-nav" aria-label="Navegação rápida da programação">
+            <a class="day-chip" href="#dia-2026-08-01">Sábado 01/08</a>
+            <a class="day-chip" href="#dia-2026-08-02">Domingo 02/08</a>
+            <button class="day-chip day-chip-now" type="button" onclick="irParaAgora()">Ir para agora</button>
+        </nav>
 
     </header>
 
+    <section class="event-overview" aria-labelledby="overview-title">
+        <div class="overview-card">
+            <div class="overview-kicker">Programação oficial • 1º e 2 de agosto</div>
+            <h2 class="overview-title" id="overview-title">Dois dias de integração, estudo e trabalho coletivo.</h2>
+            <p class="overview-text">Acompanhe o que está acontecendo, encontre sua sala rapidamente e consulte os cardápios sem sair da programação.</p>
+            <div class="status-panel" aria-live="polite">
+                <div class="status-row">
+                    <span class="status-label">Status do encontro</span>
+                    <span class="status-value" id="overview-status">Carregando...</span>
+                </div>
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-bar" id="event-progress"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-    <main class="schedule-container" id="schedule-render-area">
+    <main class="schedule-container" id="schedule-render-area" tabindex="-1">
 
     </main>
 
@@ -742,11 +882,11 @@
 
 
 
-    <div id="modal-cardapio" class="modal-overlay" onclick="fecharModal(event)">
+    <div id="modal-cardapio" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title" onclick="fecharModal(event)">
 
-        <div class="modal-card">
+        <div class="modal-card" role="document">
 
-            <button class="modal-close" onclick="fecharModal(event, true)">
+            <button class="modal-close" type="button" aria-label="Fechar cardápio" onclick="fecharModal(event, true)">
 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 
@@ -888,7 +1028,7 @@
 
             { 
 
-              id: 1, date: '2026-04-04', start: '08:00', end: '09:00', title: 'Credenciamento, Alegria Cristã e Café da Manhã', type: 'social', location: 'Recepção / Auditório',
+              id: 1, date: '2026-08-01', start: '08:00', end: '09:00', title: 'Credenciamento, Alegria Cristã e Café da Manhã', type: 'social', location: 'Recepção / Auditório',
 
               menuTitle: 'Café da Manhã de Sábado', menuIcon: '☕',
 
@@ -914,19 +1054,19 @@
 
             },
 
-            { id: 2, date: '2026-04-04', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Auditório' },
+            { id: 2, date: '2026-08-01', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Auditório' },
 
-            { id: 3, date: '2026-04-04', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 3, date: '2026-08-01', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
 
-            { id: 4, date: '2026-04-04', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Auditório' },
+            { id: 4, date: '2026-08-01', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Auditório' },
 
-            { id: 5, date: '2026-04-04', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 5, date: '2026-08-01', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Área Externa' },
 
-            { id: 6, date: '2026-04-04', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 6, date: '2026-08-01', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
 
             { 
 
-              id: 7, date: '2026-04-04', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Área Externa - Subsolo',
+              id: 7, date: '2026-08-01', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Área Externa - Subsolo',
 
               menuTitle: 'Almoço de Sábado', menuIcon: '🍲',
 
@@ -948,21 +1088,21 @@
 
             },
 
-            { id: 8, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Assessorias', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabadoTarde },
+            { id: 8, date: '2026-08-01', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Assessorias', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasSabadoTarde },
 
-            { id: 9, date: '2026-04-04', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 - 1º Andar - Bloco 02' },
+            { id: 9, date: '2026-08-01', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 - 1º Andar - Bloco 02' },
 
-            { id: 10, date: '2026-04-04', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Auditório' },
+            { id: 10, date: '2026-08-01', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Auditório' },
 
-            { id: 11, date: '2026-04-04', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
+            { id: 11, date: '2026-08-01', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Área Externa' },
 
-            { id: 12, date: '2026-04-04', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 - 1º Andar - Bloco 02' },
+            { id: 12, date: '2026-08-01', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Sala 01 - 1º Andar - Bloco 02' },
 
-            { id: 13, date: '2026-04-04', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 13, date: '2026-08-01', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
 
             { 
 
-              id: 14, date: '2026-04-04', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Área Externa - Subsolo',
+              id: 14, date: '2026-08-01', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Alojamento / Área Externa - Subsolo',
 
               menuTitle: 'Jantar de Sábado', menuIcon: '🥣',
 
@@ -984,13 +1124,13 @@
 
             },
 
-            { id: 15, date: '2026-04-04', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Auditório' },
+            { id: 15, date: '2026-08-01', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Auditório' },
 
-            { id: 16, date: '2026-04-04', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Sala de Reunião' },
+            { id: 16, date: '2026-08-01', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Sala de Reunião' },
 
-            { id: 17, date: '2026-04-04', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
+            { id: 17, date: '2026-08-01', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões e Salas', subEvents: salasGerais },
 
-            { id: 18, date: '2026-04-04', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 18, date: '2026-08-01', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Auditório' },
 
 
 
@@ -998,7 +1138,7 @@
 
             { 
 
-              id: 19, date: '2026-04-05', start: '08:00', end: '08:30', title: 'Alegria Cristã, Preparação e Café da Manhã', type: 'social', location: 'Auditório',
+              id: 19, date: '2026-08-02', start: '08:00', end: '08:30', title: 'Alegria Cristã, Preparação e Café da Manhã', type: 'social', location: 'Auditório',
 
               menuTitle: 'Café da Manhã de Domingo', menuIcon: '☕',
 
@@ -1024,23 +1164,23 @@
 
             },
 
-            { id: 20, date: '2026-04-05', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Auditório' },
+            { id: 20, date: '2026-08-02', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Auditório' },
 
-            { id: 21, date: '2026-04-05', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
+            { id: 21, date: '2026-08-02', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Auditório' },
 
-            { id: 22, date: '2026-04-05', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
+            { id: 22, date: '2026-08-02', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Área Externa' },
 
-            { id: 23, date: '2026-04-05', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Auditório' },
+            { id: 23, date: '2026-08-02', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Auditório' },
 
-            { id: 24, date: '2026-04-05', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Auditório' },
+            { id: 24, date: '2026-08-02', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Auditório' },
 
-            { id: 25, date: '2026-04-05', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões', subEvents: salasExecutivas },
+            { id: 25, date: '2026-08-02', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Múltiplas Salas', subLabel: 'Ver Comissões', subEvents: salasExecutivas },
 
-            { id: 26, date: '2026-04-05', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Salas Designadas' },
+            { id: 26, date: '2026-08-02', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Salas Designadas' },
 
             { 
 
-              id: 27, date: '2026-04-05', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Organização', type: 'food', location: 'Área Externa - Subsolo',
+              id: 27, date: '2026-08-02', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Organização', type: 'food', location: 'Área Externa - Subsolo',
 
               menuTitle: 'Almoço de Domingo', menuIcon: '🥘',
 
@@ -1100,113 +1240,113 @@
 
 
 
-        // CONTROLE DO MODAL DE CARDÁPIO
+        // CONTROLE DO MODAL, ACESSIBILIDADE E NAVEGAÇÃO
+        let ultimoFoco = null;
 
         function abrirMenuModal(eventId) {
-
             const evento = eventos.find(e => e.id === eventId);
-
-            if(!evento || !evento.menuItems) return;
-
-
+            if (!evento || !evento.menuItems) return;
 
             document.getElementById('modal-title').innerText = evento.menuTitle;
-
             document.getElementById('modal-icon').innerText = evento.menuIcon;
-
             document.getElementById('modal-subtitle').innerText = evento.title;
 
-
-
             const list = document.getElementById('modal-list');
-
             list.innerHTML = evento.menuItems.map(item => `
-
                 <li class="menu-item">
-
-                    <span class="menu-item-icon">${item.icon}</span>
-
+                    <span class="menu-item-icon" aria-hidden="true">${item.icon}</span>
                     <span>${item.text}</span>
-
                 </li>
-
             `).join('');
 
-
-
-            document.getElementById('modal-cardapio').classList.add('active');
-
+            ultimoFoco = document.activeElement;
+            const modal = document.getElementById('modal-cardapio');
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => modal.querySelector('.modal-close').focus());
         }
-
-
 
         function fecharModal(event, force = false) {
-
             if (force || event.target.classList.contains('modal-overlay')) {
-
-                document.getElementById('modal-cardapio').classList.remove('active');
-
+                const modal = document.getElementById('modal-cardapio');
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                if (ultimoFoco) ultimoFoco.focus();
             }
-
         }
-
-
 
         function toggleSubEvents(id, btn) {
-
             const wrapper = document.getElementById('sub-' + id);
+            const vaiAbrir = !wrapper.classList.contains('open');
 
-            if (wrapper.classList.contains('open')) {
+            wrapper.classList.toggle('open', vaiAbrir);
+            btn.classList.toggle('active', vaiAbrir);
+            btn.setAttribute('aria-expanded', String(vaiAbrir));
+            btn.querySelector('span').innerText = vaiAbrir ? 'Ocultar opções' : btn.dataset.label;
 
-                wrapper.classList.remove('open');
-
-                btn.classList.remove('active');
-
-                btn.querySelector('span').innerText = btn.dataset.label;
-
-            } else {
-
-                wrapper.classList.add('open');
-
-                btn.classList.add('active');
-
-                btn.querySelector('span').innerText = 'Ocultar Opções';
-
+            if (vaiAbrir) {
+                const busca = wrapper.querySelector('.search-input');
+                if (busca) setTimeout(() => busca.focus(), 120);
             }
-
         }
 
-
+        function normalizarTexto(texto) {
+            return texto
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
 
         function filterComissoes(input, listId) {
-
-            const filter = input.value.toLowerCase();
-
+            const filtro = normalizarTexto(input.value);
             const list = document.getElementById(listId);
-
             const items = list.querySelectorAll('.sub-event-item');
-
-            
+            let visiveis = 0;
 
             items.forEach(item => {
-
-                const title = item.querySelector('.sub-event-title').innerText.toLowerCase();
-
-                if (title.indexOf(filter) > -1) {
-
-                    item.style.display = 'flex';
-
-                } else {
-
-                    item.style.display = 'none';
-
-                }
-
+                const textoCompleto = normalizarTexto(item.innerText);
+                const exibir = textoCompleto.includes(filtro);
+                item.style.display = exibir ? 'flex' : 'none';
+                if (exibir) visiveis++;
             });
 
+            const vazio = list.querySelector('.search-empty');
+            if (vazio) vazio.style.display = visiveis ? 'none' : 'block';
         }
 
+        function formatarDataEvento(dateString) {
+            const data = new Date(`${dateString}T12:00:00`);
+            const texto = new Intl.DateTimeFormat('pt-BR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long'
+            }).format(data);
 
+            return texto.charAt(0).toUpperCase() + texto.slice(1);
+        }
+
+        function rolarParaElemento(elemento) {
+            if (!elemento) return;
+            const headerOffset = document.querySelector('.sticky-header').offsetHeight + 18;
+            const top = elemento.getBoundingClientRect().top + window.scrollY - headerOffset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+
+        function irParaAgora() {
+            const destino = document.querySelector('.timeline-item.is-current') ||
+                            document.querySelector('.timeline-item.is-next') ||
+                            document.getElementById('dia-2026-08-01');
+            rolarParaElemento(destino);
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && document.getElementById('modal-cardapio').classList.contains('active')) {
+                fecharModal(event, true);
+            }
+        });
 
         function renderizarAgenda() {
 
@@ -1222,22 +1362,12 @@
 
                 if (item.date !== dataAtual) {
 
-                    let formatDate = '';
-
-                    if (item.date === '2026-04-11') formatDate = 'Sábado, 11 de Abril';
-
-                    else if (item.date === '2026-04-12') formatDate = 'Domingo, 12 de Abril';
-
-
+                    const formatDate = formatarDataEvento(item.date);
 
                     html += `
-
-                        <div class="day-divider fade-in-up" style="animation-delay: ${index * 0.04}s">
-
-                            <span class="day-tag">${formatDate}</span>
-
+                        <div class="day-divider fade-in-up" id="dia-${item.date}" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
+                            <time class="day-tag" datetime="${item.date}">${formatDate}</time>
                         </div>
-
                     `;
 
                     dataAtual = item.date;
@@ -1256,7 +1386,7 @@
 
                     extraHtml = `
 
-                        <button class="btn-menu" onclick="abrirMenuModal(${item.id})">
+                        <button class="btn-menu" type="button" aria-haspopup="dialog" aria-controls="modal-cardapio" onclick="abrirMenuModal(${item.id})">
 
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
 
@@ -1324,7 +1454,8 @@
 
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 
-                                <input type="text" class="search-input" placeholder="Buscar sala ou comissão..." onkeyup="filterComissoes(this, 'list-${item.id}')">
+                                <label class="sr-only" for="search-${item.id}">Buscar sala ou comissão</label>
+                                <input id="search-${item.id}" type="search" class="search-input" placeholder="Buscar sala ou comissão..." autocomplete="off" oninput="filterComissoes(this, 'list-${item.id}')">
 
                             </div>
 
@@ -1336,7 +1467,7 @@
 
                     extraHtml += `
 
-                        <button class="btn-expand" data-label="${item.subLabel}" onclick="toggleSubEvents(${item.id}, this)">
+                        <button class="btn-expand" type="button" data-label="${item.subLabel}" aria-expanded="false" aria-controls="sub-${item.id}" onclick="toggleSubEvents(${item.id}, this)">
 
                             <span>${item.subLabel}</span>
 
@@ -1351,6 +1482,7 @@
                             <div id="list-${item.id}">
 
                                 ${itemsHtml}
+                                <div class="search-empty" role="status">Nenhuma sala ou comissão encontrada.</div>
 
                             </div>
 
@@ -1364,19 +1496,20 @@
 
                 html += `
 
-                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00" data-end="${item.date}T${item.end}:00" style="animation-delay: ${index * 0.04}s">
+                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00" data-end="${item.date}T${item.end}:00" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
 
-                        <div class="icon-circle">${ICONS[item.type]}</div>
+                        <div class="icon-circle" aria-hidden="true">${ICONS[item.type]}</div>
 
                         <div class="card-content">
 
-                            <div class="live-tag" style="display: none;">
+                            <div class="live-tag" hidden>
 
                                 <div class="ping-dot"></div>
 
-                                <span>Acontecendo Agora!</span>
+                                <span>Acontecendo agora</span>
 
                             </div>
+                            <div class="next-tag"><span>Próxima atividade</span></div>
 
                             
 
@@ -1398,7 +1531,7 @@
 
                             <h3 class="event-title">${item.title}</h3>
 
-                            <span class="badge badge-${item.type === 'spiritual' ? 'workshop' : item.type}">${TYPE_NAMES[item.type]}</span>
+                            <span class="badge badge-${item.type}">${TYPE_NAMES[item.type]}</span>
 
                             ${extraHtml}
 
@@ -1418,89 +1551,88 @@
 
 
 
-        let autoScrolled = false; 
-
-
+        let autoScrolled = false;
 
         function atualizarTempoReal() {
+            const agora = new Date();
+            const items = [...document.querySelectorAll('.timeline-item')];
+            const ordenados = items
+                .map(el => ({
+                    el,
+                    inicio: new Date(el.dataset.start),
+                    fim: new Date(el.dataset.end)
+                }))
+                .sort((a, b) => a.inicio - b.inicio);
 
-            const agora = new Date(); 
+            const atuais = ordenados.filter(item => agora >= item.inicio && agora < item.fim);
+            const futuros = ordenados.filter(item => agora < item.inicio);
+            const proximoHorario = futuros.length ? futuros[0].inicio.getTime() : null;
+            const proximos = proximoHorario
+                ? futuros.filter(item => item.inicio.getTime() === proximoHorario)
+                : [];
 
-            
+            ordenados.forEach(item => {
+                const liveTag = item.el.querySelector('.live-tag');
+                item.el.classList.remove('is-past', 'is-current', 'is-next');
+                item.el.removeAttribute('aria-current');
+                liveTag.hidden = true;
 
-            const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-
-            const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-
-            
-
-            document.getElementById('header-date').innerText = `${diasSemana[agora.getDay()]}, ${String(agora.getDate()).padStart(2, '0')} de ${meses[agora.getMonth()]}`;
-
-
-
-            const items = document.querySelectorAll('.timeline-item');
-
-
-
-            items.forEach(el => {
-
-                const startTime = new Date(el.dataset.start);
-
-                const endTime = new Date(el.dataset.end);
-
-                const liveTag = el.querySelector('.live-tag');
-
-
-
-                el.classList.remove('is-past', 'is-current');
-
-                liveTag.style.display = 'none';
-
-
-
-                if (agora > endTime) {
-
-                    el.classList.add('is-past'); 
-
-                } else if (agora >= startTime && agora <= endTime) {
-
-                    el.classList.add('is-current'); 
-
-                    liveTag.style.display = 'flex';
-
-                    
-
-                    if (!autoScrolled) { 
-
-                        setTimeout(() => { 
-
-                            const headerOffset = 130;
-
-                            const elementPosition = el.getBoundingClientRect().top;
-
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-
-                        }, 1000);
-
-                        autoScrolled = true;
-
-                    }
-
+                if (agora >= item.fim) {
+                    item.el.classList.add('is-past');
                 }
-
             });
 
+            atuais.forEach(item => {
+                item.el.classList.remove('is-past');
+                item.el.classList.add('is-current');
+                item.el.setAttribute('aria-current', 'step');
+                item.el.querySelector('.live-tag').hidden = false;
+            });
+
+            proximos.forEach(item => item.el.classList.add('is-next'));
+
+            const concluidos = ordenados.filter(item => agora >= item.fim).length;
+            const progresso = Math.max(0, Math.min(100, (concluidos / ordenados.length) * 100));
+            document.getElementById('event-progress').style.width = `${progresso}%`;
+
+            const headerStatus = document.getElementById('header-status');
+            const overviewStatus = document.getElementById('overview-status');
+            const primeiroInicio = ordenados[0].inicio;
+            const ultimoFim = ordenados.reduce((maior, item) => item.fim > maior ? item.fim : maior, ordenados[0].fim);
+            const hora = data => data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+            if (agora < primeiroInicio) {
+                headerStatus.innerText = `Começa sábado às ${hora(primeiroInicio)}`;
+                overviewStatus.innerText = 'O encontro ainda vai começar';
+            } else if (atuais.length) {
+                const primeiroTitulo = atuais[0].el.querySelector('.event-title').innerText;
+                headerStatus.innerText = atuais.length === 1
+                    ? `Ao vivo agora • ${primeiroTitulo}`
+                    : `Ao vivo agora • ${atuais.length} atividades em andamento`;
+                overviewStatus.innerText = `${concluidos} de ${ordenados.length} atividades concluídas`;
+            } else if (agora < ultimoFim && futuros.length) {
+                const primeiroTitulo = futuros[0].el.querySelector('.event-title').innerText;
+                headerStatus.innerText = `A seguir, ${primeiroTitulo} • ${hora(futuros[0].inicio)}`;
+                overviewStatus.innerText = `Próxima atividade às ${hora(futuros[0].inicio)}`;
+            } else {
+                headerStatus.innerText = 'Encontro concluído • programação disponível';
+                overviewStatus.innerText = 'Programação concluída';
+                document.getElementById('event-progress').style.width = '100%';
+            }
+
+            if (!autoScrolled && atuais.length) {
+                setTimeout(() => rolarParaElemento(atuais[0].el), 700);
+                autoScrolled = true;
+            }
         }
 
-
-
         renderizarAgenda();
-
         atualizarTempoReal();
 
-        setInterval(atualizarTempoReal, 20000); 
+        const relogioAgenda = setInterval(atualizarTempoReal, 30000);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) atualizarTempoReal();
+        }); 
 
     </script>
 
