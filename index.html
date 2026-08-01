@@ -442,11 +442,15 @@
 
             padding: 6px 14px; border-bottom-left-radius: 16px; border-top-right-radius: 18px;
 
-            display: flex; align-items: center; gap: 8px;
+            display: none; align-items: center; gap: 8px;
 
             box-shadow: -4px 4px 15px rgba(255, 59, 48, 0.2);
 
         }
+
+        /* A etiqueta só existe visualmente no único card definido como atual. */
+        .timeline-item.is-current .live-tag { display: flex; }
+        .live-tag[hidden] { display: none !important; }
 
         .live-tag span { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
 
@@ -1428,7 +1432,7 @@
 
                         <div class="card-content">
 
-                            <div class="live-tag" hidden>
+                            <div class="live-tag" aria-hidden="true">
 
                                 <div class="ping-dot"></div>
 
@@ -1499,7 +1503,7 @@
                 const liveTag = item.el.querySelector('.live-tag');
                 item.el.classList.remove('is-past', 'is-current', 'is-next');
                 item.el.removeAttribute('aria-current');
-                liveTag.hidden = true;
+                liveTag.setAttribute('aria-hidden', 'true');
 
                 if (agora >= item.fim) {
                     item.el.classList.add('is-past');
@@ -1510,7 +1514,7 @@
                 atual.el.classList.remove('is-past');
                 atual.el.classList.add('is-current');
                 atual.el.setAttribute('aria-current', 'step');
-                atual.el.querySelector('.live-tag').hidden = false;
+                atual.el.querySelector('.live-tag').setAttribute('aria-hidden', 'false');
             }
 
             if (proximo && proximo !== atual) {
