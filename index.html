@@ -6,20 +6,21 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width,a initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Programação | Reunião de Produção Doutrinária</title>
-    <meta name="description" content="Programação oficial da Reunião de Produção Doutrinária, nos dias 1º e 2 de agosto de 2026. Consulte horários, salas, comissões e cardápios.">
+    <meta name="description" content="Programação oficial da Reunião de Produção Doutrinária. Consulte horários, salas, comissões e cardápios.">
     <meta name="color-scheme" content="light">
     <meta name="format-detection" content="telephone=no">
 
 
 
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
 
     <meta name="theme-color" content="#2563eb">
 
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
 
 
@@ -27,7 +28,7 @@
 
         if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
                     .catch(err => console.warn('Service Worker indisponível:', err));
             }, { once: true });
         }
@@ -219,21 +220,6 @@
             color: var(--text-muted);
         }
 
-        .day-nav {
-            display: flex; gap: 8px; margin-top: 8px; width: min(100%, 520px);
-            justify-content: center; overflow-x: auto; scrollbar-width: none;
-        }
-        .day-nav::-webkit-scrollbar { display: none; }
-        .day-chip {
-            min-height: 40px; display: inline-flex; align-items: center; justify-content: center;
-            padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.08);
-            background: rgba(255,255,255,0.82); color: var(--text-main); text-decoration: none;
-            white-space: nowrap; font-size: 0.72rem; font-weight: 800; cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-        .day-chip:hover { transform: translateY(-1px); border-color: rgba(37,99,235,0.28); background: white; }
-        .day-chip-now { background: var(--text-main); color: white; border-color: transparent; }
-
 
 
         /* ==========================================================================
@@ -274,22 +260,6 @@
         .progress-bar { height: 100%; width: 0; border-radius: inherit; background: white; transition: width 0.6s ease; }
 
         .schedule-container { max-width: 640px; margin: 18px auto 0; padding: 0 20px; }
-
-        
-
-        .day-divider { display: flex; align-items: center; gap: 16px; margin: 40px 0 30px; }
-
-        .day-divider::before, .day-divider::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(203,213,225,0), #e2e8f0, rgba(203,213,225,0)); }
-
-        .day-tag { 
-
-            background: white; border: 1px solid rgba(0,0,0,0.06); padding: 8px 24px; 
-
-            border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; 
-
-            letter-spacing: 0.15em; color: var(--text-main); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-
-        }
 
 
 
@@ -825,12 +795,6 @@
         <div class="header-date" id="header-date">1º e 2 de agosto de 2026</div>
         <div class="header-status" id="header-status" aria-live="polite">Carregando status da programação...</div>
 
-        <nav class="day-nav" aria-label="Navegação rápida da programação">
-            <a class="day-chip" href="#dia-2026-08-01">Sábado 01/08</a>
-            <a class="day-chip" href="#dia-2026-08-02">Domingo 02/08</a>
-            <button class="day-chip day-chip-now" type="button" onclick="irParaAgora()">Ir para agora</button>
-        </nav>
-
     </header>
 
     <section class="event-overview" aria-labelledby="overview-title">
@@ -1317,29 +1281,11 @@
             if (vazio) vazio.style.display = visiveis ? 'none' : 'block';
         }
 
-        function formatarDataEvento(dateString) {
-            const data = new Date(`${dateString}T12:00:00`);
-            const texto = new Intl.DateTimeFormat('pt-BR', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long'
-            }).format(data);
-
-            return texto.charAt(0).toUpperCase() + texto.slice(1);
-        }
-
         function rolarParaElemento(elemento) {
             if (!elemento) return;
             const headerOffset = document.querySelector('.sticky-header').offsetHeight + 18;
             const top = elemento.getBoundingClientRect().top + window.scrollY - headerOffset;
             window.scrollTo({ top, behavior: 'smooth' });
-        }
-
-        function irParaAgora() {
-            const destino = document.querySelector('.timeline-item.is-current') ||
-                            document.querySelector('.timeline-item.is-next') ||
-                            document.getElementById('dia-2026-08-01');
-            rolarParaElemento(destino);
         }
 
         document.addEventListener('keydown', event => {
@@ -1354,27 +1300,7 @@
 
             let html = '';
 
-            let dataAtual = '';
-
-
-
             eventos.forEach((item, index) => {
-
-                if (item.date !== dataAtual) {
-
-                    const formatDate = formatarDataEvento(item.date);
-
-                    html += `
-                        <div class="day-divider fade-in-up" id="dia-${item.date}" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
-                            <time class="day-tag" datetime="${item.date}">${formatDate}</time>
-                        </div>
-                    `;
-
-                    dataAtual = item.date;
-
-                }
-
-
 
                 let extraHtml = '';
 
@@ -1496,7 +1422,7 @@
 
                 html += `
 
-                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00" data-end="${item.date}T${item.end}:00" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
+                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00-03:00" data-end="${item.date}T${item.end}:00-03:00" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
 
                         <div class="icon-circle" aria-hidden="true">${ICONS[item.type]}</div>
 
@@ -1555,21 +1481,19 @@
 
         function atualizarTempoReal() {
             const agora = new Date();
-            const items = [...document.querySelectorAll('.timeline-item')];
-            const ordenados = items
-                .map(el => ({
+            const ordenados = [...document.querySelectorAll('.timeline-item')]
+                .map((el, ordem) => ({
                     el,
+                    ordem,
                     inicio: new Date(el.dataset.start),
                     fim: new Date(el.dataset.end)
                 }))
-                .sort((a, b) => a.inicio - b.inicio);
+                .sort((a, b) => (a.inicio - b.inicio) || (a.ordem - b.ordem));
 
-            const atuais = ordenados.filter(item => agora >= item.inicio && agora < item.fim);
-            const futuros = ordenados.filter(item => agora < item.inicio);
-            const proximoHorario = futuros.length ? futuros[0].inicio.getTime() : null;
-            const proximos = proximoHorario
-                ? futuros.filter(item => item.inicio.getTime() === proximoHorario)
-                : [];
+            // Regra visual: apenas uma atividade recebe “Acontecendo agora”.
+            // Em horários paralelos, prevalece a primeira atividade na ordem oficial da programação.
+            const atual = ordenados.find(item => agora >= item.inicio && agora < item.fim) || null;
+            const proximo = ordenados.find(item => agora < item.inicio) || null;
 
             ordenados.forEach(item => {
                 const liveTag = item.el.querySelector('.live-tag');
@@ -1582,14 +1506,16 @@
                 }
             });
 
-            atuais.forEach(item => {
-                item.el.classList.remove('is-past');
-                item.el.classList.add('is-current');
-                item.el.setAttribute('aria-current', 'step');
-                item.el.querySelector('.live-tag').hidden = false;
-            });
+            if (atual) {
+                atual.el.classList.remove('is-past');
+                atual.el.classList.add('is-current');
+                atual.el.setAttribute('aria-current', 'step');
+                atual.el.querySelector('.live-tag').hidden = false;
+            }
 
-            proximos.forEach(item => item.el.classList.add('is-next'));
+            if (proximo && proximo !== atual) {
+                proximo.el.classList.add('is-next');
+            }
 
             const concluidos = ordenados.filter(item => agora >= item.fim).length;
             const progresso = Math.max(0, Math.min(100, (concluidos / ordenados.length) * 100));
@@ -1599,29 +1525,31 @@
             const overviewStatus = document.getElementById('overview-status');
             const primeiroInicio = ordenados[0].inicio;
             const ultimoFim = ordenados.reduce((maior, item) => item.fim > maior ? item.fim : maior, ordenados[0].fim);
-            const hora = data => data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            const hora = data => data.toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'America/Sao_Paulo'
+            });
 
             if (agora < primeiroInicio) {
                 headerStatus.innerText = `Começa sábado às ${hora(primeiroInicio)}`;
                 overviewStatus.innerText = 'O encontro ainda vai começar';
-            } else if (atuais.length) {
-                const primeiroTitulo = atuais[0].el.querySelector('.event-title').innerText;
-                headerStatus.innerText = atuais.length === 1
-                    ? `Ao vivo agora • ${primeiroTitulo}`
-                    : `Ao vivo agora • ${atuais.length} atividades em andamento`;
+            } else if (atual) {
+                const tituloAtual = atual.el.querySelector('.event-title').innerText;
+                headerStatus.innerText = `Ao vivo agora • ${tituloAtual}`;
                 overviewStatus.innerText = `${concluidos} de ${ordenados.length} atividades concluídas`;
-            } else if (agora < ultimoFim && futuros.length) {
-                const primeiroTitulo = futuros[0].el.querySelector('.event-title').innerText;
-                headerStatus.innerText = `A seguir, ${primeiroTitulo} • ${hora(futuros[0].inicio)}`;
-                overviewStatus.innerText = `Próxima atividade às ${hora(futuros[0].inicio)}`;
+            } else if (agora < ultimoFim && proximo) {
+                const proximoTitulo = proximo.el.querySelector('.event-title').innerText;
+                headerStatus.innerText = `A seguir, ${proximoTitulo} • ${hora(proximo.inicio)}`;
+                overviewStatus.innerText = `Próxima atividade às ${hora(proximo.inicio)}`;
             } else {
                 headerStatus.innerText = 'Encontro concluído • programação disponível';
                 overviewStatus.innerText = 'Programação concluída';
                 document.getElementById('event-progress').style.width = '100%';
             }
 
-            if (!autoScrolled && atuais.length) {
-                setTimeout(() => rolarParaElemento(atuais[0].el), 700);
+            if (!autoScrolled && atual) {
+                setTimeout(() => rolarParaElemento(atual.el), 700);
                 autoScrolled = true;
             }
         }
