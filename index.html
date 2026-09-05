@@ -805,7 +805,7 @@
         <div class="overview-card">
             <div class="overview-kicker">Programação oficial • 5 e 6 de setembro</div>
             <h2 class="overview-title" id="overview-title">Dois dias de integração, estudo e trabalho coletivo.</h2>
-            <p class="overview-text">Acompanhe a programação oficial da Reunião de Produção Doutrinária no Centro Espírita Irmão Áureo, em Goiânia. As salas e os cardápios desta edição serão inseridos assim que forem confirmados.</p>
+            <p class="overview-text">Acompanhe a programação oficial da Reunião de Produção Doutrinária no Centro Espírita Irmão Áureo, em Goiânia. As salas e o cardápio desta edição serão inseridos assim que forem confirmados.</p>
             <div class="status-panel" aria-live="polite">
                 <div class="status-row">
                     <span class="status-label">Status do encontro</span>
@@ -889,75 +889,11 @@
 
         // ============================================================================
 
-        const salasGerais = [
+        const salasGerais = [];
 
-            { title: 'Direção', room: 'Tesouraria (Ao lado do bebedouro) - Térreo - Bloco 02', group: 'Assessorias e Direção' },
+        const salasExecutivas = [];
 
-            { title: 'Inovação e Projetos', room: 'Sala 04 - 2º Andar - Bloco 02', group: 'Assessorias e Direção' },
-
-            { title: 'Demais Comissões Irmão Armando', room: 'Sala 01 - 2º Andar - Bloco 02', group: 'Comissão Irmão Armando' },
-
-            { title: 'Financeiro', room: 'Atrás da Livraria - Térreo - Bloco 01', group: 'Comissão Irmão Armando' },
-
-            { title: 'Qualidade', room: 'Sala 1 - Térreo - Bloco 02', group: 'Comissão Irmão Armando' },
-
-            { title: 'TI', room: 'Sala 02 - Térreo - Bloco 02', group: 'Comissão Irmão Armando' },
-
-            { title: 'Alegria Cristã', room: 'Sala 03 - Subsolo - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Divulgação', room: 'Sala 03 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Campanha de Fraternidade Auta de Souza', room: 'CFAS - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Caridade', room: 'Sala André Luiz (Ao lado do Bazar) - Térreo - Bloco 01', group: 'Comissão Irmão Áureo' },
-
-            { title: 'CECX', room: 'Ao lado da sala Presidência - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Comunicação Social', room: 'Estúdio - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Ecologia e Sustentabilidade', room: 'Sala 02 - 2º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Esclarecimento', room: 'Sala 04 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Evangelização Infantil', room: 'Sala 01 - Subsolo - Bloco 03', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Mediunidade', room: 'Sala 07 - Térreo - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Mocidade', room: 'Sala Leopoldo Machado - 2º Andar - Bloco 01', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Comunicação Social (Rádio)', room: 'Sala 04 - 1º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Tradução', room: 'Sala 03 - 1º Andar - Bloco 02', group: 'Comissão Irmão Áureo' },
-
-            { title: 'Luiz Sérgio', room: '2º Andar - Bloco 01', group: 'Outras' },
-
-            { title: 'Luizinho', room: 'Sala 03 (Bl.03), Salas 04, 05 e 06 (Bl.02) - Subsolo', group: 'Outras' }
-
-        ];
-
-
-
-        const salasExecutivas = [
-
-            { title: 'Comissão Executiva AME', room: 'Sala da Presidência - 2º Andar - Bloco 01', group: 'Comissões Executivas' },
-
-            { title: 'Comissão Executiva Em Defesa da Vida', room: 'Sala 02 - 1º Andar - Bloco 02', group: 'Comissões Executivas' },
-
-            { title: 'Evento Concafras Global', room: 'Sala 05 - Térreo - Bloco 02', group: 'Comissões Executivas' },
-
-            { title: 'Comissão Executiva Evento Concafras Nacional', room: 'Sala 02 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-
-            { title: 'Comissão Executiva Grupo Fraterno', room: 'Sala 01 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-
-            { title: 'Comissão Executiva IEE Euripedes Barsanulfo', room: 'Sala 03 - Térreo - Bloco 03', group: 'Comissões Executivas' },
-
-            { title: 'Comissão Executiva Livro Espírita', room: 'Editora Auta de Souza - Subsolo 2 - Bloco 03', group: 'Comissões Executivas' }
-
-        ];
-
-
-
-        const salasSabadoTarde = [...salasGerais, ...salasExecutivas];
+        const salasSabadoTarde = [];
 
 
 
@@ -993,83 +929,40 @@
 
        const eventos = [
 
-            // SÁBADO
-
-            { 
-
-              id: 1, date: '2026-09-05', start: '08:00', end: '09:00', title: 'Credenciamento, Alegria Cristã e Café da Manhã', type: 'social', location: 'Centro Espírita Irmão Áureo – Goiânia',
-},
-
-            { id: 2, date: '2026-09-05', start: '09:00', end: '09:15', title: 'Prece inicial / Abertura Coletiva', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
+            // SÁBADO — 05/09/2026
+            { id: 1, date: '2026-09-05', start: '08:30', end: '09:00', title: 'Alegria Cristã', type: 'social', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 2, date: '2026-09-05', start: '09:00', end: '09:15', title: 'Prece Inicial / Abertura Geral', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
             { id: 3, date: '2026-09-05', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 4, date: '2026-09-05', start: '10:00', end: '10:15', title: 'Abertura Presencial - Avisos', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
+            { id: 4, date: '2026-09-05', start: '10:00', end: '10:15', title: 'Abertura Presencial', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
             { id: 5, date: '2026-09-05', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 6, date: '2026-09-05', start: '10:45', end: '13:00', title: 'Comissões de Trabalho — Irmão Áureo, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 7, date: '2026-09-05', start: '12:00', end: '13:00', title: 'Comissões Irmão Armando', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 8, date: '2026-09-05', start: '13:00', end: '14:30', title: 'Almoço', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 9, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 10, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Reunião do CFT', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 11, date: '2026-09-05', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo da Reunião do CFT', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 12, date: '2026-09-05', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 13, date: '2026-09-05', start: '16:30', end: '18:30', title: 'Reunião do CFT', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 14, date: '2026-09-05', start: '17:00', end: '18:30', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 15, date: '2026-09-05', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 16, date: '2026-09-05', start: '20:00', end: '21:00', title: 'Momento Coletivo', type: 'collective', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 17, date: '2026-09-05', start: '21:00', end: '21:30', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 18, date: '2026-09-05', start: '21:30', end: '22:30', title: 'Reunião do Conselho das Comissões', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 19, date: '2026-09-05', start: '21:30', end: '22:30', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias, Comissão de Inovação e Projetos e Comissões Executivas', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 20, date: '2026-09-05', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
 
-            { id: 6, date: '2026-09-05', start: '10:45', end: '13:00', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { 
-
-              id: 7, date: '2026-09-05', start: '13:00', end: '14:30', title: 'Almoço e Confraternização', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia',
-},
-
-            { id: 8, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Comissões Áureo, Armando e Assessorias', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 9, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 10, date: '2026-09-05', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo CFT', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 11, date: '2026-09-05', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 12, date: '2026-09-05', start: '16:30', end: '18:30', title: 'Conselho F. Thiesen', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 13, date: '2026-09-05', start: '17:00', end: '18:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { 
-
-              id: 14, date: '2026-09-05', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia',
-},
-
-            { id: 15, date: '2026-09-05', start: '20:00', end: '20:40', title: 'Momento Coletivo', type: 'collective', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 16, date: '2026-09-05', start: '21:00', end: '22:00', title: 'Conselho das Comissões', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 17, date: '2026-09-05', start: '21:00', end: '22:30', title: 'Comissões Irmão Áureo e Irmão Armando', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 18, date: '2026-09-05', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-
-
-            // DOMINGO
-
-            { 
-
-              id: 19, date: '2026-09-06', start: '08:00', end: '08:30', title: 'Alegria Cristã, Preparação e Café da Manhã', type: 'social', location: 'Centro Espírita Irmão Áureo – Goiânia',
-},
-
-            { id: 20, date: '2026-09-06', start: '08:30', end: '10:00', title: 'Reunião com a Direção Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 21, date: '2026-09-06', start: '10:00', end: '10:30', title: 'Avisos e Decisões Coletivas', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 22, date: '2026-09-06', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 23, date: '2026-09-06', start: '11:00', end: '11:15', title: 'Abertura Coletiva (Alunos EUGD)', type: 'collective', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 24, date: '2026-09-06', start: '11:15', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 25, date: '2026-09-06', start: '11:15', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { id: 26, date: '2026-09-06', start: '12:10', end: '13:00', title: 'Acompanhamento GF (Nível 5) e Convidados', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            { 
-
-              id: 27, date: '2026-09-06', start: '13:00', end: '14:30', title: 'Almoço Fraterno e Organização', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia',
-}
+            // DOMINGO — 06/09/2026
+            { id: 21, date: '2026-09-06', start: '08:15', end: '08:30', title: 'Preparação da Reunião de Orientação Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 22, date: '2026-09-06', start: '08:30', end: '10:00', title: 'Reunião de Orientação Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 23, date: '2026-09-06', start: '10:00', end: '10:30', title: 'Avisos, Decisões Coletivas e Aniversariantes', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 24, date: '2026-09-06', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 25, date: '2026-09-06', start: '11:00', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 26, date: '2026-09-06', start: '11:00', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 27, date: '2026-09-06', start: '12:00', end: '12:10', title: 'Deslocamento', type: 'walking', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 28, date: '2026-09-06', start: '12:10', end: '13:00', title: 'Acompanhamento das Comissões de Trabalho dos GF Nível 5 (Meses Ímpares)', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
+            { id: 29, date: '2026-09-06', start: '13:00', end: '14:30', timeLabel: '13h', title: 'Almoço', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' }
 
         ];
-
 
 
         const ICONS = {
@@ -1345,7 +1238,7 @@
 
                             <div class="time-loc">
 
-                                <span class="time-text">${item.start} — ${item.end}</span>
+                                <span class="time-text">${item.timeLabel || `${item.start} — ${item.end}`}</span>
 
                                 <div class="dot"></div>
 
@@ -1394,10 +1287,10 @@
                 }))
                 .sort((a, b) => (a.inicio - b.inicio) || (a.ordem - b.ordem));
 
-            // Regra visual: apenas uma atividade recebe “Acontecendo agora”.
-            // Em horários paralelos, prevalece a primeira atividade na ordem oficial da programação.
-            const atual = ordenados.find(item => agora >= item.inicio && agora < item.fim) || null;
-            const proximo = ordenados.find(item => agora < item.inicio) || null;
+            const atuais = ordenados.filter(item => agora >= item.inicio && agora < item.fim);
+            const futuros = ordenados.filter(item => agora < item.inicio);
+            const proximoInicio = futuros.length ? futuros[0].inicio.getTime() : null;
+            const proximos = proximoInicio === null ? [] : futuros.filter(item => item.inicio.getTime() === proximoInicio);
 
             ordenados.forEach(item => {
                 const liveTag = item.el.querySelector('.live-tag');
@@ -1405,21 +1298,19 @@
                 item.el.removeAttribute('aria-current');
                 liveTag.setAttribute('aria-hidden', 'true');
 
-                if (agora >= item.fim) {
-                    item.el.classList.add('is-past');
-                }
+                if (agora >= item.fim) item.el.classList.add('is-past');
             });
 
-            if (atual) {
-                atual.el.classList.remove('is-past');
-                atual.el.classList.add('is-current');
-                atual.el.setAttribute('aria-current', 'step');
-                atual.el.querySelector('.live-tag').setAttribute('aria-hidden', 'false');
-            }
+            atuais.forEach(item => {
+                item.el.classList.remove('is-past');
+                item.el.classList.add('is-current');
+                item.el.setAttribute('aria-current', 'step');
+                item.el.querySelector('.live-tag').setAttribute('aria-hidden', 'false');
+            });
 
-            if (proximo && proximo !== atual) {
-                proximo.el.classList.add('is-next');
-            }
+            proximos.forEach(item => {
+                if (!atuais.includes(item)) item.el.classList.add('is-next');
+            });
 
             const concluidos = ordenados.filter(item => agora >= item.fim).length;
             const progresso = Math.max(0, Math.min(100, (concluidos / ordenados.length) * 100));
@@ -1438,22 +1329,26 @@
             if (agora < primeiroInicio) {
                 headerStatus.innerText = `Começa sábado às ${hora(primeiroInicio)}`;
                 overviewStatus.innerText = 'O encontro ainda vai começar';
-            } else if (atual) {
-                const tituloAtual = atual.el.querySelector('.event-title').innerText;
-                headerStatus.innerText = `Ao vivo agora • ${tituloAtual}`;
+            } else if (atuais.length) {
+                const titulos = atuais.map(item => item.el.querySelector('.event-title').innerText);
+                headerStatus.innerText = atuais.length === 1
+                    ? `Ao vivo agora • ${titulos[0]}`
+                    : `Ao vivo agora • ${atuais.length} atividades simultâneas`;
                 overviewStatus.innerText = `${concluidos} de ${ordenados.length} atividades concluídas`;
-            } else if (agora < ultimoFim && proximo) {
-                const proximoTitulo = proximo.el.querySelector('.event-title').innerText;
-                headerStatus.innerText = `A seguir, ${proximoTitulo} • ${hora(proximo.inicio)}`;
-                overviewStatus.innerText = `Próxima atividade às ${hora(proximo.inicio)}`;
+            } else if (agora < ultimoFim && proximos.length) {
+                const proximoTitulo = proximos[0].el.querySelector('.event-title').innerText;
+                headerStatus.innerText = proximos.length === 1
+                    ? `A seguir, ${proximoTitulo} • ${hora(proximos[0].inicio)}`
+                    : `A seguir, ${proximos.length} atividades • ${hora(proximos[0].inicio)}`;
+                overviewStatus.innerText = `Próxima atividade às ${hora(proximos[0].inicio)}`;
             } else {
                 headerStatus.innerText = 'Encontro concluído • programação disponível';
                 overviewStatus.innerText = 'Programação concluída';
                 document.getElementById('event-progress').style.width = '100%';
             }
 
-            if (!autoScrolled && atual) {
-                setTimeout(() => rolarParaElemento(atual.el), 700);
+            if (!autoScrolled && atuais.length) {
+                setTimeout(() => rolarParaElemento(atuais[0].el), 700);
                 autoScrolled = true;
             }
         }
