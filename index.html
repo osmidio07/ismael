@@ -1,1368 +1,545 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="pt-BR">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <title>Programação | Reunião de Produção Doutrinária</title>
-    <meta name="description" content="Programação oficial da Reunião de Produção Doutrinária. Consulte horários e atividades da reunião em Goiânia.">
-    <meta name="color-scheme" content="light">
-    <meta name="format-detection" content="telephone=no">
-
-
-
-    <link rel="manifest" href="./manifest.json">
-
-    <meta name="theme-color" content="#2563eb">
-
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-
-
-
-    <script>
-
-        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
-                    .catch(err => console.warn('Service Worker indisponível:', err));
-            }, { once: true });
-        }
-
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <style>
-
-        /* ==========================================================================
-
-           1. CORE VARIABLES (PALETA ULTRA-PREMIUM)
-
-           ========================================================================== */
-
-        :root {
-
-            --bg-base: #f8fafc;
-
-            --text-main: #0f172a;
-
-            --text-muted: #475569;
-
-            --accent-blue: #2563eb;
-
-            --accent-light: #eff6ff;
-
-            --live-red: #ff3b30; 
-
-            --live-glow: rgba(255, 59, 48, 0.25);
-
-            --glass-bg: rgba(255, 255, 255, 0.85);
-
-            --glass-border: rgba(0, 0, 0, 0.12); 
-
-            --food-orange: #ea580c;
-
-        }
-
-
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
-
-        html { scroll-behavior: smooth; scroll-padding-top: 150px; }
-
-        
-
-        body { 
-
-            background-color: var(--bg-base); 
-
-            color: var(--text-main); 
-
-            padding-bottom: 120px; 
-
-            overflow-x: hidden; 
-
-        
-            line-height: 1.5;
-            min-height: 100vh;
-        }
-
-        button, input { font: inherit; }
-        button { min-height: 44px; }
-        a, button, input { -webkit-tap-highlight-color: transparent; }
-        :focus-visible { outline: 3px solid rgba(37, 99, 235, 0.35); outline-offset: 3px; }
-
-        .skip-link {
-            position: fixed; top: 10px; left: 10px; z-index: 2000;
-            background: var(--text-main); color: white; padding: 10px 14px;
-            border-radius: 10px; text-decoration: none; font-weight: 800;
-            transform: translateY(-160%); transition: transform 0.2s ease;
-        }
-        .skip-link:focus { transform: translateY(0); }
-
-        .sr-only {
-            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-        }
-
-
-
-        /* ==========================================================================
-
-           2. DISNEY+ STYLE MESH GRADIENTS (FUNDO VIVO)
-
-           ========================================================================== */
-
-        .ambient-light {
-
-            position: fixed; top: -10%; left: -20%; width: 70vw; height: 70vw;
-
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(255,255,255,0) 60%);
-
-            border-radius: 50%; pointer-events: none; z-index: -1;
-
-            animation: float 14s infinite alternate ease-in-out;
-
-        }
-
-        .ambient-light-2 {
-
-            position: fixed; bottom: -10%; right: -10%; width: 60vw; height: 60vw;
-
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(255,255,255,0) 60%);
-
-            border-radius: 50%; pointer-events: none; z-index: -1;
-
-            animation: float 18s infinite alternate-reverse ease-in-out;
-
-        }
-
-        .ambient-light-3 {
-
-            position: fixed; top: 30%; left: 30%; width: 50vw; height: 50vw;
-
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, rgba(255,255,255,0) 60%);
-
-            border-radius: 50%; pointer-events: none; z-index: -1;
-
-            animation: float 20s infinite alternate ease-in-out;
-
-        }
-
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, -40px) scale(1.1); } }
-
-
-
-        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(20px); }
-
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-
-
-        /* ==========================================================================
-
-           3. APPLE STYLE GLASS HEADER
-
-           ========================================================================== */
-
-        .sticky-header {
-
-            position: sticky; top: 0; z-index: 50;
-
-            background: var(--glass-bg);
-
-            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
-
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-
-            padding: 14px 20px; 
-
-            text-align: center;
-
-            box-shadow: 0 4px 20px -10px rgba(0,0,0,0.08);
-
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
-
-        }
-
-
-
-        .header-tag { 
-
-            font-size: 1.15rem; 
-
-            font-weight: 900; 
-
-            letter-spacing: -0.02em; 
-
-            color: var(--text-main); 
-
-        }
-
-        .header-date { 
-            font-size: 0.75rem; 
-            font-weight: 800; 
-            letter-spacing: 0.08em; 
-            text-transform: uppercase;
-            color: var(--accent-blue); 
-        }
-
-        .header-status {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-
-
-
-        /* ==========================================================================
-
-           4. TIMELINE & CARDS 
-
-           ========================================================================== */
-
-        .event-overview {
-            max-width: 640px; margin: 28px auto 0; padding: 0 20px;
-        }
-        .overview-card {
-            position: relative; overflow: hidden;
-            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(37,99,235,0.94));
-            color: white; border-radius: 28px; padding: 26px;
-            box-shadow: 0 24px 50px -24px rgba(37,99,235,0.65);
-        }
-        .overview-card::after {
-            content: ''; position: absolute; width: 220px; height: 220px; right: -80px; top: -90px;
-            border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 65%);
-            pointer-events: none;
-        }
-        .overview-kicker {
-            font-size: 0.68rem; font-weight: 900; letter-spacing: 0.16em;
-            text-transform: uppercase; opacity: 0.78; margin-bottom: 8px;
-        }
-        .overview-title { font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.035em; max-width: 500px; }
-        .overview-text { font-size: 0.86rem; line-height: 1.55; margin-top: 10px; opacity: 0.84; max-width: 500px; }
-        .status-panel {
-            margin-top: 20px; padding: 14px 16px; border-radius: 18px;
-            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        }
-        .status-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-        .status-label { font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.76; }
-        .status-value { font-size: 0.82rem; font-weight: 800; text-align: right; }
-        .progress-track { height: 6px; border-radius: 999px; background: rgba(255,255,255,0.18); margin-top: 10px; overflow: hidden; }
-        .progress-bar { height: 100%; width: 0; border-radius: inherit; background: white; transition: width 0.6s ease; }
-
-        .schedule-container { max-width: 640px; margin: 18px auto 0; padding: 0 20px; }
-
-
-
-        .timeline-item {
-            position: relative; display: flex; gap: 20px; padding-bottom: 30px;
-            transition: opacity 0.35s ease, filter 0.35s ease;
-            content-visibility: auto; contain-intrinsic-size: 180px;
-        }
-
-        
-
-        .timeline-item::before { 
-
-            content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; 
-
-            background: linear-gradient(to bottom, #e2e8f0, #f1f5f9); z-index: 0; transition: background 0.4s ease;
-
-        }
-
-        .timeline-item:last-child::before { display: none; }
-
-
-
-        .icon-circle {
-
-            position: relative; z-index: 10; flex-shrink: 0; width: 44px; height: 44px; border-radius: 14px;
-
-            background: white; border: 1px solid rgba(0,0,0,0.08); 
-
-            display: flex; align-items: center; justify-content: center;
-
-            color: var(--accent-blue); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
-
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-
-        }
-
-
-
-        .card-content {
-
-            flex: 1; 
-
-            background: var(--glass-bg); 
-
-            border: 1px solid var(--glass-border); 
-
-            border-radius: 20px; 
-
-            padding: 20px; 
-
-            position: relative; 
-
-            overflow: hidden; 
-
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-
-            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-        }
-
-        .timeline-item:not(.is-past):hover .card-content {
-
-            transform: translateY(-2px); 
-
-            border-color: rgba(37, 99, 235, 0.3); 
-
-            box-shadow: 0 12px 25px -5px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-
-        }
-
-
-
-        .time-loc { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-
-        .time-text { font-size: 0.9rem; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; }
-
-        .dot { width: 4px; height: 4px; border-radius: 50%; background: #cbd5e1; }
-
-        .loc-text { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); display: flex; align-items: center; gap: 4px;}
-
-
-
-        .event-title { font-size: 1.1rem; font-weight: 800; color: var(--text-main); line-height: 1.4; margin-bottom: 14px; letter-spacing: -0.01em; }
-
-
-
-        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
-
-        .badge-talk { background: #eff6ff; color: #2563eb; } 
-
-        .badge-workshop { background: #f5f3ff; color: #7c3aed; } 
-
-        .badge-break { background: #f1f5f9; color: #64748b; } 
-
-        .badge-social { background: #fdf4ff; color: #db2777; } 
-
-        .badge-spiritual { background: #ecfdf5; color: #059669; } 
-
-        .badge-extra { background: #fffbeb; color: #d97706; } 
-
-        .badge-food { background: #fff7ed; color: #ea580c; } 
-
-        .badge-collective { background: #e0f2fe; color: #0284c7; } 
-
-        .badge-walking { background: #ffe4e6; color: #e11d48; } 
-
-
-
-        /* ==========================================================================
-
-           5. ESTADO MÁGICO: ACONTECENDO AGORA (LIVE)
-
-           ========================================================================== */
-
-        .timeline-item.is-past { opacity: 0.6; filter: grayscale(50%); } 
-
-        .timeline-item.is-past .card-content { background: rgba(241, 245, 249, 0.6); box-shadow: none; border-color: rgba(0,0,0,0.04);}
-
-        
-
-        .timeline-item.is-current { z-index: 20; }
-
-        .timeline-item.is-current::before { background: linear-gradient(to bottom, var(--live-red), #e2e8f0 80%); }
-
-
-
-        .timeline-item.is-current .icon-circle { 
-
-            border-color: transparent; background: var(--live-red); color: white; 
-
-            transform: scale(1.15); box-shadow: 0 0 0 6px var(--live-glow), 0 10px 20px rgba(255, 59, 48, 0.3);
-
-        }
-
-        
-
-        .timeline-item.is-current .card-content {
-
-            background: linear-gradient(white, white) padding-box,
-
-                        linear-gradient(135deg, var(--live-red), #f43f5e) border-box;
-
-            border: 2px solid transparent;
-
-            box-shadow: 0 20px 40px -10px var(--live-glow); 
-
-            transform: scale(1.02);
-
-        }
-
-        .timeline-item.is-current .time-text { color: var(--live-red); }
-
-        .timeline-item.is-next .icon-circle {
-            border-color: rgba(37,99,235,0.35); background: var(--accent-blue); color: white;
-            box-shadow: 0 0 0 5px rgba(37,99,235,0.10);
-        }
-        .timeline-item.is-next .card-content {
-            border-color: rgba(37,99,235,0.26);
-            box-shadow: 0 16px 34px -18px rgba(37,99,235,0.42);
-        }
-        .next-tag {
-            position: absolute; top: 12px; right: 12px;
-            display: none; align-items: center; gap: 6px;
-            padding: 5px 9px; border-radius: 999px;
-            background: var(--accent-light); color: var(--accent-blue);
-            font-size: 0.58rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
-        }
-        .timeline-item.is-next .next-tag { display: inline-flex; }
-
-
-
-        .live-tag {
-
-            position: absolute; top: -2px; right: -2px; 
-
-            background: linear-gradient(135deg, var(--live-red), #ff2d55); color: white;
-
-            padding: 6px 14px; border-bottom-left-radius: 16px; border-top-right-radius: 18px;
-
-            display: none; align-items: center; gap: 8px;
-
-            box-shadow: -4px 4px 15px rgba(255, 59, 48, 0.2);
-
-        }
-
-        /* A etiqueta só existe visualmente no único card definido como atual. */
-        .timeline-item.is-current .live-tag { display: flex; }
-        .live-tag[hidden] { display: none !important; }
-
-        .live-tag span { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
-
-        
-
-        .ping-dot { position: relative; display: flex; width: 6px; height: 6px; }
-
-        .ping-dot::before { content: ''; position: absolute; width: 100%; height: 100%; background: white; border-radius: 50%; animation: radar 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.8; }
-
-        .ping-dot::after { content: ''; position: relative; width: 6px; height: 6px; background: white; border-radius: 50%; }
-
-
-
-        @keyframes radar { 75%, 100% { transform: scale(3.5); opacity: 0; } }
-
-
-
-        /* ==========================================================================
-
-           6. ACCORDION E BUSCA INTERNA
-
-           ========================================================================== */
-
-        .btn-expand {
-
-            background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); color: var(--accent-blue);
-
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-
-            padding: 10px 16px; border-radius: 12px; cursor: pointer; display: inline-flex;
-
-            align-items: center; gap: 8px; margin-top: 14px; transition: all 0.3s ease; width: 100%; justify-content: center;
-
-        }
-
-        .btn-expand:hover { background: white; border-color: rgba(0,0,0,0.15); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);}
-
-        .btn-expand svg { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-
-        .btn-expand.active { background: var(--text-main); color: white; border-color: transparent;}
-
-        .btn-expand.active svg { transform: rotate(180deg); }
-
-        
-
-        .sub-events-wrapper {
-
-            margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);
-
-            display: none; animation: fadeInSub 0.4s ease forwards;
-
-        }
-
-        .sub-events-wrapper.open { display: block; }
-
-        @keyframes fadeInSub { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-
-
-        .search-box { position: relative; margin-bottom: 16px; }
-
-        .search-box svg { position: absolute; left: 12px; top: 10px; color: var(--text-muted); }
-
-        .search-input {
-
-            width: 100%; padding: 10px 14px 10px 36px; border-radius: 10px;
-
-            border: 1px solid rgba(0,0,0,0.12); background: rgba(255,255,255,0.9);
-
-            font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: all 0.3s;
-
-        }
-
-        .search-input:focus { outline: none; border-color: var(--accent-blue); background: #fff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);}
-
-
-
-        .sub-group-title {
-
-            font-size: 0.65rem; font-weight: 900; color: var(--text-main); text-transform: uppercase;
-
-            letter-spacing: 0.05em; margin: 18px 0 10px 4px; display: flex; align-items: center; gap: 6px;
-
-        }
-
-        .sub-group-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.05); }
-
-
-
-        .sub-event-item {
-
-            background: white; border: 1px solid rgba(0,0,0,0.08);
-
-            border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
-
-            display: flex; flex-direction: column; gap: 8px; transition: opacity 0.2s;
-
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-
-        }
-
-        
-
-        .sub-event-title { font-size: 0.85rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
-
-        .sub-event-room {
-
-            align-self: flex-start; font-size: 0.65rem; font-weight: 800; color: var(--accent-blue); 
-
-            background: var(--accent-light); padding: 4px 8px; border-radius: 6px; 
-
-            text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;
-
-        }
-        .search-empty {
-            display: none; padding: 14px; text-align: center; color: var(--text-muted);
-            font-size: 0.78rem; font-weight: 700; border: 1px dashed rgba(0,0,0,0.12);
-            border-radius: 12px; background: rgba(255,255,255,0.6);
-        }
-
-
-
-        /* ==========================================================================
-
-           7. MENU / CARDÁPIO (BOTÃO E MODAL APPLE)
-
-           ========================================================================== */
-
-        .btn-menu {
-
-            background: rgba(234, 88, 12, 0.1); border: 1px solid rgba(234, 88, 12, 0.2); color: var(--food-orange);
-
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-
-            padding: 8px 16px; border-radius: 50px; cursor: pointer; display: inline-flex;
-
-            align-items: center; gap: 6px; margin-top: 14px; transition: all 0.3s ease;
-
-            box-shadow: 0 4px 10px rgba(234, 88, 12, 0.05);
-
-            animation: gentleFloat 3s infinite ease-in-out;
-
-        }
-
-        .btn-menu:hover {
-
-            background: var(--food-orange); color: white; transform: translateY(-2px);
-
-            box-shadow: 0 6px 15px rgba(234, 88, 12, 0.25); animation: none;
-
-        }
-
-        @keyframes gentleFloat {
-
-            0%, 100% { transform: translateY(0); }
-
-            50% { transform: translateY(-3px); }
-
-        }
-
-
-
-        /* Modal Base */
-
-        .modal-overlay {
-
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-
-            background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-
-            display: flex; align-items: center; justify-content: center; z-index: 1000;
-
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-
-        }
-
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-
-
-
-        .modal-card {
-
-            background: white; width: 90%; max-width: 400px; border-radius: 28px;
-
-            padding: 30px; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-
-            transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-        }
-
-        .modal-overlay.active .modal-card { transform: scale(1) translateY(0); }
-
-
-
-        .modal-close {
-
-            position: absolute; top: 16px; right: 16px; width: 32px; height: 32px;
-
-            background: rgba(0,0,0,0.05); border: none; border-radius: 50%;
-
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-
-            color: var(--text-muted); transition: all 0.2s ease;
-
-        }
-
-        .modal-close:hover { background: rgba(0,0,0,0.1); color: var(--text-main); transform: scale(1.05); }
-
-
-
-        .modal-header { text-align: center; margin-bottom: 20px; }
-
-        .modal-icon { font-size: 2.5rem; margin-bottom: 10px; display: inline-block; filter: drop-shadow(0 4px 6px rgba(234,88,12,0.3));}
-
-        .modal-title { font-size: 1.2rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.02em; }
-
-        .modal-subtitle { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;}
-
-
-
-        .menu-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-
-        .menu-item {
-
-            background: var(--bg-base); border: 1px solid rgba(0,0,0,0.04);
-
-            padding: 12px 16px; border-radius: 14px; display: flex; align-items: center; gap: 12px;
-
-            font-size: 0.9rem; font-weight: 600; color: var(--text-main);
-
-        }
-
-        .menu-item-icon { font-size: 1.1rem; }
-
-
-
-        /* ==========================================================================
-
-           8. BOTÃO FLUTUANTE - PRODUÇÃO HÍBRIDA
-
-           ========================================================================== */
-
-        .fab-hibrida {
-
-            position: fixed;
-
-            bottom: 30px;
-
-            right: 30px;
-
-            background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
-
-            color: white;
-
-            text-decoration: none;
-
-            padding: 14px 24px;
-
-            border-radius: 50px;
-
-            font-weight: 800;
-
-            font-size: 0.85rem;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.05em;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-
-            z-index: 100;
-
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        }
-
-        .fab-hibrida:hover {
-
-            transform: translateY(-4px) scale(1.02);
-
-            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
-
-        }
-
-        @media (max-width: 768px) {
-
-            .fab-hibrida { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 0.75rem; }
-
-        }
-
-
-
-        .footer-info { text-align: center; margin-top: 50px; font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.15em;}
-
-        @media (max-width: 520px) {
-            .sticky-header { padding: 11px 12px 10px; }
-            .header-tag { font-size: 1rem; }
-            .header-status { max-width: 92vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-            .schedule-container, .event-overview { padding-left: 14px; padding-right: 14px; }
-            .overview-card { border-radius: 22px; padding: 22px 18px; }
-            .timeline-item { gap: 12px; }
-            .card-content { padding: 17px; border-radius: 18px; }
-            .icon-circle { width: 40px; height: 40px; border-radius: 12px; }
-            .timeline-item::before { left: 19px; top: 40px; }
-            .live-tag { position: static; width: fit-content; border-radius: 999px; margin-bottom: 10px; padding: 5px 10px; }
-            .next-tag { position: static; width: fit-content; margin-bottom: 8px; }
-            .fab-hibrida { bottom: max(16px, env(safe-area-inset-bottom)); right: 14px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            .ambient-light, .ambient-light-2, .ambient-light-3 { animation: none; }
-        }
-
-    </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101934">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Reunião de Produção Doutrinária — programação-base de 7 e 8 de novembro de 2026, em Goiânia. Confira atividades, horários e encontros paralelos.">
+  <title>Programação • Produção Doutrinária • Goiânia</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23101934'/%3E%3Ctext y='.78em' x='50%25' text-anchor='middle' font-size='72'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink:#18213b; --ink2:#475575; --muted:#70809b; --paper:#f6f8fd;
+      --white:#fff; --line:#e7ebf4; --brand:#5464f5; --brand2:#7f5afa;
+      --sky:#e9edff; --gold:#f5d687; --shadow:0 18px 55px rgba(25,40,85,.08);
+      --radius:22px; --container:1120px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:150px}
+    body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+    button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default}
+    a{color:inherit}a,button,input{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid #a8b5ff;outline-offset:3px}
+    .skip{position:fixed;top:12px;left:12px;z-index:1000;background:#fff;color:#15244a;padding:10px 15px;border-radius:12px;transform:translateY(-180%)}
+    .skip:focus{transform:translateY(0)}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.93);border-bottom:1px solid rgba(221,228,245,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .topbar-inner{max-width:var(--container);margin:auto;min-height:68px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .identity{display:flex;align-items:center;gap:11px;min-width:0}.logo{width:41px;height:41px;border-radius:14px;background:linear-gradient(145deg,#6175fa,#8560e6);display:grid;place-items:center;color:#fff;font-size:24px;box-shadow:0 6px 14px #5366f52e;flex-shrink:0}
+    .identity strong{display:block;font-size:13px;letter-spacing:-.02em;font-weight:850;line-height:1.25}
+    .identity span{display:block;color:var(--muted);font-size:11px;font-weight:650;line-height:1.4}
+    .top-loc{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--ink2);font-weight:750;white-space:nowrap}
+    .top-loc span{height:7px;width:7px;background:#55b39a;border-radius:50%}
+    .wrap{max-width:var(--container);margin:0 auto;padding:26px 22px 70px}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#101a3a 0%,#222e61 50%,#55439e 115%);color:white;border-radius:32px;box-shadow:0 28px 55px rgba(20,25,76,.18);min-height:322px;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:-80%;z-index:-1;background:radial-gradient(circle at 26% 40%,rgba(96,141,255,.22),transparent 19%),radial-gradient(circle at 76% 51%,rgba(245,214,135,.24),transparent 16%),radial-gradient(circle at 53% 72%,rgba(170,118,255,.28),transparent 22%)}
+    .hero::after{content:"";position:absolute;right:-115px;bottom:-172px;width:440px;height:440px;border:1px solid rgba(255,255,255,.1);border-radius:50%;box-shadow:0 0 0 65px rgba(255,255,255,.03),0 0 0 130px rgba(255,255,255,.025);z-index:-1}
+    .hero-inner{padding:44px 50px;display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:34px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#fce8b4;border:1px solid rgba(255,224,159,.28);background:rgba(255,224,159,.09);border-radius:100px;padding:7px 13px;font-size:11px;letter-spacing:.1em;font-weight:850;text-transform:uppercase}
+    h1{font-size:clamp(29px,4.5vw,55px);line-height:1.07;letter-spacing:-.055em;margin:22px 0 14px;max-width:680px;font-weight:900}
+    .hero p{font-size:15px;max-width:555px;color:#dce1ff;margin:0;line-height:1.75}
+    .hero strong{color:white}
+    .date-art{background:rgba(255,255,255,.095);border:1px solid rgba(255,255,255,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);border-radius:26px;padding:23px 22px;backdrop-filter:blur(8px);text-align:center}
+    .date-art .month{letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:#f5d687;font-weight:850}
+    .date-art .days{font-size:clamp(48px,5vw,66px);font-weight:950;line-height:1.1;letter-spacing:-.065em;padding:8px 0 2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .date-art .day-label{font-size:12px;color:#dde2ff;font-weight:700}
+    .date-art .place{border-top:1px solid rgba(255,255,255,.16);margin-top:16px;padding-top:13px;letter-spacing:.11em;font-size:11px;font-weight:850}
+    .notice{display:flex;gap:12px;align-items:flex-start;margin-top:15px;background:#fff8e8;border:1px solid #f4e1ad;border-radius:15px;padding:13px 17px;color:#73571d;font-size:12px;line-height:1.55}
+    .notice b{font-weight:900}.notice .notice-icon{font-size:17px;line-height:1.25;flex-shrink:0}
+    .status-card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);display:flex;align-items:center;gap:17px;padding:20px 22px;box-shadow:var(--shadow)}
+    .status-dot{width:12px;height:12px;background:#8695b8;border-radius:50%;box-shadow:0 0 0 6px #eff2f9;flex-shrink:0}
+    .status-card[data-state="live"] .status-dot{background:#ef5866;box-shadow:0 0 0 6px #ffeaed;animation:pulse 2.3s infinite}
+    .status-card[data-state="future"] .status-dot{background:#6e79f3;box-shadow:0 0 0 6px #edf0ff}
+    .status-card[data-state="done"] .status-dot{background:#52ac8b;box-shadow:0 0 0 6px #e7f7f0}
+    .status-main{min-width:0;flex:1}.status-eyebrow{font-size:10px;color:#8190a9;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+    .status-main strong{display:block;font-size:16px;line-height:1.3;letter-spacing:-.025em;font-weight:850}
+    .status-main p{margin:3px 0 0;color:#667590;font-size:12px;line-height:1.5}
+    .status-jump{flex-shrink:0;background:#eff1ff;border:1px solid #dee3ff;color:#394ec3;font-weight:850;border-radius:12px;padding:11px 15px;font-size:12px;min-height:42px}
+    .status-jump:hover{background:#e3e8ff}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:35px 0 17px}
+    .section-head h2{font-size:26px;line-height:1.15;letter-spacing:-.045em;margin:0;font-weight:900}
+    .section-head p{font-size:13px;color:var(--muted);margin:6px 0 0}
+    .count-top{font-size:11px;color:#6d7894;font-weight:800}
+    .schedule-shell{display:grid;grid-template-columns:minmax(0,1fr) 288px;align-items:start;gap:22px}
+    .schedule-main{min-width:0}.schedule-tools{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 5px 20px rgba(22,38,76,.035)}
+    .day-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f1f3fa;border-radius:15px;padding:5px}
+    .day-button{border:0;background:transparent;border-radius:11px;color:#697793;padding:10px 14px;font-weight:850;text-align:center;font-size:13px;line-height:1.3;min-height:56px}
+    .day-button small{display:block;font-size:10px;font-weight:650;opacity:.75;margin-top:4px}
+    .day-button[aria-pressed="true"]{background:white;color:#2f3ba3;box-shadow:0 3px 12px rgba(36,43,98,.11)}
+    .controls-row{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .search{position:relative;flex:1;min-width:0}.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#7c8aa7;pointer-events:none}
+    .search input{width:100%;border:1px solid #e4e9f5;border-radius:12px;background:#fbfcff;padding:11px 11px 11px 43px;font-size:13px;font-weight:600;color:var(--ink);height:45px}
+    .search input::placeholder{color:#8994ab}
+    .clear-search{border:1px solid #e3e7f2;background:#fff;border-radius:12px;padding:8px 10px;color:#657594;min-height:45px;font-weight:850;font-size:11px}
+    .filters{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+    .filter{border:1px solid #e7eaf4;border-radius:100px;padding:8px 12px;color:#63708b;background:#fff;font-weight:800;font-size:11px;min-height:35px}
+    .filter[aria-pressed="true"]{background:#ecedff;border-color:#ccd3fe;color:#4150b6}
+    .result-note{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 5px 15px;font-size:12px;color:#73809a;font-weight:700}
+    .result-note b{color:#3d4b68}
+    .timeline{position:relative;min-height:80px}
+    .time-group{display:grid;grid-template-columns:80px minmax(0,1fr);gap:13px;position:relative;padding-bottom:13px}
+    .time-group::before{content:"";position:absolute;left:40px;top:22px;bottom:-3px;width:1px;background:linear-gradient(#d8ddf0,#ebedf5)}
+    .time-group:last-child::before{display:none}
+    .time-marker{position:relative;text-align:right;padding:16px 13px 0 0;color:#5c6990;font-size:12px;white-space:nowrap;font-weight:900;font-variant-numeric:tabular-nums}
+    .time-marker::after{content:"";position:absolute;right:-5px;top:20px;width:9px;height:9px;border-radius:50%;background:#dfe4f4;border:2px solid var(--paper);z-index:1;box-shadow:0 0 0 1px #d4dcf0}
+    .time-group:has(.activity.is-live) .time-marker{color:#dd4459}
+    .time-group:has(.activity.is-live) .time-marker::after{background:#ee4d66;box-shadow:0 0 0 5px #fbe5ea}
+    .time-stack{display:grid;gap:9px;min-width:0}
+    .parallel-head{font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:900;color:#7686aa;padding:3px 2px 0;display:flex;align-items:center;gap:7px}
+    .parallel-head::after{content:"";height:1px;background:#dfe3f2;flex:1}
+    .activity{background:white;border:1px solid #e7ebf5;border-radius:17px;padding:18px 19px;box-shadow:0 5px 18px rgba(35,48,85,.038);transition:box-shadow .22s ease,border-color .22s ease,transform .22s ease;position:relative;scroll-margin-top:160px}
+    .activity:hover{box-shadow:0 11px 25px rgba(39,52,106,.075);border-color:#cdd6f2}
+    .activity.is-live{border:1.5px solid #ef6579;box-shadow:0 12px 26px rgba(226,70,100,.11);background:linear-gradient(145deg,#fff,#fffafd)}
+    .activity.is-next{border-color:#8c94ec;box-shadow:0 10px 24px #5365da12}
+    .activity.is-past{opacity:.61}
+    .event-top{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+    .event-time{color:#67748f;font-size:12px;letter-spacing:.01em;font-weight:850;font-variant-numeric:tabular-nums}
+    .event-pills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+    .kind{font-size:10px;line-height:1.25;padding:5px 8px;border-radius:8px;font-weight:850;background:#edf2fc;color:#50668b}
+    .kind.workshop{background:#eeeafd;color:#6a50b8}.kind.spiritual{background:#e6f7ef;color:#237e65}.kind.food{background:#fff2e2;color:#a66624}.kind.break,.kind.walking{background:#f1f3f8;color:#717e96}.kind.collective,.kind.talk,.kind.social{background:#eaf1ff;color:#376bba}
+    .parallel-pill{font-size:9px;font-weight:900;letter-spacing:.045em;color:#7962c3;background:#f6f2ff;border-radius:7px;padding:5px 7px}
+    .live-pill{font-size:10px;font-weight:900;color:#fff;background:#ec536b;border-radius:7px;padding:5px 8px;display:inline-flex;align-items:center;gap:5px}
+    .live-pill::before{content:"";width:5px;height:5px;border-radius:50%;background:#fff}
+    .next-pill{font-size:10px;font-weight:900;color:#4054c4;background:#e8edff;border-radius:7px;padding:5px 8px}
+    .activity h3{font-size:15px;line-height:1.42;letter-spacing:-.019em;font-weight:850;margin:0;overflow-wrap:anywhere}
+    .activity p{margin:7px 0 0;font-size:12px;color:#8490a8}
+    .no-results{background:white;border:1px dashed #d9e0ee;border-radius:18px;padding:45px 20px;text-align:center;color:#71809c}
+    .no-results strong{display:block;font-size:17px;color:var(--ink);margin-bottom:7px}
+    .no-results p{margin:0 0 13px}
+    .no-results button{border:0;background:#5364e9;color:white;padding:11px 17px;border-radius:11px;font-weight:800}
+    aside{position:sticky;top:91px;display:grid;gap:15px}
+    .side-card{background:white;border:1px solid var(--line);border-radius:21px;padding:22px;box-shadow:0 6px 24px rgba(29,44,91,.04)}
+    .side-card h3{margin:0 0 12px;font-weight:900;font-size:15px;letter-spacing:-.02em}
+    .side-card p{color:#74829e;margin:0;font-size:12px;line-height:1.65}
+    .info-item{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-top:1px solid #edf0f7}
+    .info-item:first-of-type{border-top:0;padding-top:0}
+    .info-item .symbol{font-size:18px;line-height:1.25;width:23px;flex-shrink:0}
+    .info-item b{font-size:12px;font-weight:850;display:block;margin-bottom:2px}
+    .info-item small{font-size:11px;display:block;color:#7987a1;line-height:1.5}
+    .side-link{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;text-decoration:none;background:#26345d;color:white;border-radius:12px;min-height:43px;padding:10px 12px;font-weight:800;font-size:12px}
+    .side-link:hover{background:#364881}
+    .side-accent{background:linear-gradient(145deg,#f0edff,#fff);border-color:#e6e1ff}
+    .side-accent h3{color:#5b46a5}
+    .side-accent p{color:#6c6488}
+    .footer{text-align:center;color:#929db3;font-weight:700;font-size:11px;margin:42px 0 0}
+    .footer .sparkle{color:#695bc8}
+    @keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,234,237,.3)}}
+    @media (max-width:880px){.schedule-shell{grid-template-columns:minmax(0,1fr)}aside{position:static;grid-template-columns:1fr 1fr}.side-card{height:100%}.hero-inner{padding:38px;grid-template-columns:minmax(0,1fr) 195px}.date-art{padding:18px 13px}}
+    @media (max-width:610px){.wrap{padding:14px 12px 45px}.topbar-inner{padding:10px 15px;min-height:61px}.identity strong{font-size:12px}.identity span{font-size:10px}.logo{width:36px;height:36px;border-radius:11px}.top-loc{font-size:10px}.hero{border-radius:24px}.hero-inner{padding:29px 24px 24px;grid-template-columns:1fr;gap:24px}.hero h1{margin:17px 0 12px;font-size:clamp(29px,9vw,43px)}.hero p{font-size:13px}.date-art{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;padding:14px 19px;border-radius:17px}.date-art .days{font-size:34px;line-height:1}.date-art .month{font-size:10px}.date-art .day-label{font-size:11px}.date-art .place{border:0;border-left:1px solid #ffffff30;margin:0;padding:0 0 0 13px;min-width:72px;font-size:10px}.notice{font-size:11px}.status-card{padding:15px;gap:11px;border-radius:17px}.status-main strong{font-size:13px}.status-main p{font-size:11px}.status-jump{padding:10px;font-size:10px}.section-head{margin:27px 0 14px}.section-head h2{font-size:23px}.schedule-tools{padding:11px;border-radius:17px}.time-group{grid-template-columns:50px minmax(0,1fr);gap:11px}.time-group::before{left:24px}.time-marker{font-size:10px;padding:18px 7px 0 0}.time-marker::after{right:-5px;top:21px}.activity{padding:15px 14px;border-radius:15px}.activity h3{font-size:14px}.event-time{font-size:11px}.parallel-pill{font-size:9px}aside{grid-template-columns:1fr}.day-button{padding:10px 5px;font-size:12px}.count-top{display:none}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    @media print{body{background:#fff}.topbar{position:static}.wrap{max-width:100%;padding:0}.hero{color:#111;background:#fff;box-shadow:none;min-height:0}.hero-inner{padding:15px 0}.hero .eyebrow{color:#111;background:none}.hero p{color:#333}.date-art{color:#111;border-color:#aaa}.date-art .month,.date-art .day-label{color:#111}.date-art .place{color:#111}.notice{background:#fff}.schedule-shell{display:block}.schedule-tools,.status-card,aside,.footer,.status-jump{display:none!important}.time-group{break-inside:avoid}.activity{box-shadow:none}.activity.is-past{opacity:1}}
+  </style>
 </head>
-
 <body>
-
-    <a class="skip-link" href="#schedule-render-area">Ir direto para a programação</a>
-
-    <div class="ambient-light"></div>
-
-    <div class="ambient-light-2"></div>
-
-    <div class="ambient-light-3"></div>
-
-
-
-    <header class="sticky-header">
-
-        <h1 class="header-tag">Reunião de Produção Doutrinária</h1>
-
-        <div class="header-date" id="header-date">5 e 6 de setembro de 2026</div>
-        <div class="header-status" id="header-status" aria-live="polite">Carregando status da programação...</div>
-
-    </header>
-
-    <section class="event-overview" aria-labelledby="overview-title">
-        <div class="overview-card">
-            <div class="overview-kicker">Programação oficial • 5 e 6 de setembro</div>
-            <h2 class="overview-title" id="overview-title">Dois dias de integração, estudo e trabalho coletivo.</h2>
-            <p class="overview-text">Acompanhe a programação oficial da Reunião de Produção Doutrinária no Centro Espírita Irmão Áureo, em Goiânia. As salas e o cardápio desta edição serão inseridos assim que forem confirmados.</p>
-            <div class="status-panel" aria-live="polite">
-                <div class="status-row">
-                    <span class="status-label">Status do encontro</span>
-                    <span class="status-value" id="overview-status">Carregando...</span>
-                </div>
-                <div class="progress-track" aria-hidden="true">
-                    <div class="progress-bar" id="event-progress"></div>
-                </div>
-            </div>
+  <a class="skip" href="#programacao">Ir para a programação</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="identity"><div class="logo" aria-hidden="true">✦</div><div><strong>Produção Doutrinária</strong><span>Programa Concafras · 2026</span></div></div>
+      <div class="top-loc"><span aria-hidden="true"></span>07–08 NOV · GOIÂNIA</div>
+    </div>
+  </header>
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">✦ Penúltima reunião do ano</div>
+          <h1 id="hero-title">Ainda temos muito a construir.</h1>
+          <p>Dois dias para reencontrar a equipe, avançar nas tarefas e fortalecer nossas entregas de fim de ano. <strong>Nos vemos em Goiânia!</strong></p>
         </div>
+        <div class="date-art" aria-label="Sábado, 7, e domingo, 8 de novembro de 2026, Goiânia">
+          <div><div class="month">Novembro 2026</div><div class="days">07<span style="opacity:.55;font-size:.58em">·</span>08</div><div class="day-label">Sábado e domingo</div></div>
+          <div class="place">GOIÂNIA<br>GO</div>
+        </div>
+      </div>
     </section>
-
-    <main class="schedule-container" id="schedule-render-area" tabindex="-1">
-
-    </main>
-
-
-
-    <div class="footer-info">
-
-        <svg style="display:inline; margin-bottom:-2px; margin-right:4px;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-
-        Horários sujeitos a alterações
-
-    </div>
-
-
-
-    <a href="https://concafras.me/salasproducaohibrida" class="fab-hibrida" target="_blank" rel="noopener noreferrer">
-
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14v-4z"></path>
-
-            <rect x="3" y="6" width="12" height="12" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></rect>
-
-        </svg>
-
-        Salas Híbridas
-
-    </a>
-
-
-
-    <div id="modal-cardapio" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title" onclick="fecharModal(event)">
-
-        <div class="modal-card" role="document">
-
-            <button class="modal-close" type="button" aria-label="Fechar cardápio" onclick="fecharModal(event, true)">
-
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-
-            </button>
-
-            <div class="modal-header">
-
-                <span class="modal-icon" id="modal-icon">🍲</span>
-
-                <h3 class="modal-title" id="modal-title">Cardápio do Dia</h3>
-
-                <div class="modal-subtitle" id="modal-subtitle">Almoço</div>
-
-            </div>
-
-            <ul class="menu-list" id="modal-list">
-
-                </ul>
-
+    <div class="notice" role="note"><span class="notice-icon" aria-hidden="true">◈</span><div><b>Programação-base em revisão.</b> Os horários abaixo foram aproveitados da última grade compartilhada. A confirmação específica de novembro, as salas e o cardápio ainda não foram informados.</div></div>
+    <section class="status-card" id="status-card" data-state="future" aria-live="polite" aria-atomic="true">
+      <div class="status-dot" aria-hidden="true"></div>
+      <div class="status-main"><div class="status-eyebrow" id="status-eyebrow">Próximo encontro</div><strong id="status-title">Preparando a programação...</strong><p id="status-description">Os horários são exibidos no fuso de Brasília.</p></div>
+      <button class="status-jump" id="status-jump" type="button">Ver atividade ↗</button>
+    </section>
+    <div class="section-head"><div><h2>Seu fim de semana, organizado.</h2><p>Encontre rapidamente seu horário e acompanhe as atividades em paralelo.</p></div><div class="count-top">29 atividades na grade-base</div></div>
+    <div class="schedule-shell" id="programacao">
+      <main class="schedule-main">
+        <div class="schedule-tools" aria-label="Filtros da programação">
+          <div class="day-switch" role="group" aria-label="Selecionar dia">
+            <button class="day-button" type="button" data-day="2026-11-07" aria-pressed="true">Sábado · 07 <small>Programação do dia</small></button>
+            <button class="day-button" type="button" data-day="2026-11-08" aria-pressed="false">Domingo · 08 <small>Programação do dia</small></button>
+          </div>
+          <div class="controls-row"><label class="search"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Buscar atividades</span><input type="search" id="search" placeholder="Busque comissão, CFT, EUGD..." autocomplete="off" aria-label="Buscar atividades"></label><button id="clear-search" type="button" class="clear-search" hidden>Limpar</button></div>
+          <div class="filters" role="group" aria-label="Filtrar por atividade">
+            <button type="button" class="filter" data-filter="all" aria-pressed="true">Tudo</button>
+            <button type="button" class="filter" data-filter="workshop" aria-pressed="false">📚 Trabalho</button>
+            <button type="button" class="filter" data-filter="spiritual" aria-pressed="false">💚 Espiritual</button>
+            <button type="button" class="filter" data-filter="collective" aria-pressed="false">✨ Coletivo</button>
+            <button type="button" class="filter" data-filter="break" aria-pressed="false">☕ Pausas</button>
+          </div>
         </div>
-
+        <div class="result-note"><span id="result-summary" aria-live="polite">Carregando atividades...</span><span>Horário de Brasília (BRT)</span></div>
+        <div class="timeline" id="timeline" aria-label="Atividades do dia"></div>
+      </main>
+      <aside aria-label="Informações práticas">
+        <section class="side-card"><h3>Para se organizar ✨</h3>
+          <div class="info-item"><span class="symbol" aria-hidden="true">📍</span><div><b>Onde?</b><small>Goiânia · Goiás. Local e salas específicas pendentes de divulgação.</small></div></div>
+          <div class="info-item"><span class="symbol" aria-hidden="true">🧭</span><div><b>Atividades paralelas</b><small>O selo “Em paralelo” indica horários com mais de uma frente acontecendo.</small></div></div>
+          <div class="info-item"><span class="symbol" aria-hidden="true">🍽️</span><div><b>Cardápio</b><small>Aguardando informação oficial. Os horários das refeições permanecem visíveis.</small></div></div>
+          <a class="side-link" href="https://concafras.me/salasproducaohibrida" target="_blank" rel="noopener noreferrer">▧ &nbsp;Acessar salas híbridas <span aria-hidden="true">↗</span></a>
+        </section>
+        <section class="side-card side-accent"><h3>Um encontro com propósito 💛</h3><p>Mais do que uma agenda: um tempo para produzir, colaborar e fazer avançar os materiais do Programa Concafras.</p></section>
+      </aside>
     </div>
-
-
-
-    <script>
-
-        // ============================================================================
-
-        // DADOS DAS SALAS DA EDIÇÃO ANTERIOR — mantidos no código apenas como referência; não são exibidos nesta edição
-        // Atualizar quando a distribuição oficial de Goiânia for recebida
-
-        // ============================================================================
-
-        const salasGerais = [];
-
-        const salasExecutivas = [];
-
-        const salasSabadoTarde = [];
-
-
-
-        function sortSalas(array) {
-
-            const groupOrder = { 'Assessorias e Direção': 1, 'Comissão Irmão Armando': 2, 'Comissão Irmão Áureo': 3, 'Outras': 4, 'Comissões Executivas': 5 };
-
-            return array.sort((a, b) => {
-
-                if (groupOrder[a.group] !== groupOrder[b.group]) return groupOrder[a.group] - groupOrder[b.group];
-
-                return a.title.localeCompare(b.title);
-
-            });
-
-        }
-
-
-
-        sortSalas(salasGerais);
-
-        sortSalas(salasSabadoTarde);
-
-        sortSalas(salasExecutivas);
-
-
-
-        // ============================================================================
-
-        // PROGRAMAÇÃO E CARDÁPIOS (EDITE OS PRATOS AQUI)
-
-        // ============================================================================
-
-       const eventos = [
-
-            // SÁBADO — 05/09/2026
-            { id: 1, date: '2026-09-05', start: '08:30', end: '09:00', title: 'Alegria Cristã', type: 'social', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 2, date: '2026-09-05', start: '09:00', end: '09:15', title: 'Prece Inicial / Abertura Geral', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 3, date: '2026-09-05', start: '09:15', end: '10:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 4, date: '2026-09-05', start: '10:00', end: '10:15', title: 'Abertura Presencial', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 5, date: '2026-09-05', start: '10:15', end: '10:45', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 6, date: '2026-09-05', start: '10:45', end: '13:00', title: 'Comissões de Trabalho — Irmão Áureo, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 7, date: '2026-09-05', start: '12:00', end: '13:00', title: 'Comissões Irmão Armando', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 8, date: '2026-09-05', start: '13:00', end: '14:30', title: 'Almoço', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 9, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 10, date: '2026-09-05', start: '14:30', end: '16:00', title: 'Reunião do CFT', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 11, date: '2026-09-05', start: '16:00', end: '16:30', title: 'Tratamento Espiritual e Intervalo da Reunião do CFT', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 12, date: '2026-09-05', start: '16:30', end: '17:00', title: 'Intervalo das Comissões', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 13, date: '2026-09-05', start: '16:30', end: '18:30', title: 'Reunião do CFT', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 14, date: '2026-09-05', start: '17:00', end: '18:30', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 15, date: '2026-09-05', start: '18:30', end: '20:00', title: 'Banho e Jantar', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 16, date: '2026-09-05', start: '20:00', end: '21:00', title: 'Momento Coletivo', type: 'collective', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 17, date: '2026-09-05', start: '21:00', end: '21:30', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 18, date: '2026-09-05', start: '21:30', end: '22:30', title: 'Reunião do Conselho das Comissões', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 19, date: '2026-09-05', start: '21:30', end: '22:30', title: 'Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias, Comissão de Inovação e Projetos e Comissões Executivas', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 20, date: '2026-09-05', start: '22:30', end: '23:00', title: 'Tratamento Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-
-            // DOMINGO — 06/09/2026
-            { id: 21, date: '2026-09-06', start: '08:15', end: '08:30', title: 'Preparação da Reunião de Orientação Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 22, date: '2026-09-06', start: '08:30', end: '10:00', title: 'Reunião de Orientação Espiritual', type: 'spiritual', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 23, date: '2026-09-06', start: '10:00', end: '10:30', title: 'Avisos, Decisões Coletivas e Aniversariantes', type: 'talk', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 24, date: '2026-09-06', start: '10:30', end: '11:00', title: 'Intervalo', type: 'break', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 25, date: '2026-09-06', start: '11:00', end: '13:00', title: 'Comissões Executivas', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 26, date: '2026-09-06', start: '11:00', end: '12:00', title: 'Curso da EUGD', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 27, date: '2026-09-06', start: '12:00', end: '12:10', title: 'Deslocamento', type: 'walking', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 28, date: '2026-09-06', start: '12:10', end: '13:00', title: 'Acompanhamento das Comissões de Trabalho dos GF Nível 5 (Meses Ímpares)', type: 'workshop', location: 'Centro Espírita Irmão Áureo – Goiânia' },
-            { id: 29, date: '2026-09-06', start: '13:00', end: '14:30', timeLabel: '13h', title: 'Almoço', type: 'food', location: 'Centro Espírita Irmão Áureo – Goiânia' }
-
-        ];
-
-
-        const ICONS = {
-
-            talk: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>',
-
-            break: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>',
-
-            workshop: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>',
-
-            social: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
-
-            collective: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
-
-            walking: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="5" r="2.5"></circle><path d="M14 8v6"></path><path d="M10 12l4-4 3 3"></path><path d="M14 14l-3 7"></path><path d="M14 14l4 6"></path></svg>',
-
-            food: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>',
-
-            spiritual: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>',
-
-            extra: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>'
-
-        };
-
-
-
-        const TYPE_NAMES = { 
-
-            talk: 'Plenária', break: 'Pausa', workshop: 'Trabalho', social: 'Integração', 
-
-            spiritual: 'Momento Espiritual', extra: 'Aprendizado Extra', food: 'Refeição',
-
-            collective: 'Momento Coletivo', walking: 'Convivência'
-
-        };
-
-
-
-        // CONTROLE DO MODAL, ACESSIBILIDADE E NAVEGAÇÃO
-        let ultimoFoco = null;
-
-        function abrirMenuModal(eventId) {
-            const evento = eventos.find(e => e.id === eventId);
-            if (!evento || !evento.menuItems) return;
-
-            document.getElementById('modal-title').innerText = evento.menuTitle;
-            document.getElementById('modal-icon').innerText = evento.menuIcon;
-            document.getElementById('modal-subtitle').innerText = evento.title;
-
-            const list = document.getElementById('modal-list');
-            list.innerHTML = evento.menuItems.map(item => `
-                <li class="menu-item">
-                    <span class="menu-item-icon" aria-hidden="true">${item.icon}</span>
-                    <span>${item.text}</span>
-                </li>
-            `).join('');
-
-            ultimoFoco = document.activeElement;
-            const modal = document.getElementById('modal-cardapio');
-            modal.classList.add('active');
-            modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            requestAnimationFrame(() => modal.querySelector('.modal-close').focus());
-        }
-
-        function fecharModal(event, force = false) {
-            if (force || event.target.classList.contains('modal-overlay')) {
-                const modal = document.getElementById('modal-cardapio');
-                modal.classList.remove('active');
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                if (ultimoFoco) ultimoFoco.focus();
-            }
-        }
-
-        function toggleSubEvents(id, btn) {
-            const wrapper = document.getElementById('sub-' + id);
-            const vaiAbrir = !wrapper.classList.contains('open');
-
-            wrapper.classList.toggle('open', vaiAbrir);
-            btn.classList.toggle('active', vaiAbrir);
-            btn.setAttribute('aria-expanded', String(vaiAbrir));
-            btn.querySelector('span').innerText = vaiAbrir ? 'Ocultar opções' : btn.dataset.label;
-
-            if (vaiAbrir) {
-                const busca = wrapper.querySelector('.search-input');
-                if (busca) setTimeout(() => busca.focus(), 120);
-            }
-        }
-
-        function normalizarTexto(texto) {
-            return texto
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')
-                .toLowerCase()
-                .trim();
-        }
-
-        function filterComissoes(input, listId) {
-            const filtro = normalizarTexto(input.value);
-            const list = document.getElementById(listId);
-            const items = list.querySelectorAll('.sub-event-item');
-            let visiveis = 0;
-
-            items.forEach(item => {
-                const textoCompleto = normalizarTexto(item.innerText);
-                const exibir = textoCompleto.includes(filtro);
-                item.style.display = exibir ? 'flex' : 'none';
-                if (exibir) visiveis++;
-            });
-
-            const vazio = list.querySelector('.search-empty');
-            if (vazio) vazio.style.display = visiveis ? 'none' : 'block';
-        }
-
-        function rolarParaElemento(elemento) {
-            if (!elemento) return;
-            const headerOffset = document.querySelector('.sticky-header').offsetHeight + 18;
-            const top = elemento.getBoundingClientRect().top + window.scrollY - headerOffset;
-            window.scrollTo({ top, behavior: 'smooth' });
-        }
-
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape' && document.getElementById('modal-cardapio').classList.contains('active')) {
-                fecharModal(event, true);
-            }
-        });
-
-        function renderizarAgenda() {
-
-            const container = document.getElementById('schedule-render-area');
-
-            let html = '';
-
-            eventos.forEach((item, index) => {
-
-                let extraHtml = '';
-
-                
-
-                // Renderização de Cardápio
-
-                if (item.menuItems) {
-
-                    extraHtml = `
-
-                        <button class="btn-menu" type="button" aria-haspopup="dialog" aria-controls="modal-cardapio" onclick="abrirMenuModal(${item.id})">
-
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
-
-                            <span>Ver Cardápio</span>
-
-                        </button>
-
-                    `;
-
-                }
-
-
-
-                // Renderização de Salas Expansíveis
-
-                if (item.subEvents && item.subEvents.length > 0) {
-
-                    let itemsHtml = '';
-
-                    let currentGroup = '';
-
-
-
-                    item.subEvents.forEach(sub => {
-
-                        if(sub.group && sub.group !== currentGroup) {
-
-                            itemsHtml += `<div class="sub-group-title">${sub.group}</div>`;
-
-                            currentGroup = sub.group;
-
-                        }
-
-                        
-
-                        itemsHtml += `
-
-                            <div class="sub-event-item">
-
-                                <div class="sub-event-title">${sub.title}</div>
-
-                                <div class="sub-event-room">
-
-                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:-1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-
-                                    ${sub.room}
-
-                                </div>
-
-                            </div>
-
-                        `;
-
-                    });
-
-
-
-                    let searchBarHtml = '';
-
-                    if(item.subEvents.length > 5) {
-
-                        searchBarHtml = `
-
-                            <div class="search-box">
-
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-
-                                <label class="sr-only" for="search-${item.id}">Buscar sala ou comissão</label>
-                                <input id="search-${item.id}" type="search" class="search-input" placeholder="Buscar sala ou comissão..." autocomplete="off" oninput="filterComissoes(this, 'list-${item.id}')">
-
-                            </div>
-
-                        `;
-
-                    }
-
-
-
-                    extraHtml += `
-
-                        <button class="btn-expand" type="button" data-label="${item.subLabel}" aria-expanded="false" aria-controls="sub-${item.id}" onclick="toggleSubEvents(${item.id}, this)">
-
-                            <span>${item.subLabel}</span>
-
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-
-                        </button>
-
-                        <div class="sub-events-wrapper" id="sub-${item.id}">
-
-                            ${searchBarHtml}
-
-                            <div id="list-${item.id}">
-
-                                ${itemsHtml}
-                                <div class="search-empty" role="status">Nenhuma sala ou comissão encontrada.</div>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-
-                html += `
-
-                    <div class="timeline-item fade-in-up" id="item-${item.id}" data-start="${item.date}T${item.start}:00-03:00" data-end="${item.date}T${item.end}:00-03:00" style="animation-delay: ${Math.min(index * 0.025, 0.35)}s">
-
-                        <div class="icon-circle" aria-hidden="true">${ICONS[item.type]}</div>
-
-                        <div class="card-content">
-
-                            <div class="live-tag" aria-hidden="true">
-
-                                <div class="ping-dot"></div>
-
-                                <span>Acontecendo agora</span>
-
-                            </div>
-                            <div class="next-tag"><span>Próxima atividade</span></div>
-
-                            
-
-                            <div class="time-loc">
-
-                                <span class="time-text">${item.timeLabel || `${item.start} — ${item.end}`}</span>
-
-                                <div class="dot"></div>
-
-                                <span class="loc-text">
-
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-
-                                    ${item.location}
-
-                                </span>
-
-                            </div>
-
-                            <h3 class="event-title">${item.title}</h3>
-
-                            <span class="badge badge-${item.type}">${TYPE_NAMES[item.type]}</span>
-
-                            ${extraHtml}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            });
-
-
-
-            container.innerHTML = html;
-
-        }
-
-
-
-        let autoScrolled = false;
-
-        function atualizarTempoReal() {
-            const agora = new Date();
-            const ordenados = [...document.querySelectorAll('.timeline-item')]
-                .map((el, ordem) => ({
-                    el,
-                    ordem,
-                    inicio: new Date(el.dataset.start),
-                    fim: new Date(el.dataset.end)
-                }))
-                .sort((a, b) => (a.inicio - b.inicio) || (a.ordem - b.ordem));
-
-            const atuais = ordenados.filter(item => agora >= item.inicio && agora < item.fim);
-            const futuros = ordenados.filter(item => agora < item.inicio);
-            const proximoInicio = futuros.length ? futuros[0].inicio.getTime() : null;
-            const proximos = proximoInicio === null ? [] : futuros.filter(item => item.inicio.getTime() === proximoInicio);
-
-            ordenados.forEach(item => {
-                const liveTag = item.el.querySelector('.live-tag');
-                item.el.classList.remove('is-past', 'is-current', 'is-next');
-                item.el.removeAttribute('aria-current');
-                liveTag.setAttribute('aria-hidden', 'true');
-
-                if (agora >= item.fim) item.el.classList.add('is-past');
-            });
-
-            atuais.forEach(item => {
-                item.el.classList.remove('is-past');
-                item.el.classList.add('is-current');
-                item.el.setAttribute('aria-current', 'step');
-                item.el.querySelector('.live-tag').setAttribute('aria-hidden', 'false');
-            });
-
-            proximos.forEach(item => {
-                if (!atuais.includes(item)) item.el.classList.add('is-next');
-            });
-
-            const concluidos = ordenados.filter(item => agora >= item.fim).length;
-            const progresso = Math.max(0, Math.min(100, (concluidos / ordenados.length) * 100));
-            document.getElementById('event-progress').style.width = `${progresso}%`;
-
-            const headerStatus = document.getElementById('header-status');
-            const overviewStatus = document.getElementById('overview-status');
-            const primeiroInicio = ordenados[0].inicio;
-            const ultimoFim = ordenados.reduce((maior, item) => item.fim > maior ? item.fim : maior, ordenados[0].fim);
-            const hora = data => data.toLocaleTimeString('pt-BR', {
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZone: 'America/Sao_Paulo'
-            });
-
-            if (agora < primeiroInicio) {
-                headerStatus.innerText = `Começa sábado às ${hora(primeiroInicio)}`;
-                overviewStatus.innerText = 'O encontro ainda vai começar';
-            } else if (atuais.length) {
-                const titulos = atuais.map(item => item.el.querySelector('.event-title').innerText);
-                headerStatus.innerText = atuais.length === 1
-                    ? `Ao vivo agora • ${titulos[0]}`
-                    : `Ao vivo agora • ${atuais.length} atividades simultâneas`;
-                overviewStatus.innerText = `${concluidos} de ${ordenados.length} atividades concluídas`;
-            } else if (agora < ultimoFim && proximos.length) {
-                const proximoTitulo = proximos[0].el.querySelector('.event-title').innerText;
-                headerStatus.innerText = proximos.length === 1
-                    ? `A seguir, ${proximoTitulo} • ${hora(proximos[0].inicio)}`
-                    : `A seguir, ${proximos.length} atividades • ${hora(proximos[0].inicio)}`;
-                overviewStatus.innerText = `Próxima atividade às ${hora(proximos[0].inicio)}`;
-            } else {
-                headerStatus.innerText = 'Encontro concluído • programação disponível';
-                overviewStatus.innerText = 'Programação concluída';
-                document.getElementById('event-progress').style.width = '100%';
-            }
-
-            if (!autoScrolled && atuais.length) {
-                setTimeout(() => rolarParaElemento(atuais[0].el), 700);
-                autoScrolled = true;
-            }
-        }
-
-        renderizarAgenda();
-        atualizarTempoReal();
-
-        const relogioAgenda = setInterval(atualizarTempoReal, 30000);
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) atualizarTempoReal();
-        }); 
-
-    </script>
-
+    <footer class="footer"><span class="sparkle">✦</span> Produção Doutrinária · Programa Concafras · Goiânia, novembro de 2026 <span class="sparkle">✦</span></footer>
+  </div>
+  <script>
+    "use strict";
+    // EDITE A AGENDA ABAIXO APÓS A CONFIRMAÇÃO OFICIAL DE NOVEMBRO.
+    // Campos opcionais: room: "Sala X" e menu: ["Item 1", "Item 2"].
+    // Horário final não informado: end: null (não inventar duração).
+    const AGENDA = [
+      {
+            "id": 1,
+            "date": "2026-11-07",
+            "start": "08:30",
+            "end": "09:00",
+            "title": "Alegria Cristã",
+            "type": "social"
+      },
+      {
+            "id": 2,
+            "date": "2026-11-07",
+            "start": "09:00",
+            "end": "09:15",
+            "title": "Prece Inicial / Abertura Geral",
+            "type": "talk"
+      },
+      {
+            "id": 3,
+            "date": "2026-11-07",
+            "start": "09:15",
+            "end": "10:00",
+            "title": "Tratamento Espiritual",
+            "type": "spiritual"
+      },
+      {
+            "id": 4,
+            "date": "2026-11-07",
+            "start": "10:00",
+            "end": "10:15",
+            "title": "Abertura Presencial",
+            "type": "talk"
+      },
+      {
+            "id": 5,
+            "date": "2026-11-07",
+            "start": "10:15",
+            "end": "10:45",
+            "title": "Intervalo",
+            "type": "break"
+      },
+      {
+            "id": 6,
+            "date": "2026-11-07",
+            "start": "10:45",
+            "end": "13:00",
+            "title": "Comissões de Trabalho — Irmão Áureo, Assessorias e Comissão de Inovação e Projetos",
+            "type": "workshop"
+      },
+      {
+            "id": 7,
+            "date": "2026-11-07",
+            "start": "12:00",
+            "end": "13:00",
+            "title": "Comissões Irmão Armando",
+            "type": "workshop"
+      },
+      {
+            "id": 8,
+            "date": "2026-11-07",
+            "start": "13:00",
+            "end": "14:30",
+            "title": "Almoço",
+            "type": "food"
+      },
+      {
+            "id": 9,
+            "date": "2026-11-07",
+            "start": "14:30",
+            "end": "16:00",
+            "title": "Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos",
+            "type": "workshop"
+      },
+      {
+            "id": 10,
+            "date": "2026-11-07",
+            "start": "14:30",
+            "end": "16:00",
+            "title": "Reunião do CFT",
+            "type": "workshop"
+      },
+      {
+            "id": 11,
+            "date": "2026-11-07",
+            "start": "16:00",
+            "end": "16:30",
+            "title": "Tratamento Espiritual e Intervalo da Reunião do CFT",
+            "type": "spiritual"
+      },
+      {
+            "id": 12,
+            "date": "2026-11-07",
+            "start": "16:30",
+            "end": "17:00",
+            "title": "Intervalo das Comissões",
+            "type": "break"
+      },
+      {
+            "id": 13,
+            "date": "2026-11-07",
+            "start": "16:30",
+            "end": "18:30",
+            "title": "Reunião do CFT",
+            "type": "workshop"
+      },
+      {
+            "id": 14,
+            "date": "2026-11-07",
+            "start": "17:00",
+            "end": "18:30",
+            "title": "Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias e Comissão de Inovação e Projetos",
+            "type": "workshop"
+      },
+      {
+            "id": 15,
+            "date": "2026-11-07",
+            "start": "18:30",
+            "end": "20:00",
+            "title": "Banho e Jantar",
+            "type": "food"
+      },
+      {
+            "id": 16,
+            "date": "2026-11-07",
+            "start": "20:00",
+            "end": "21:00",
+            "title": "Momento Coletivo",
+            "type": "collective"
+      },
+      {
+            "id": 17,
+            "date": "2026-11-07",
+            "start": "21:00",
+            "end": "21:30",
+            "title": "Intervalo",
+            "type": "break"
+      },
+      {
+            "id": 18,
+            "date": "2026-11-07",
+            "start": "21:30",
+            "end": "22:30",
+            "title": "Reunião do Conselho das Comissões",
+            "type": "workshop"
+      },
+      {
+            "id": 19,
+            "date": "2026-11-07",
+            "start": "21:30",
+            "end": "22:30",
+            "title": "Comissões de Trabalho — Irmão Áureo, Irmão Armando, Assessorias, Comissão de Inovação e Projetos e Comissões Executivas",
+            "type": "workshop"
+      },
+      {
+            "id": 20,
+            "date": "2026-11-07",
+            "start": "22:30",
+            "end": "23:00",
+            "title": "Tratamento Espiritual",
+            "type": "spiritual"
+      },
+      {
+            "id": 21,
+            "date": "2026-11-08",
+            "start": "08:15",
+            "end": "08:30",
+            "title": "Preparação da Reunião de Orientação Espiritual",
+            "type": "spiritual"
+      },
+      {
+            "id": 22,
+            "date": "2026-11-08",
+            "start": "08:30",
+            "end": "10:00",
+            "title": "Reunião de Orientação Espiritual",
+            "type": "spiritual"
+      },
+      {
+            "id": 23,
+            "date": "2026-11-08",
+            "start": "10:00",
+            "end": "10:30",
+            "title": "Avisos, Decisões Coletivas e Aniversariantes",
+            "type": "talk"
+      },
+      {
+            "id": 24,
+            "date": "2026-11-08",
+            "start": "10:30",
+            "end": "11:00",
+            "title": "Intervalo",
+            "type": "break"
+      },
+      {
+            "id": 25,
+            "date": "2026-11-08",
+            "start": "11:00",
+            "end": "13:00",
+            "title": "Comissões Executivas",
+            "type": "workshop"
+      },
+      {
+            "id": 26,
+            "date": "2026-11-08",
+            "start": "11:00",
+            "end": "12:00",
+            "title": "Curso da EUGD",
+            "type": "workshop"
+      },
+      {
+            "id": 27,
+            "date": "2026-11-08",
+            "start": "12:00",
+            "end": "12:10",
+            "title": "Deslocamento",
+            "type": "walking"
+      },
+      {
+            "id": 28,
+            "date": "2026-11-08",
+            "start": "12:10",
+            "end": "13:00",
+            "title": "Acompanhamento das Comissões de Trabalho dos GF Nível 5 (Meses Ímpares)",
+            "type": "workshop"
+      },
+      {
+            "id": 29,
+            "date": "2026-11-08",
+            "start": "13:00",
+            "end": null,
+            "title": "Almoço",
+            "type": "food"
+      }
+];
+    const DIAS = ['2026-11-07','2026-11-08'];
+    const LABELS = { social:'Integração', talk:'Plenária', spiritual:'Espiritual', break:'Intervalo', workshop:'Trabalho', food:'Refeição', collective:'Coletivo', walking:'Deslocamento' };
+    const FILTERS = {
+      all: () => true,
+      workshop: e => e.type === 'workshop',
+      spiritual: e => e.type === 'spiritual',
+      collective: e => ['collective','social','talk'].includes(e.type),
+      break: e => ['break','food','walking'].includes(e.type)
+    };
+    const $ = id => document.getElementById(id);
+    const esc = text => String(text ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const plain = text => String(text || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    const toStamp = (d,t) => new Date(`${d}T${t}:00-03:00`).getTime();
+    const prettyTime = t => t ? `${Number(t.slice(0,2))}h${t.slice(3)==='00'?'':t.slice(3)}` : '';
+    const eventTime = e => e.end ? `${prettyTime(e.start)} – ${prettyTime(e.end)}` : `A partir de ${prettyTime(e.start)}`;
+    const nowLocalDate = () => { const parts = new Intl.DateTimeFormat('en-US',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'America/Sao_Paulo'}).formatToParts(new Date()); const dict = Object.fromEntries(parts.map(({type,value})=>[type,value])); return `${dict.year}-${dict.month}-${dict.day}`; };
+    const getStart = e => toStamp(e.date,e.start);
+    const getEnd = e => e.end ? toStamp(e.date,e.end) : null;
+    const eventAt = (e,t) => getEnd(e) !== null && getStart(e) <= t && t < getEnd(e);
+    const isParallel = e => AGENDA.some(other => other.id !== e.id && other.date===e.date && getStart(e) < (getEnd(other) ?? getStart(other)) && getStart(other) < (getEnd(e) ?? getStart(e)));
+    let activeDay = nowLocalDate() === DIAS[1] || nowLocalDate() > DIAS[1] ? DIAS[1] : DIAS[0];
+    let activeFilter = 'all';
+    let focusId = null;
+    function setDay(day) {
+      activeDay = day;
+      document.querySelectorAll('.day-button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.day===day)));
+      render();
+    }
+    function render() {
+      const query=plain($('search').value.trim());
+      $('clear-search').hidden=!query;
+      const allDay=AGENDA.filter(e=>e.date===activeDay);
+      const results=allDay.filter(e=>FILTERS[activeFilter](e) && (!query || plain([e.title,e.room,LABELS[e.type]].join(' ')).includes(query)));
+      const suffix=results.length===1?'atividade':'atividades';
+      $('result-summary').innerHTML=`<b>${results.length}</b> ${suffix} ${results.length===allDay.length?'programadas':'encontradas'}`;
+      const byTime=new Map();
+      results.forEach(e=> { const key=e.start; if(!byTime.has(key))byTime.set(key,[]);byTime.get(key).push(e); });
+      const t=Date.now();
+      const live=AGENDA.filter(e=>eventAt(e,t));
+      const next=AGENDA.filter(e=>getStart(e)>t).sort((a,b)=>getStart(a)-getStart(b));
+      const nextStart=next.length?getStart(next[0]):null;
+      const empty=`<div class="no-results"><div aria-hidden="true" style="font-size:34px;margin-bottom:7px">🔎</div><strong>Nenhuma atividade encontrada</strong><p>Tente outra palavra ou remova os filtros.</p><button type="button" id="reset-empty">Ver todas as atividades</button></div>`;
+      const html=Array.from(byTime,([time,items])=>{
+        const cards=items.map(e=>{
+          const liveEvent=live.some(x=>x.id===e.id);
+          const nextEvent=!live.length && nextStart!==null && getStart(e)===nextStart;
+          const past=getEnd(e)!==null && getEnd(e)<=t;
+          const label=LABELS[e.type]||'Atividade';
+          const pills=`<span class="kind ${esc(e.type)}">${esc(label)}</span>${isParallel(e)?'<span class="parallel-pill">EM PARALELO</span>':''}${liveEvent?'<span class="live-pill">ACONTECENDO</span>':(nextEvent?'<span class="next-pill">A SEGUIR</span>':'')}`;
+          return `<article class="activity${liveEvent?' is-live':''}${nextEvent?' is-next':''}${past?' is-past':''}" id="evento-${e.id}" data-id="${e.id}"><div class="event-top"><span class="event-time">${esc(eventTime(e))}</span><span class="event-pills">${pills}</span></div><h3>${esc(e.title)}</h3>${e.room?`<p>📍 ${esc(e.room)}</p>`:''}${Array.isArray(e.menu) && e.menu.length?`<p>🍽️ ${esc(e.menu.join(' · '))}</p>`:''}</article>`;
+        }).join('');
+        return `<section class="time-group" aria-label="Atividades a partir das ${esc(prettyTime(time))}"><div class="time-marker">${esc(prettyTime(time))}</div><div class="time-stack">${items.length>1?`<div class="parallel-head">${items.length} atividades no mesmo horário</div>`:''}${cards}</div></section>`;
+      }).join('');
+      $('timeline').innerHTML=html||empty;
+      $('reset-empty')?.addEventListener('click',()=>{$('search').value='';activeFilter='all';document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter==='all')));render();});
+      focusId=live[0]?.id??next[0]?.id??null;
+      updateStatus();
+    }
+    function updateStatus() {
+      const t=Date.now();
+      const live=AGENDA.filter(e=>eventAt(e,t));
+      const upcoming=AGENDA.filter(e=>getStart(e)>t).sort((a,b)=>getStart(a)-getStart(b));
+      const status=$('status-card');
+      const eyebrow=$('status-eyebrow'),title=$('status-title'),description=$('status-description'),jump=$('status-jump');
+      if(live.length){
+        status.dataset.state='live';eyebrow.textContent='Acontecendo agora';
+        title.textContent=live.length===1?live[0].title:`${live.length} atividades em andamento`;
+        description.textContent=live.length===1?`${eventTime(live[0])} · Horário de Brasília`:`${live.map(e=>e.title).join(' · ')}`;
+        focusId=live[0].id;
+        jump.hidden=false;jump.textContent='Ir para agora ↗';
+      } else if(upcoming.length){
+        const e=upcoming[0];status.dataset.state='future';eyebrow.textContent=nowLocalDate()<DIAS[0]?'Está chegando!':'Próxima atividade';
+        title.textContent=e.title;
+        description.textContent=`${e.date===DIAS[0]?'Sábado':'Domingo'} · ${prettyTime(e.start)} · Horário de Brasília`;
+        focusId=e.id;jump.hidden=false;jump.textContent='Ver próxima ↗';
+      } else {
+        status.dataset.state='done';eyebrow.textContent='Fim da programação-base';title.textContent='Obrigado por construir conosco!';
+        description.textContent='As atividades deste encontro já tiveram seu horário de início.';
+        focusId=null;jump.hidden=true;
+      }
+      // Atualização de badges sem reconstruir toda a grade em cada minuto.
+      document.querySelectorAll('.activity').forEach(el=>{
+        const e=AGENDA.find(item=>item.id===Number(el.dataset.id));
+        const curr=live.some(x=>x.id===e.id),next=upcoming.length && !live.length && getStart(e)===getStart(upcoming[0]);
+        const past=getEnd(e)!==null && getEnd(e)<=t;
+        el.classList.toggle('is-live',curr);el.classList.toggle('is-next',!!next);el.classList.toggle('is-past',past);
+        const badges=el.querySelector('.event-pills');
+        badges.querySelector('.live-pill')?.remove();badges.querySelector('.next-pill')?.remove();
+        if(curr)badges.insertAdjacentHTML('beforeend','<span class="live-pill">ACONTECENDO</span>');
+        else if(next)badges.insertAdjacentHTML('beforeend','<span class="next-pill">A SEGUIR</span>');
+      });
+    }
+    function goToFocus() {
+      if(focusId===null)return;
+      const target=AGENDA.find(e=>e.id===focusId);
+      if(activeDay!==target.date)setDay(target.date);
+      // Um filtro pode ocultar a atividade-alvo: limpar apenas quando necessário.
+      if(!$(`evento-${focusId}`)){
+        $('search').value='';activeFilter='all';document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter==='all')));render();
+      }
+      const item=$(`evento-${focusId}`);
+      if(item){item.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}
+    }
+    document.querySelectorAll('.day-button').forEach(b=>b.addEventListener('click',()=>setDay(b.dataset.day)));
+    document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));
+    $('search').addEventListener('input',render);
+    $('clear-search').addEventListener('click',()=>{$('search').value='';$('search').focus();render();});
+    $('status-jump').addEventListener('click',goToFocus);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden){const d=nowLocalDate();if(DIAS.includes(d)&&d!==activeDay)setDay(d);else render();}});
+    setDay(activeDay);
+    setInterval(()=>{const visible=document.visibilityState!=='hidden';if(visible)updateStatus();},30000);
+  </script>
 </body>
-
 </html>
